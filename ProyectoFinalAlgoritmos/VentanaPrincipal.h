@@ -21,21 +21,27 @@
 #include <gtkmm-3.0/gtkmm/fixed.h>
 #include <gtkmm-3.0/gtkmm/imagemenuitem.h>
 
-#include "VentanaEscogerAerolinea.h"
+#include "VentanaRegistrar.h"
 
 class VentanaPrincipal : public Gtk::Window {
 public:
     VentanaPrincipal();
     void init();
-    void abrirVentanaEscogerAerolinea();
+   // void abrirVentanaEscogerAerolinea();
+    void abrirVentanaRegistrar();
+    void abrirVentanaIniciarSesion();
     void aboutWinClose();
 private:
     Gtk::MenuBar menuBar;
     Gtk::MenuItem menuGestionarVuelos;
     Gtk::Menu subMenuArchivo;
     Gtk::ImageMenuItem menuAerolinea;
+    Gtk::ImageMenuItem menuRegistrar;
+    Gtk::ImageMenuItem menuInicarSesion;
     Gtk::Fixed fixed; // contenedor
-    VentanaEscogerAerolinea* ventanaEsgogerAerolinea;
+    VentanaRegistrar* ventanaRegistrar;
+    RegistrarUsuarioBusiness* registrarBusiness;
+    VentanaIniciarSesion* ventanaIniciarSesion;
 };
 
 #endif /* VENTANAPRINCIPAL_H */

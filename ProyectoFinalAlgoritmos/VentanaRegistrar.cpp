@@ -17,9 +17,9 @@
 
 using namespace std;
 
-VentanaRegistrar::VentanaRegistrar(RegistrarUsuarioBusiness* business) {
+VentanaRegistrar::VentanaRegistrar() {
     this->set_size_request(800, 600);
-    this->registrarUsuarioBusiness = business;
+    this->registrarUsuarioBusiness = RegistrarUsuarioBusiness::getInstance();
     this->set_title("Registrar Usuario");
     init();
 }

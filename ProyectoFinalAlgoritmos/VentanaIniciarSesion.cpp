@@ -13,10 +13,10 @@
 #include "VentanaIniciarSesion.h"
 #include "Validar.h"
 
-VentanaIniciarSesion::VentanaIniciarSesion(RegistrarUsuarioBusiness* business) {
+VentanaIniciarSesion::VentanaIniciarSesion() {
     this->set_size_request(800, 600);
     this->set_title("Iniciar Sesion");
-    this->registrarUsuarioBusiness = business;
+    this->registrarUsuarioBusiness=RegistrarUsuarioBusiness::getInstance();
     init();
 }//constructor
 
@@ -46,7 +46,7 @@ void VentanaIniciarSesion::init() {
     this->fixed.put(this->lblNumeroPasaporte, 20, 500);
     this->fixed.put(this->entryNumeroPasaporte, 160, 495);
 
-    this->ventanaAerolineas = 0;
+    this->ventanaEscogerAerolineas = 0;
     this->add(this->fixed);
     this->show_all_children();
 }//init
@@ -60,12 +60,12 @@ void VentanaIniciarSesion::init() {
 //}//getUsuario
 
 void VentanaIniciarSesion::accionIniciarSesion(Usuario* usuario1) {
-    if (this->ventanaAerolineas != 0)
+    if (this->ventanaEscogerAerolineas != 0)
         return;
 
-    this->ventanaAerolineas = new VentanaEscogerAerolinea(/*usuario1*/);
-    this->ventanaAerolineas->signal_hide().connect(sigc::mem_fun(*this, &VentanaIniciarSesion::cerrarVentanaAerolineas));
-    this->ventanaAerolineas->show();
+    this->ventanaEscogerAerolineas = new VentanaEscogerAerolinea(/*usuario1*/);
+    this->ventanaEscogerAerolineas->signal_hide().connect(sigc::mem_fun(*this, &VentanaIniciarSesion::cerrarVentanaAerolineas));
+    this->ventanaEscogerAerolineas->show();
 }//accionIniciarSesion
 
 void VentanaIniciarSesion::iniciarSesion() {
@@ -112,5 +112,5 @@ void VentanaIniciarSesion::iniciarSesion() {
 }//iniciarSesion
 
 void VentanaIniciarSesion::cerrarVentanaAerolineas() {
-    this->ventanaAerolineas = 0;
+    this->ventanaEscogerAerolineas = 0;
 }//cerrarMenu

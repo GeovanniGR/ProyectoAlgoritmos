@@ -18,12 +18,7 @@ RegistrarUsuarioData::RegistrarUsuarioData() {
 }
 
 bool RegistrarUsuarioData::registrarUsuario(Usuario* usuario) {
-
     this->vectorUsuario.push_back(usuario);
-
-    for (int i = 0; i < vectorUsuario.size(); i++) {
-        cout << vectorUsuario.at(i)->toString();
-    }
     return true;
 }//true
 
