@@ -12,6 +12,11 @@
  */
 
 #include <cstdlib>
+#include <list>
+#include <string>
+#include <iostream>
+
+#include "VentanaPrincipal.h"
 
 using namespace std;
 
@@ -19,7 +24,10 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-
-    return 0;
+    Glib::RefPtr<Gtk::Application> app =
+                Gtk::Application::create(argc, argv, "titulo");
+        VentanaPrincipal window;
+        return app->run(window);
+//    return 0;
 }
 

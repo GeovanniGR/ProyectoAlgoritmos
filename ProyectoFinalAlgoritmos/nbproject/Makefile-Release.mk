@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Aerolinea_1.o \
 	${OBJECTDIR}/ListaAerolineas.o \
 	${OBJECTDIR}/VentanaEscogerAerolinea.o \
 	${OBJECTDIR}/VentanaPrincipal.o \
@@ -64,6 +65,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/proyectofinalalgoritmos: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/proyectofinalalgoritmos ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Aerolinea_1.o: Aerolinea_1.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Aerolinea_1.o Aerolinea_1.cpp
 
 ${OBJECTDIR}/ListaAerolineas.o: ListaAerolineas.cpp
 	${MKDIR} -p ${OBJECTDIR}

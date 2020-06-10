@@ -13,7 +13,7 @@
 
 #include "VentanaEscogerAerolinea.h"
 #include "ListaAerolineas.h"
-
+#include "Aerolinea_1.h"
 VentanaEscogerAerolinea::VentanaEscogerAerolinea() {
     this->set_size_request(800, 600);
     this->set_title("Aerolineas Disponibles");
@@ -43,10 +43,21 @@ void VentanaEscogerAerolinea::init() {
 }//init
 
 void VentanaEscogerAerolinea::loadaerolineas() {
-    this->aerolineas.insert("Avianca");
-    this->aerolineas.insert("CopaAirlines");
-    this->aerolineas.insert("Emiratos");
-    this->aerolineas.insert("BlueJet");
+    Aerolinea a1 = Aerolinea("Avianca");
+    Aerolinea a2 = Aerolinea("CopaAirlines");
+    Aerolinea a3 = Aerolinea("Emiratos");
+    Aerolinea a4 = Aerolinea("BlueJet");
+    Aerolinea a5 = Aerolinea("Delta");
+
+    this->aerolineas.insert(a1.getNombre());
+    this->aerolineas.insert(a2.getNombre());
+    this->aerolineas.insert(a3.getNombre());
+    this->aerolineas.insert(a4.getNombre());
+    this->aerolineas.insert(a5.getNombre());
+    //    this->aerolineas.insert("Avianca");
+    //    this->aerolineas.insert("CopaAirlines");
+    //    this->aerolineas.insert("Emiratos");
+    //    this->aerolineas.insert("BlueJet");
 }
 
 void VentanaEscogerAerolinea::onButtonClickedConfirm() {
