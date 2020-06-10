@@ -23,7 +23,7 @@ using namespace std;
 
 class VentanaIniciarSesion : public Gtk::Window {
 public:
-    VentanaIniciarSesion(RegistrarUsuarioBusiness* business);
+    VentanaIniciarSesion();
 
     void init();
     void accionIniciarSesion(Usuario* usuario);
@@ -51,7 +51,7 @@ public:
     Gtk::Label lblGenero;
 
     vector<Usuario*> vectorUsuario;
-    VentanaEscogerAerolinea* ventanaAerolineas;
+    VentanaEscogerAerolinea* ventanaEscogerAerolineas;
 
 private:
     RegistrarUsuarioBusiness* registrarUsuarioBusiness;

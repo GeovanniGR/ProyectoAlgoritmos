@@ -16,15 +16,17 @@
 #include "RegistrarUsuarioData.h"
 
 class RegistrarUsuarioBusiness {
-public:
-    RegistrarUsuarioBusiness();
-
+public:  
+    static RegistrarUsuarioBusiness* getInstance();
     bool encotrarUsuario(Usuario* usuario);
     bool registrarUsuario(Usuario* usuario);
 
 private:
+    RegistrarUsuarioBusiness();
     RegistrarUsuarioData registrarUsuarioData;
+    static RegistrarUsuarioBusiness* instance;
 };
+
 
 #endif /* REGISTRARUSUARIOBUSINESS_H */
 

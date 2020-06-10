@@ -16,6 +16,13 @@
 RegistrarUsuarioBusiness::RegistrarUsuarioBusiness() {
 }
 
+RegistrarUsuarioBusiness* RegistrarUsuarioBusiness::getInstance() {
+    if (instance == 0) {
+        instance = new RegistrarUsuarioBusiness();
+    }
+    return instance;
+}
+
 bool RegistrarUsuarioBusiness::registrarUsuario(Usuario* usuario) {
     bool registrado = false;
     if (registrarUsuarioData.registrarUsuario(usuario)) {
@@ -27,3 +34,4 @@ bool RegistrarUsuarioBusiness::registrarUsuario(Usuario* usuario) {
 bool RegistrarUsuarioBusiness::encotrarUsuario(Usuario* usuario) {
     return this->registrarUsuarioData.encotrarUsuario(usuario);
 }//encotrarUsuario
+RegistrarUsuarioBusiness* RegistrarUsuarioBusiness::instance = 0;

@@ -22,7 +22,7 @@
 
 class VentanaRegistrar : public Gtk::Window {
 public:
-    VentanaRegistrar(RegistrarUsuarioBusiness* business);
+    VentanaRegistrar();
 
     void init();
     void seleccionarGuardar();
