@@ -49,6 +49,12 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <commandLine>`pkg-config gtkmm-3.0 --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <commandLine>`pkg-config gtkmm-3.0 --libs`</commandLine>
+        </linkerTool>
       </compileType>
       <item path="ListaAerolineas.cpp" ex="false" tool="1" flavor2="0">
       </item>
