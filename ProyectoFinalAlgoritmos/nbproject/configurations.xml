@@ -5,6 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="f2" displayName="Domain" projectFiles="true">
+        <itemPath>Aerolinea_1.h</itemPath>
         <itemPath>ListaAerolineas.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="GUI" projectFiles="true">
@@ -20,6 +21,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="f2" displayName="Domain" projectFiles="true">
+        <itemPath>Aerolinea_1.cpp</itemPath>
         <itemPath>ListaAerolineas.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="GUI" projectFiles="true">
@@ -49,7 +51,17 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <commandLine>`pkg-config gtkmm-3.0 --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <commandLine>`pkg-config gtkmm-3.0 --libs`</commandLine>
+        </linkerTool>
       </compileType>
+      <item path="Aerolinea_1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Aerolinea_1.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="ListaAerolineas.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="ListaAerolineas.h" ex="false" tool="3" flavor2="0">
@@ -85,6 +97,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Aerolinea_1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Aerolinea_1.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="ListaAerolineas.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="ListaAerolineas.h" ex="false" tool="3" flavor2="0">

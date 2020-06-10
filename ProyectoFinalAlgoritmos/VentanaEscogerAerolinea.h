@@ -13,14 +13,13 @@
 
 #ifndef VENTANAESCOGERAEROLINEA_H
 #define VENTANAESCOGERAEROLINEA_H
-
 #include <gtkmm-3.0/gtkmm/window.h>
 #include <gtkmm-3.0/gtkmm/fixed.h>
 #include <gtkmm-3.0/gtkmm/button.h>
 #include <gtkmm-3.0/gtkmm/entry.h>
 
 #include "ListaAerolineas.h"
-
+#include "Aerolinea_1.h"
 class VentanaEscogerAerolinea : public Gtk::Window {
 public:
     VentanaEscogerAerolinea();
@@ -36,6 +35,8 @@ private:
     Gtk::Button btnAbajo;
     Gtk::Entry etAerolinea;
     Gtk::Button btnConfirmarAerolinea;
+   
+    
 };
 
 #endif /* VENTANAESCOGERAEROLINEA_H */

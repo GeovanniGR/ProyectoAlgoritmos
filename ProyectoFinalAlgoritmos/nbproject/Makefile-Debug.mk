@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Aerolinea_1.o \
 	${OBJECTDIR}/ListaAerolineas.o \
 	${OBJECTDIR}/VentanaEscogerAerolinea.o \
 	${OBJECTDIR}/VentanaPrincipal.o \
@@ -45,8 +46,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=`pkg-config gtkmm-3.0 --cflags` 
+CXXFLAGS=`pkg-config gtkmm-3.0 --cflags` 
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -63,7 +64,12 @@ LDLIBSOPTIONS=
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/proyectofinalalgoritmos: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/proyectofinalalgoritmos ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/proyectofinalalgoritmos ${OBJECTFILES} ${LDLIBSOPTIONS} `pkg-config gtkmm-3.0 --libs`
+
+${OBJECTDIR}/Aerolinea_1.o: Aerolinea_1.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Aerolinea_1.o Aerolinea_1.cpp
 
 ${OBJECTDIR}/ListaAerolineas.o: ListaAerolineas.cpp
 	${MKDIR} -p ${OBJECTDIR}
