@@ -4,6 +4,13 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <logicalFolder name="f2" displayName="Domain" projectFiles="true">
+        <itemPath>ListaAerolineas.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1" displayName="GUI" projectFiles="true">
+        <itemPath>VentanaEscogerAerolinea.h</itemPath>
+        <itemPath>VentanaPrincipal.h</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -12,6 +19,13 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="f2" displayName="Domain" projectFiles="true">
+        <itemPath>ListaAerolineas.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1" displayName="GUI" projectFiles="true">
+        <itemPath>VentanaEscogerAerolinea.cpp</itemPath>
+        <itemPath>VentanaPrincipal.cpp</itemPath>
+      </logicalFolder>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -36,6 +50,18 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="ListaAerolineas.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ListaAerolineas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VentanaEscogerAerolinea.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VentanaEscogerAerolinea.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VentanaPrincipal.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VentanaPrincipal.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -59,6 +85,18 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="ListaAerolineas.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ListaAerolineas.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VentanaEscogerAerolinea.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VentanaEscogerAerolinea.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VentanaPrincipal.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VentanaPrincipal.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
