@@ -21,7 +21,7 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux
+CND_PLATFORM=G++-Linux
 CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
@@ -38,8 +38,14 @@ OBJECTFILES= \
 	${OBJECTDIR}/Aerolinea_1.o \
 	${OBJECTDIR}/ListaAerolineas.o \
 	${OBJECTDIR}/Pais.o \
+	${OBJECTDIR}/RegistrarUsuarioBusiness.o \
+	${OBJECTDIR}/RegistrarUsuarioData.o \
+	${OBJECTDIR}/Usuario.o \
+	${OBJECTDIR}/Validar.o \
 	${OBJECTDIR}/VentanaEscogerAerolinea.o \
+	${OBJECTDIR}/VentanaIniciarSesion.o \
 	${OBJECTDIR}/VentanaPrincipal.o \
+	${OBJECTDIR}/VentanaRegistrar.o \
 	${OBJECTDIR}/main.o
 
 
@@ -82,15 +88,45 @@ ${OBJECTDIR}/Pais.o: Pais.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Pais.o Pais.cpp
 
+${OBJECTDIR}/RegistrarUsuarioBusiness.o: RegistrarUsuarioBusiness.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/RegistrarUsuarioBusiness.o RegistrarUsuarioBusiness.cpp
+
+${OBJECTDIR}/RegistrarUsuarioData.o: RegistrarUsuarioData.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/RegistrarUsuarioData.o RegistrarUsuarioData.cpp
+
+${OBJECTDIR}/Usuario.o: Usuario.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Usuario.o Usuario.cpp
+
+${OBJECTDIR}/Validar.o: Validar.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Validar.o Validar.cpp
+
 ${OBJECTDIR}/VentanaEscogerAerolinea.o: VentanaEscogerAerolinea.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaEscogerAerolinea.o VentanaEscogerAerolinea.cpp
 
+${OBJECTDIR}/VentanaIniciarSesion.o: VentanaIniciarSesion.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaIniciarSesion.o VentanaIniciarSesion.cpp
+
 ${OBJECTDIR}/VentanaPrincipal.o: VentanaPrincipal.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaPrincipal.o VentanaPrincipal.cpp
+
+${OBJECTDIR}/VentanaRegistrar.o: VentanaRegistrar.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaRegistrar.o VentanaRegistrar.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
