@@ -14,28 +14,48 @@
 #include "VentanaEscogerAerolinea.h"
 #include "ListaAerolineas.h"
 #include "Aerolinea_1.h"
+
 VentanaEscogerAerolinea::VentanaEscogerAerolinea() {
     this->set_size_request(800, 600);
     this->set_title("Aerolineas Disponibles");
     loadaerolineas();
+    llenarComboPaisDestino();
+    llenarComboPaisOrigen();
     init();
 }//Constructor
 
 void VentanaEscogerAerolinea::init() {
+    this->fixed.put(this->cbPaisDestino, 400, 100);
+    this->fixed.put(this->cbPaisOrigen, 400, 50);
+    this->fixed.put(this->cbHorario, 400, 150);
+
+    this->btnCargarItinerario.set_label("Cargar Itinerario");
+    this->btnCargarItinerario.signal_clicked().connect(sigc::mem_fun(*this, &VentanaEscogerAerolinea::cargarItinerario));
+    this->fixed.put(this->btnCargarItinerario, 300, 450);
+
     this->etAerolinea.set_text(this->aerolineas.firstInlist());
-    this->fixed.put(this->etAerolinea, 320, 250);
+    this->fixed.put(this->etAerolinea, 20, 150);
+
+    this->lblPaisOrigen.set_text("Despegue");
+    this->fixed.put(this->lblPaisOrigen, 300, 50);
+
+    this->lblPaisDestino.set_text("Destino");
+    this->fixed.put(this->lblPaisDestino, 300, 100);
+
+    this->lblHorario.set_text("Horario");
+    this->fixed.put(this->lblHorario, 300, 150);
 
     this->btnArriba.add_pixlabel("assets/arriba.png", "");
     this->btnArriba.signal_clicked().connect(sigc::mem_fun(*this, &VentanaEscogerAerolinea::onButtonClickedUp));
-    this->fixed.put(this->btnArriba, 365, 150);
+    this->fixed.put(this->btnArriba, /*36*/50, /*1*/50);
 
     this->btnAbajo.add_pixlabel("assets/abajo.png", "");
     this->btnAbajo.signal_clicked().connect(sigc::mem_fun(*this, &VentanaEscogerAerolinea::onButtonClickedDown));
-    this->fixed.put(this->btnAbajo, 365, 300);
+    this->fixed.put(this->btnAbajo, /*36*/50, /*3*/200);
 
     this->btnConfirmarAerolinea.set_label("Confirmar Aerolinea");
     this->btnConfirmarAerolinea.signal_clicked().connect(sigc::mem_fun(*this, &VentanaEscogerAerolinea::onButtonClickedConfirm));
-    this->fixed.put(this->btnConfirmarAerolinea, 330, 450);
+    this->fixed.put(this->btnConfirmarAerolinea, /*33*/20, 350);
 
     this->add(this->fixed);
     this->show_all_children();
@@ -72,3 +92,29 @@ void VentanaEscogerAerolinea::onButtonClickedUp() {
     this->etAerolinea.set_text(this->aerolineas.showPrevious(this->etAerolinea.get_text().raw()));
 
 }//onButtonClickedDown
+
+void VentanaEscogerAerolinea::cargarItinerario() {
+
+}
+
+void VentanaEscogerAerolinea::llenarComboPaisOrigen() {
+    vector<string> vectorPaisOrigen;
+    vectorPaisOrigen.push_back("Costa Rica");
+    vectorPaisOrigen.push_back("Mexico");
+    vectorPaisOrigen.push_back("Egipto");
+    vectorPaisOrigen.push_back("Chinaaa");
+    for (int i = 0; i < vectorPaisOrigen.size(); i++) {
+        this->cbPaisOrigen.append(vectorPaisOrigen.at(i));
+    }
+}
+
+void VentanaEscogerAerolinea::llenarComboPaisDestino() {
+    vector<string> vectorPaisDestino;
+    vectorPaisDestino.push_back("Costa Rica");
+    vectorPaisDestino.push_back("Mexico");
+    vectorPaisDestino.push_back("EEUU");
+    vectorPaisDestino.push_back("Japon");
+    for (int i = 0; i < vectorPaisDestino.size(); i++) {
+        this->cbPaisDestino.append(vectorPaisDestino.at(i));
+    }
+}
