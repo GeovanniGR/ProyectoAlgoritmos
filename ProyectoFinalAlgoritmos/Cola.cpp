@@ -19,7 +19,7 @@ Cola::Cola() {
     c.delante = NULL;
 }
 
-void Cola::encolar(string valor) {
+void Cola::encolar(int valor) {
 
     struct nodo *aux = new(struct nodo);
     aux->numero = valor;
@@ -34,8 +34,8 @@ void Cola::encolar(string valor) {
     contador++;
 }//encolar
 
-string Cola::desencolar() {
-    string numero;
+int Cola::desencolar() {
+    int numero;
     struct nodo *aux;
     aux = c.delante;
     numero = aux->numero;
@@ -44,8 +44,8 @@ string Cola::desencolar() {
     return numero;
 }//desencolar
 
-std::vector<string> Cola::mostrarCola() {
-    vector<string> horario;
+std::vector<int> Cola::mostrarCola() {
+    vector<int> horario;
     struct nodo *aux;
     aux = c.delante;
     while (aux != NULL) {
@@ -86,10 +86,10 @@ bool Cola::isEmpty() {
     }
 }//isEmpty
 
-bool Cola::exits(string n) {
+bool Cola::exits(int n) {
     bool existe;
     struct nodo *aux;
-    string num;
+    int num;
     aux = c.delante;
     while (aux != NULL) {
         if (aux->numero == n) {
@@ -101,8 +101,8 @@ bool Cola::exits(string n) {
 
 }//exis
 
-string Cola::front() {
-    string frente;
+int Cola::front() {
+    int frente;
     frente = c.delante->numero;
     return frente;
 }//front
