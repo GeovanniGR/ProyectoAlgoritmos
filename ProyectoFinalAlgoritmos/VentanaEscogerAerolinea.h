@@ -18,7 +18,10 @@
 #include <gtkmm-3.0/gtkmm/button.h>
 #include <gtkmm-3.0/gtkmm/entry.h>
 #include <gtkmm-3.0/gtkmm/comboboxtext.h>
-
+#include <gtkmm-3.0/gtkmm/box.h>
+#include <gtkmm.h>
+#include <glibmm-2.4/glibmm/refptr.h>
+#include <gtkmm-3.0/gtkmm/liststore.h>
 #include "ListaAerolineas.h"
 #include "Aerolinea_1.h"
 
@@ -33,11 +36,24 @@ public:
 
     void llenarComboPaisOrigen();
     void llenarComboPaisDestino();
-
+    void clear();
     void cargarItinerario();
+    
+protected:
+
+    class ModelColumns : public Gtk::TreeModel::ColumnRecord {
+    public:
+
+        ModelColumns() {
+            add(m_col_salida);
+            add(m_col_llegada);
+        }
+        Gtk::TreeModelColumn<int> m_col_salida;
+        Gtk::TreeModelColumn<int> m_col_llegada;
+
+    };
 private:
     ListaAerolineas aerolineas;
-
     Gtk::Fixed fixed;
 
     Gtk::Button btnArriba;
@@ -55,6 +71,17 @@ private:
     Gtk::ComboBoxText cbPaisOrigen;
     Gtk::ComboBoxText cbPaisDestino;
     Gtk::ComboBoxText cbHorario;
+    //tabla
+    ModelColumns m_Columns;
+    //Child widgets de la tabla:
+    Gtk::Box m_VBox;
+
+    Gtk::ScrolledWindow m_ScrolledWindow;
+    Gtk::TreeView m_TreeView;
+    Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
+    Gtk::ButtonBox m_ButtonBox;
+    Gtk::Button m_Button_Quit;
+     vector<int> horas;
 };
 
 #endif /* VENTANAESCOGERAEROLINEA_H */
