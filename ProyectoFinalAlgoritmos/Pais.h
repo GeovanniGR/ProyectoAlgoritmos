@@ -20,13 +20,11 @@ class Pais {
 public:
     Pais();
     Pais(string pais);
-    string GetPais() const {
-        return pais;
-    }
+    
+    //setter&getter
+    string GetPais() const;
 
-    void SetPais(string pais) {
-        this->pais = pais;
-    }
+    void SetPais(string pais);
 
 //    Pais(const Pais& orig);
 //    virtual ~Pais();

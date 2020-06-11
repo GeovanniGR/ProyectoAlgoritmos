@@ -21,7 +21,7 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=G++-Linux
+CND_PLATFORM=GNU-Linux
 CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
@@ -36,8 +36,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Aerolinea_1.o \
+	${OBJECTDIR}/Cola.o \
+	${OBJECTDIR}/Itinerario.o \
 	${OBJECTDIR}/ListaAerolineas.o \
 	${OBJECTDIR}/Pais.o \
+	${OBJECTDIR}/PaisDestino.o \
 	${OBJECTDIR}/RegistrarUsuarioBusiness.o \
 	${OBJECTDIR}/RegistrarUsuarioData.o \
 	${OBJECTDIR}/Usuario.o \
@@ -78,6 +81,16 @@ ${OBJECTDIR}/Aerolinea_1.o: Aerolinea_1.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Aerolinea_1.o Aerolinea_1.cpp
 
+${OBJECTDIR}/Cola.o: Cola.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Cola.o Cola.cpp
+
+${OBJECTDIR}/Itinerario.o: Itinerario.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Itinerario.o Itinerario.cpp
+
 ${OBJECTDIR}/ListaAerolineas.o: ListaAerolineas.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -87,6 +100,11 @@ ${OBJECTDIR}/Pais.o: Pais.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Pais.o Pais.cpp
+
+${OBJECTDIR}/PaisDestino.o: PaisDestino.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PaisDestino.o PaisDestino.cpp
 
 ${OBJECTDIR}/RegistrarUsuarioBusiness.o: RegistrarUsuarioBusiness.cpp
 	${MKDIR} -p ${OBJECTDIR}

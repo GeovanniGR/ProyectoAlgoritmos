@@ -19,6 +19,15 @@ Pais::Pais() {
 Pais::Pais(string pais) {
     this->pais=pais;
 }//constructor default
+//setter&&getter
+
+void Pais::SetPais(string pais) {
+    this->pais = pais;
+}
+
+string Pais::GetPais() const {
+    return pais;
+}
 
 
 //Pais::Pais(const Pais& orig) {
