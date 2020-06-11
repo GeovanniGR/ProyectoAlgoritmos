@@ -27,6 +27,11 @@ Usuario::Usuario(string nombre) {
     this->nombre = nombre;
 }
 
+Usuario::Usuario(string nombre,int numPasaporte) {
+    this->nombre = nombre;
+    this->numPasaporte=numPasaporte;
+}
+
 void Usuario::setNombre(string nombre) {
     this->nombre = nombre;
 }

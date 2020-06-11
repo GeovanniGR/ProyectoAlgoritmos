@@ -23,12 +23,9 @@ bool RegistrarUsuarioData::registrarUsuario(Usuario* usuario) {
 }//true
 
 bool RegistrarUsuarioData::encotrarUsuario(Usuario* usuario) {
+    cout<<usuario->getNumPasaporte()<<endl;
     for (int i = 0; i < this->vectorUsuario.size(); i++) {
-        if (vectorUsuario.at(i)->getNombre() == usuario->getNombre() &&
-                //                vectorUsuario.at(i).getEdad().compare(usuario.getEdad()) == 0 &&
-                vectorUsuario.at(i)->getGenero() == usuario->getGenero() &&
-                //                vectorUsuario.at(i).getNumPasaporte().compare(usuario.getNumPasaporte()) == 0 &&
-                vectorUsuario.at(i)->getNacionalidad() == usuario->getNacionalidad()) {
+        if (vectorUsuario.at(i)->getNumPasaporte() == usuario->getNumPasaporte()) {
             return true;
         }//if
     }//for
