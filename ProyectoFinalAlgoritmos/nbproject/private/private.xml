@@ -7,13 +7,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/geovanni/NetBeansProjects/ProyectoFinal/ProyectoAlgoritmos/ProyectoFinalAlgoritmos/VentanaRegistrar.cpp</file>
-            <file>file:/home/geovanni/NetBeansProjects/ProyectoFinal/ProyectoAlgoritmos/ProyectoFinalAlgoritmos/RegistrarUsuarioBusiness.h</file>
-            <file>file:/home/geovanni/NetBeansProjects/ProyectoFinal/ProyectoAlgoritmos/ProyectoFinalAlgoritmos/Usuario.cpp</file>
-            <file>file:/home/geovanni/NetBeansProjects/ProyectoFinal/ProyectoAlgoritmos/ProyectoFinalAlgoritmos/RegistrarUsuarioData.cpp</file>
-            <file>file:/home/geovanni/NetBeansProjects/ProyectoFinal/ProyectoAlgoritmos/ProyectoFinalAlgoritmos/VentanaIniciarSesion.cpp</file>
-            <file>file:/home/geovanni/NetBeansProjects/ProyectoFinal/ProyectoAlgoritmos/ProyectoFinalAlgoritmos/RegistrarUsuarioBusiness.cpp</file>
-            <file>file:/home/geovanni/NetBeansProjects/ProyectoFinal/ProyectoAlgoritmos/ProyectoFinalAlgoritmos/Usuario.h</file>
+            <file>file:/home/raquel/NetBeansProjects/p2/ProyectoAlgoritmos/ProyectoFinalAlgoritmos/VentanaEscogerAerolinea.h</file>
+            <file>file:/home/raquel/NetBeansProjects/p2/ProyectoAlgoritmos/ProyectoFinalAlgoritmos/Cola.cpp</file>
+            <file>file:/home/raquel/NetBeansProjects/p2/ProyectoAlgoritmos/ProyectoFinalAlgoritmos/VentanaEscogerAerolinea.cpp</file>
+            <file>file:/home/raquel/NetBeansProjects/p2/ProyectoAlgoritmos/ProyectoFinalAlgoritmos/Cola.h</file>
+            <file>file:/home/raquel/NetBeansProjects/p2/ProyectoAlgoritmos/ProyectoFinalAlgoritmos/main.cpp</file>
         </group>
     </open-files>
 </project-private>

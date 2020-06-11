@@ -14,7 +14,8 @@
 #include "VentanaEscogerAerolinea.h"
 #include "ListaAerolineas.h"
 #include "Aerolinea_1.h"
-
+#include  <chrono>
+#include <ctime>
 VentanaEscogerAerolinea::VentanaEscogerAerolinea() {
     this->set_size_request(800, 600);
     this->set_title("Aerolineas Disponibles");
@@ -46,6 +47,7 @@ void VentanaEscogerAerolinea::init() {
     this->fixed.put(this->lblHorario, 300, 150);
 
     this->btnArriba.add_pixlabel("assets/arriba.png", "");
+
     this->btnArriba.signal_clicked().connect(sigc::mem_fun(*this, &VentanaEscogerAerolinea::onButtonClickedUp));
     this->fixed.put(this->btnArriba, /*36*/50, /*1*/50);
 
@@ -57,6 +59,10 @@ void VentanaEscogerAerolinea::init() {
     this->btnConfirmarAerolinea.signal_clicked().connect(sigc::mem_fun(*this, &VentanaEscogerAerolinea::onButtonClickedConfirm));
     this->fixed.put(this->btnConfirmarAerolinea, /*33*/20, 350);
 
+    this->m_TreeView.set_size_request(200,200);
+//    this->cargarItinerario();
+    this->fixed.put(this->m_TreeView,300,200);
+    
     this->add(this->fixed);
     this->show_all_children();
 
@@ -93,8 +99,43 @@ void VentanaEscogerAerolinea::onButtonClickedUp() {
 
 }//onButtonClickedDown
 
-void VentanaEscogerAerolinea::cargarItinerario() {
+void VentanaEscogerAerolinea::cargarItinerario() { 
+    //crear el tree model
+    m_refTreeModel = Gtk::ListStore::create(m_Columns);
+    m_TreeView.set_model(m_refTreeModel);
 
+    //llenar el tree model
+    this->horas.push_back(2);
+    this->horas.push_back(3);
+    this->horas.push_back(4);
+    this->horas.push_back(7);
+    this->horas.push_back(13);
+    this->horas.push_back(16);
+    this->horas.push_back(22);
+    time_t now = time(0);
+    tm calendar_time = *std::localtime(std::addressof(now));
+    for (int i = 0; i < this->horas.size(); i++) {
+        if (horas.at(i) >= calendar_time.tm_hour) {
+            Gtk::TreeModel::Row row = *(m_refTreeModel->append());
+            row[m_Columns.m_col_salida] = this->horas.at(i);
+        }
+
+
+    }
+    m_TreeView.append_column("Salida", m_Columns.m_col_salida);
+    m_TreeView.append_column("Llegada", m_Columns.m_col_llegada);
+
+
+//    for (guint i = 0; i < 2; i++) {
+//        auto column = m_TreeView.get_column(i);
+//        column->set_reorderable();
+//    }
+    
+    
+}
+
+void VentanaEscogerAerolinea::clear() {
+     this->m_refTreeModel.clear();
 }
 
 void VentanaEscogerAerolinea::llenarComboPaisOrigen() {
