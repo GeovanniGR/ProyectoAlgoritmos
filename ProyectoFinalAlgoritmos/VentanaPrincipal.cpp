@@ -25,27 +25,52 @@ void VentanaPrincipal::init() {
     this->menuGestionarVuelos.set_label("Gestionar Vuelos");
     this->menuBar.append(this->menuGestionarVuelos);
     this->menuGestionarVuelos.set_submenu(this->subMenuArchivo);
-    this->menuAerolinea.set_label("Escoger Aerolínea");
-    this->ventanaEsgogerAerolinea=0;
-    
-    this->menuAerolinea.signal_activate().connect(sigc::mem_fun(*this, &VentanaPrincipal::abrirVentanaEscogerAerolinea));
-    this->subMenuArchivo.append(this->menuAerolinea);
+//    this->menuAerolinea.set_label("Escoger Aerolínea");
+//    this->ventanaEsgogerAerolinea = 0;
+//    this->menuAerolinea.signal_activate().connect(sigc::mem_fun(*this, &VentanaPrincipal::abrirVentanaEscogerAerolinea));
+//    this->subMenuArchivo.append(this->menuAerolinea);
 
+    this->menuRegistrar.set_label("Registrar Usuario");
+    this->ventanaRegistrar = 0;
+    this->menuRegistrar.signal_activate().connect(sigc::mem_fun(*this, &VentanaPrincipal::abrirVentanaRegistrar));
+    this->subMenuArchivo.append(this->menuRegistrar);
+    
+    this->menuInicarSesion.set_label("Iniciar Sesion");
+    this->ventanaIniciarSesion = 0;
+    this->menuInicarSesion.signal_activate().connect(sigc::mem_fun(*this, &VentanaPrincipal::abrirVentanaIniciarSesion));
+    this->subMenuArchivo.append(this->menuInicarSesion);
 
     this->add(this->fixed);
     this->show_all_children();
 }//init
 
-void VentanaPrincipal::abrirVentanaEscogerAerolinea() {
-    if (this->ventanaEsgogerAerolinea != 0)
+void VentanaPrincipal::abrirVentanaIniciarSesion() {
+    if (this->ventanaIniciarSesion != 0)
         return;
-    this->ventanaEsgogerAerolinea = new VentanaEscogerAerolinea();
-    this->ventanaEsgogerAerolinea->signal_hide().connect(sigc::mem_fun(*this, &VentanaPrincipal::aboutWinClose));
-    this->ventanaEsgogerAerolinea->show();
+    this->ventanaIniciarSesion = new VentanaIniciarSesion();
+    this->ventanaIniciarSesion->signal_hide().connect(sigc::mem_fun(*this, &VentanaPrincipal::aboutWinClose));
+    this->ventanaIniciarSesion->show();
+}//abrirVentanaEscogerAerolinea
+
+//void VentanaPrincipal::abrirVentanaEscogerAerolinea() {
+//    if (this->ventanaEsgogerAerolinea != 0)
+//        return;
+//    this->ventanaEsgogerAerolinea = new VentanaEscogerAerolinea();
+//    this->ventanaEsgogerAerolinea->signal_hide().connect(sigc::mem_fun(*this, &VentanaPrincipal::aboutWinClose));
+//    this->ventanaEsgogerAerolinea->show();
+//}//abrirVentanaEscogerAerolinea
+
+void VentanaPrincipal::abrirVentanaRegistrar() {
+    if (this->ventanaRegistrar != 0)
+        return;
+    this->ventanaRegistrar = new VentanaRegistrar();
+    this->ventanaRegistrar->signal_hide().connect(sigc::mem_fun(*this, &VentanaPrincipal::aboutWinClose));
+    this->ventanaRegistrar->show();
 }//abrirVentanaEscogerAerolinea
 
 void VentanaPrincipal::aboutWinClose() {
-    this->ventanaEsgogerAerolinea = 0;
+    this->ventanaIniciarSesion=0;
+    this->ventanaRegistrar = 0;
 }//aboutWinClose
 
 
