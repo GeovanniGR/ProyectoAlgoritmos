@@ -19,7 +19,7 @@ Cola::Cola() {
     c.delante = NULL;
 }
 
-void Cola::encolar(int valor) {
+void Cola::encolar(string valor) {
 
     struct nodo *aux = new(struct nodo);
     aux->numero = valor;
@@ -34,8 +34,8 @@ void Cola::encolar(int valor) {
     contador++;
 }//encolar
 
-int Cola::desencolar() {
-    int numero;
+string Cola::desencolar() {
+    string numero;
     struct nodo *aux;
     aux = c.delante;
     numero = aux->numero;
@@ -44,23 +44,21 @@ int Cola::desencolar() {
     return numero;
 }//desencolar
 
-std::vector<string*> Cola::mostrarCola() {
-    std::vector<string*> horarios;
-    int numero;
+std::vector<string> Cola::mostrarCola() {
+    vector<string> horario;
     struct nodo *aux;
     aux = c.delante;
     while (aux != NULL) {
-        if (aux->numero>0 && aux->numero <12) {
-            horarios.push_back("am");
-        } else {
-            if (aux->numero >=12 && aux->numero <=24) {
-                 horarios.push_back("pm");
-            }
-        }
-
+        //if (aux->numero > 0 && aux->numero < 12) {
+        horario.push_back(aux->numero);
+        //} else {
+        //  if (aux->numero >= 12 && aux->numero <= 24) {
+        //horario.push_back(aux->numero);
+        //}
         aux = aux->sgte;
     }
-    return horarios;
+
+    return horario;
 }//mostrarCola
 
 void Cola::destruirCola() {
@@ -76,9 +74,9 @@ void Cola::destruirCola() {
     contador = 0;
 }//destruirCola
 
-int Cola::getSize() {
-    return contador + 1;
-}//getSize
+//string Cola::getSize() {
+//    return contador + 1;
+//}//getSize
 
 bool Cola::isEmpty() {
     if (contador <= 0)
@@ -88,10 +86,10 @@ bool Cola::isEmpty() {
     }
 }//isEmpty
 
-bool Cola::exits(int n) {
+bool Cola::exits(string n) {
     bool existe;
     struct nodo *aux;
-    int num;
+    string num;
     aux = c.delante;
     while (aux != NULL) {
         if (aux->numero == n) {
@@ -103,8 +101,8 @@ bool Cola::exits(int n) {
 
 }//exis
 
-int Cola::front() {
-    int frente;
+string Cola::front() {
+    string frente;
     frente = c.delante->numero;
     return frente;
 }//front
