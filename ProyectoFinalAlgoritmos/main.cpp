@@ -27,30 +27,31 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-    //    Glib::RefPtr<Gtk::Application> app =
-    //                Gtk::Application::create(argc, argv, "titulo");
-    //        VentanaPrincipal window;
-    //        return app->run(window);
-    Aerolinea a = Aerolinea("Delta");
-    Pais p = Pais("Mexico");
-    PaisDestino pd = PaisDestino("Emiratos");
-    Cola c;
-    c.encolar("7am --- 9am");
-    c.encolar("8am --- 10am");
-    c.encolar("12am --- 15pm");
-    c.encolar("15pm --- 17pm");
-
-    cout << a.getNombre() << endl;
-    Itinerario i = Itinerario(a, p, pd);
-    i.SetCantEspacios(5);
-    i.SetHorarios(c);
-    cout << i.toString() << endl;
-    //    std::vecto<string> hora = c.mostrarCola();
-    vector<string> horario = c.mostrarCola();
-    for (int k = 0; k < horario.size(); k++) {
-        cout<<horario.at(k)<<endl;
-
-    }
+        Glib::RefPtr<Gtk::Application> app =
+            Gtk::Application::create(argc, argv, "titulo");
+    VentanaPrincipal window;
+    return app->run(window);
+    
+//    Aerolinea a = Aerolinea("Delta");
+//    Pais p = Pais("Mexico");
+//    PaisDestino pd = PaisDestino("Emiratos");
+//    Cola c;
+//    c.encolar("7am --- 9am");
+//    c.encolar("8am --- 10am");
+//    c.encolar("12am --- 15pm");
+//    c.encolar("15pm --- 17pm");
+//
+//    cout << a.getNombre() << endl;
+//    Itinerario i = Itinerario(a, p, pd);
+//    i.SetCantEspacios(5);
+//    i.SetHorarios(c);
+//    cout << i.toString() << endl;
+//    //    std::vecto<string> hora = c.mostrarCola();
+//    vector<string> horario = c.mostrarCola();
+//    for (int k = 0; k < horario.size(); k++) {
+//        cout<<horario.at(k)<<endl;
+//
+//    }
 
 
 }

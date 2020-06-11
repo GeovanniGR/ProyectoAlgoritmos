@@ -17,9 +17,11 @@
 #include <gtkmm-3.0/gtkmm/fixed.h>
 #include <gtkmm-3.0/gtkmm/button.h>
 #include <gtkmm-3.0/gtkmm/entry.h>
+#include <gtkmm-3.0/gtkmm/comboboxtext.h>
 
 #include "ListaAerolineas.h"
 #include "Aerolinea_1.h"
+
 class VentanaEscogerAerolinea : public Gtk::Window {
 public:
     VentanaEscogerAerolinea();
@@ -28,15 +30,31 @@ public:
     void onButtonClickedDown();
     void onButtonClickedConfirm();
     void loadaerolineas();
+
+    void llenarComboPaisOrigen();
+    void llenarComboPaisDestino();
+
+    void cargarItinerario();
 private:
     ListaAerolineas aerolineas;
+
     Gtk::Fixed fixed;
+
     Gtk::Button btnArriba;
     Gtk::Button btnAbajo;
-    Gtk::Entry etAerolinea;
     Gtk::Button btnConfirmarAerolinea;
-   
-    
+
+    Gtk::Entry etAerolinea;
+
+    Gtk::Label lblPaisOrigen;
+    Gtk::Label lblPaisDestino;
+    Gtk::Label lblHorario;
+
+    Gtk::Button btnCargarItinerario;
+
+    Gtk::ComboBoxText cbPaisOrigen;
+    Gtk::ComboBoxText cbPaisDestino;
+    Gtk::ComboBoxText cbHorario;
 };
 
 #endif /* VENTANAESCOGERAEROLINEA_H */
