@@ -21,7 +21,7 @@ using namespace std;
 class Cola {
 
     struct nodo {
-        string numero;
+        int numero;
         struct nodo *sgte; //apuntador al siguiente nodo,enlace a otra "caja"
     };
 
@@ -31,17 +31,17 @@ class Cola {
     };
 //    typedef cola *ptrCola;
 public:
-    void encolar( string valor);
+    void encolar( int valor);
     void ejecutar();
     void menu();
     void playMenu();
-    string desencolar();
-    std::vector<string> mostrarCola();
+    int desencolar();
+    std::vector<int> mostrarCola();
     void destruirCola();
-    string getSize();//muestra numero de elementos en la cola
+    int getSize();//muestra numero de elementos en la cola
     bool isEmpty();//true si la cola esta vaci
-    bool exits(string n);//verifica si existe un elemento
-    string front();//me duelve el valor del frente de la cola
+    bool exits(int n);//verifica si existe un elemento
+    int front();//me duelve el valor del frente de la cola
     Cola();
 //    Cola(const Cola& orig);
 //    virtual ~Cola();
