@@ -15,26 +15,30 @@
 #define AEROLINEA_H
 #include <iostream>
 #include <string>
+#include <vector>
+#include "Pais.h"
+#include "PaisDestino.h"
 using namespace std;
 class Aerolinea {
 public:
     Aerolinea();
-    Aerolinea(string nombre);
+    Aerolinea(string nombre, vector<Pais> paisOrigen, vector<PaisDestino> paisDestino);
     string toString();
    
     //setter&getter
-    string getNombre() const {
-        return nombre;
-    }
+    string getNombre();
+    void setNombre(string nombre);
+    vector<PaisDestino> getPaisDestino();
+    void setPaisDestino(vector<PaisDestino> paisDestino);
+    vector<Pais> getPaisOrigen();
 
-    void setNombre(string nombre) {
-        this->nombre = nombre;
-    }
 
 //    Aerolinea(const Aerolinea& orig);
 //    virtual ~Aerolinea();
 private:
     string nombre;
+    vector<Pais> paisOrigen;
+    vector<PaisDestino> paisDestino;
 };
 
 #endif /* AEROLINEA_H */

@@ -38,7 +38,7 @@ public:
     void llenarComboPaisDestino();
     void clear();
     void cargarItinerario();
-    
+
 protected:
 
     class ModelColumns : public Gtk::TreeModel::ColumnRecord {
@@ -81,7 +81,13 @@ private:
     Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
     Gtk::ButtonBox m_ButtonBox;
     Gtk::Button m_Button_Quit;
-     vector<int> horas;
+    vector<int> horas;
+    //aerolineas
+    Aerolinea a1;
+    Aerolinea a2;
+    Aerolinea a3;
+    Aerolinea a4;
+    Aerolinea a5;
 };
 
 #endif /* VENTANAESCOGERAEROLINEA_H */
