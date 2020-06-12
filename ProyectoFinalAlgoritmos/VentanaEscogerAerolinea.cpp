@@ -156,7 +156,7 @@ void VentanaEscogerAerolinea::cargarItinerario() {
 
     //Itinerario Avianca
     colaSalida.encolar(7);
-    colaSalida.encolar(24);
+    colaSalida.encolar(0);
     colaLlegada.encolar(5);
     colaLlegada.encolar(3);
     Itinerario it1(a1, p, pd4);
@@ -166,7 +166,7 @@ void VentanaEscogerAerolinea::cargarItinerario() {
     colaSalida.destruirCola();
 
     // Itinerario Avianca
-    colaSalida.encolar(24);
+    colaSalida.encolar(0);
     colaSalida.encolar(5);
     colaLlegada.encolar(15);
     colaLlegada.encolar(19);
@@ -177,7 +177,7 @@ void VentanaEscogerAerolinea::cargarItinerario() {
     colaSalida.destruirCola();
 
     //Itinerario "CopaAirlines"
-    colaSalida.encolar(24);
+    colaSalida.encolar(0);
     colaSalida.encolar(9);
     colaLlegada.encolar(1);
     colaLlegada.encolar(7);
@@ -188,8 +188,8 @@ void VentanaEscogerAerolinea::cargarItinerario() {
     colaSalida.destruirCola();
 
     //Itinerario "CopaAirlines"
-    colaSalida.encolar(15);
-    colaSalida.encolar(24);
+    colaSalida.encolar(0);
+    colaSalida.encolar(16);
     colaLlegada.encolar(1);
     colaLlegada.encolar(7);
     Itinerario it4(a2, p2, pd1);
@@ -199,8 +199,8 @@ void VentanaEscogerAerolinea::cargarItinerario() {
     colaSalida.destruirCola();
 
     //Itinerario "Emiratos"
-    colaSalida.encolar(15);
-    colaSalida.encolar(24);
+    colaSalida.encolar(13);
+    colaSalida.encolar(0);
     colaLlegada.encolar(1);
     colaLlegada.encolar(12);
     Itinerario it5(a3, p, pd2);
@@ -210,8 +210,8 @@ void VentanaEscogerAerolinea::cargarItinerario() {
     colaSalida.destruirCola();
 
     //Itinerario "Emiratos"
-    colaSalida.encolar(15);
-    colaSalida.encolar(24);
+    colaSalida.encolar(7);
+    colaSalida.encolar(0);
     colaLlegada.encolar(1);
     colaLlegada.encolar(11);
     Itinerario it6(a3, p2, pd4);
@@ -222,7 +222,7 @@ void VentanaEscogerAerolinea::cargarItinerario() {
 
     //Itinerario "BlueJet"
     colaSalida.encolar(15);
-    colaSalida.encolar(24);
+    colaSalida.encolar(0);
     colaLlegada.encolar(1);
     colaLlegada.encolar(16);
     Itinerario it7(a4, p1, pd4);
@@ -232,8 +232,8 @@ void VentanaEscogerAerolinea::cargarItinerario() {
     colaSalida.destruirCola();
 
     //Itinerario "BlueJet"
-    colaSalida.encolar(15);
-    colaSalida.encolar(24);
+    colaSalida.encolar(22);
+    colaSalida.encolar(0);
     colaLlegada.encolar(1);
     colaLlegada.encolar(18);
     Itinerario it8(a4, p3, pd1);
@@ -244,7 +244,7 @@ void VentanaEscogerAerolinea::cargarItinerario() {
 
     //Itinerario "Delta"
     colaSalida.encolar(15);
-    colaSalida.encolar(24);
+    colaSalida.encolar(0);
     colaLlegada.encolar(1);
     colaLlegada.encolar(23);
     Itinerario it10(a5, p1, pd3);
@@ -254,8 +254,8 @@ void VentanaEscogerAerolinea::cargarItinerario() {
     colaSalida.destruirCola();
 
     //Itinerario "Delta"
-    colaSalida.encolar(15);
-    colaSalida.encolar(24);
+    colaSalida.encolar(22);
+    colaSalida.encolar(0);
     colaLlegada.encolar(1);
     colaLlegada.encolar(22);
     Itinerario it9(a5, p, pd2);

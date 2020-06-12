@@ -23,7 +23,6 @@ bool RegistrarUsuarioData::registrarUsuario(Usuario* usuario) {
 }//registrarUsuario
 
 bool RegistrarUsuarioData::encotrarUsuario(Usuario* usuario) {
-    cout << usuario->getNumPasaporte() << endl;
     for (int i = 0; i < this->vectorUsuario.size(); i++) {
         if (vectorUsuario.at(i)->getNumPasaporte() == usuario->getNumPasaporte()) {
             return true;
