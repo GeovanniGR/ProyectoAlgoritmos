@@ -15,21 +15,20 @@
 #define PAISDESTINO_H
 #include <iostream>
 #include <string>
+
 using namespace std;
+
 class PaisDestino {
 public:
     PaisDestino();
-    
+
     PaisDestino(string nombrePais);
-    
-    
+
     //setter&getter
-    string GetNombrePais() ;
+    string getNombrePais();
 
-    void SetNombrePais(string nombrePais);
+    void setNombrePais(string nombrePais);
 
-//    PaisDestino(const PaisDestino& orig);
-//    virtual ~PaisDestino();
 private:
     string nombrePais;
 };

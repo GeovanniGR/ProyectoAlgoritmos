@@ -22,22 +22,12 @@ VentanaRegistrar::VentanaRegistrar() {
     this->registrarUsuarioBusiness = RegistrarUsuarioBusiness::getInstance();
     this->set_title("Registrar Usuario");
     init();
-}
-
-//VentanaRegistrar::VentanaRegistrar(const VentanaRegistrar& orig) {
-//}
-//
-//VentanaRegistrar::~VentanaRegistrar() {
-//}
+}// constructor
 
 void VentanaRegistrar::init() {
     this->btnRegistrar.set_label("Registrar");
     this->btnRegistrar.signal_clicked().connect(sigc::mem_fun(*this, &VentanaRegistrar::seleccionarGuardar));
     this->fixed.put(this->btnRegistrar, 220, 550);
-
-    this->btnImprimir.set_label("Imprimir");
-    this->btnImprimir.signal_clicked().connect(sigc::mem_fun(*this, &VentanaRegistrar::seleccionarImprimir));
-    this->fixed.put(this->btnImprimir, 520, 550);
 
     this->lblNombre.set_label("Nombre:");
     this->fixed.put(this->lblNombre, 20, 100);
@@ -61,14 +51,13 @@ void VentanaRegistrar::init() {
 
     this->add(this->fixed);
     this->show_all_children();
-}
+}//init
 
 void VentanaRegistrar::seleccionarGuardar() {
     if (this->entryNombre.get_text() == "" || this->entryEdad.get_text() == "" ||
             this->entryGenero.get_text() == "" || this->entryNacionalidad.get_text() == "" ||
             this->entryNumeroPasaporte.get_text() == "") {
         Gtk::MessageDialog dialogo(*this, "Complete los datos", false, Gtk::MESSAGE_QUESTION);
-        dialogo.set_secondary_text("");
         dialogo.run();
     }//if
     else {
@@ -89,24 +78,29 @@ void VentanaRegistrar::seleccionarGuardar() {
 
                 if (this->registrarUsuarioBusiness->registrarUsuario(usuario1)) {
                     Gtk::MessageDialog dialogo(*this, "¡Registrado con exito!", false, Gtk::MESSAGE_INFO);
-
                     dialogo.run();
+                    this->entryEdad.set_text("");
+                    this->entryGenero.set_text("");
+                    this->entryNacionalidad.set_text("");
+                    this->entryNombre.set_text("");
+                    this->entryNumeroPasaporte.set_text("");
                 } else {
-                    Gtk::MessageDialog dialogo(*this, "¡No registrado egistrado!", false, Gtk::MESSAGE_INFO);
-
+                    Gtk::MessageDialog dialogo(*this, "¡No se ha podido registrado!", false, Gtk::MESSAGE_INFO);
                     dialogo.run();
-                }
-            }
-        }
-
-        //this->ventanIniciarSesion = new VentanaIniciarSesion(usuario1);
-        // this->ventanIniciarSesion.setUsuario(vectorUsuario);
-    }
+                }//else
+            } else {
+                Gtk::MessageDialog dialogo(*this, "¡Dato(s) invalido(s)!", false, Gtk::MESSAGE_INFO);
+                dialogo.run();
+            }// fin else
+        } else {
+            Gtk::MessageDialog dialogo(*this, "¡Dato(s) invalido(s)!", false, Gtk::MESSAGE_INFO);
+            dialogo.run();
+        }//fin el
+    }//else
 }//seleccionarGuardar
 
 void VentanaRegistrar::seleccionarImprimir() {
     for (int i = 0; i < vectorUsuario.size(); i++) {
         cout << vectorUsuario.at(i)->toString() << endl;
     }//for
-
 }//seleccionarImprimir

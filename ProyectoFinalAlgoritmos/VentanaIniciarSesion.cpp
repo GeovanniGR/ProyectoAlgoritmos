@@ -16,7 +16,7 @@
 VentanaIniciarSesion::VentanaIniciarSesion() {
     this->set_size_request(800, 600);
     this->set_title("Iniciar Sesion");
-    this->registrarUsuarioBusiness=RegistrarUsuarioBusiness::getInstance();
+    this->registrarUsuarioBusiness = RegistrarUsuarioBusiness::getInstance();
     init();
 }//constructor
 
@@ -24,7 +24,7 @@ void VentanaIniciarSesion::init() {
 
     this->btnIniciarSesion.set_label("Iniciar Sesion");
     this->btnIniciarSesion.signal_clicked().connect(sigc::mem_fun(*this, &VentanaIniciarSesion::iniciarSesion));
-    this->fixed.put(this->btnIniciarSesion, 220, 550);
+    this->fixed.put(this->btnIniciarSesion, 220, 250);
 
     this->lblNombre.set_label("Nombre:");
     this->fixed.put(this->lblNombre, 20, 100);
@@ -61,12 +61,13 @@ void VentanaIniciarSesion::iniciarSesion() {
                 string nombre = this->entryNombre.get_text().raw();
                 int numPasaporte = stoi(this->entryNumeroPasaporte.get_text().raw());
 
-                Usuario* usuario = new Usuario(nombre,numPasaporte);
-                
+                Usuario* usuario = new Usuario(nombre, numPasaporte);
+
                 if (this->registrarUsuarioBusiness->encotrarUsuario(usuario)) {
 
                     accionIniciarSesion(usuario);
-
+                    this->entryNombre.set_text("");
+                    this->entryNumeroPasaporte.set_text("");
                 }//if 
                 else {
                     Gtk::MessageDialog dialogo(*this, "Contraseña y/o nombre invalido", false, Gtk::MESSAGE_QUESTION);
@@ -74,10 +75,13 @@ void VentanaIniciarSesion::iniciarSesion() {
                     dialogo.run();
                 }//else
             }//if
+            else {
+                Gtk::MessageDialog error(*this, "Dato(s) no valido(s)", false, Gtk::MESSAGE_QUESTION);
+                error.run();
+            }//else
         }//if 
         else {
-            Gtk::MessageDialog error(*this, "Datos no validos", false, Gtk::MESSAGE_QUESTION);
-            error.set_secondary_text("");
+            Gtk::MessageDialog error(*this, "Dato(s) no valido(s)", false, Gtk::MESSAGE_QUESTION);
             error.run();
         }//else
     }//else

@@ -27,21 +27,27 @@ class VentanaPrincipal : public Gtk::Window {
 public:
     VentanaPrincipal();
     void init();
-   // void abrirVentanaEscogerAerolinea();
+
     void abrirVentanaRegistrar();
     void abrirVentanaIniciarSesion();
     void aboutWinClose();
 private:
     Gtk::MenuBar menuBar;
+
     Gtk::MenuItem menuGestionarVuelos;
+
     Gtk::Menu subMenuArchivo;
+
     Gtk::ImageMenuItem menuAerolinea;
     Gtk::ImageMenuItem menuRegistrar;
     Gtk::ImageMenuItem menuInicarSesion;
+
     Gtk::Fixed fixed; // contenedor
+
     VentanaRegistrar* ventanaRegistrar;
-    RegistrarUsuarioBusiness* registrarBusiness;
     VentanaIniciarSesion* ventanaIniciarSesion;
+
+    RegistrarUsuarioBusiness* registrarBusiness;
 };
 
 #endif /* VENTANAPRINCIPAL_H */

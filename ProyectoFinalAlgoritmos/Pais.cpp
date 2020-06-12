@@ -14,25 +14,18 @@
 #include "Pais.h"
 
 Pais::Pais() {
-}
+}//constructor
 
 Pais::Pais(string pais) {
-    this->pais=pais;
-}//constructor default
+    this->pais = pais;
+}//constructor
+
 //setter&&getter
 
-void Pais::SetPais(string pais) {
+void Pais::setPais(string pais) {
     this->pais = pais;
-}
+}//setPais
 
-string Pais::GetPais() {
+string Pais::getPais() {
     return pais;
-}
-
-
-//Pais::Pais(const Pais& orig) {
-//}
-//
-//Pais::~Pais() {
-//}
-
+}//getPais

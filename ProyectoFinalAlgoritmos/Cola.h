@@ -29,30 +29,26 @@ class Cola {
         nodo *delante;
         nodo *atras;
     };
-//    typedef cola *ptrCola;
 public:
-    void encolar( int valor);
+    void encolar(int valor);
     void ejecutar();
     void menu();
     void playMenu();
     int desencolar();
     std::vector<int> mostrarCola();
     void destruirCola();
-    int getSize();//muestra numero de elementos en la cola
-    bool isEmpty();//true si la cola esta vaci
-    bool exits(int n);//verifica si existe un elemento
-    int front();//me duelve el valor del frente de la cola
+    int getSize(); //muestra numero de elementos en la cola
+    bool isEmpty(); //true si la cola esta vaci
+    bool exits(int n); //verifica si existe un elemento
+    int front(); //me duelve el valor del frente de la cola
     Cola();
     int getElemento(int n);
-    
-//    Cola(const Cola& orig);
-//    virtual ~Cola();
+
 private:
     struct cola c;
     nodo *delante;
     nodo *atras;
-//    ptrCola cola;
-     int contador;
+    int contador;
 };
 
 #endif /* COLA_H */

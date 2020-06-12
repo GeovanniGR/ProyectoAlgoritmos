@@ -14,14 +14,14 @@
 #include "RegistrarUsuarioBusiness.h"
 
 RegistrarUsuarioBusiness::RegistrarUsuarioBusiness() {
-}
+}//constructor
 
 RegistrarUsuarioBusiness* RegistrarUsuarioBusiness::getInstance() {
     if (instance == 0) {
         instance = new RegistrarUsuarioBusiness();
     }
     return instance;
-}
+}//getInstance
 
 bool RegistrarUsuarioBusiness::registrarUsuario(Usuario* usuario) {
     bool registrado = false;

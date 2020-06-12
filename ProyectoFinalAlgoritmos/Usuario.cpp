@@ -21,56 +21,56 @@ Usuario::Usuario(string nombre, int edad, string genero, int numPasaporte, strin
     this->genero = genero;
     this->numPasaporte = numPasaporte;
     this->nacionalidad = nacionalidad;
-}
+}//constructor
 
 Usuario::Usuario(string nombre) {
     this->nombre = nombre;
-}
+}//constructor
 
-Usuario::Usuario(string nombre,int numPasaporte) {
+Usuario::Usuario(string nombre, int numPasaporte) {
     this->nombre = nombre;
-    this->numPasaporte=numPasaporte;
-}
+    this->numPasaporte = numPasaporte;
+}//constructor
 
 void Usuario::setNombre(string nombre) {
     this->nombre = nombre;
-}
+}//setNombre
 
 string Usuario::getNombre() {
     return nombre;
-}
+}//getNombre
 
 void Usuario::setEdad(int edad) {
     this->edad = edad;
-}
+}//setEdad
 
 int Usuario::getEdad() {
     return edad;
-}
+}//getEdad
 
 void Usuario::setGenero(string genero) {
     this->genero = genero;
-}
+}//setGenero
 
 string Usuario::getGenero() {
     return genero;
-}
+}//getGenero
 
 void Usuario::setNumPasaporte(int numPasaporte) {
     this->numPasaporte = numPasaporte;
-}
+}//setNumPasaporte
 
 int Usuario::getNumPasaporte() {
     return numPasaporte;
-}
+}//getNumPasaporte
 
 void Usuario::setNacionalidad(string nacionalidad) {
     this->nacionalidad = nacionalidad;
-}
+}//setNacionalidad
 
 string Usuario::getNacionalidad() {
     return nacionalidad;
-}
+}//getNacionalidad
 
 string Usuario::toString() {
     stringstream s;

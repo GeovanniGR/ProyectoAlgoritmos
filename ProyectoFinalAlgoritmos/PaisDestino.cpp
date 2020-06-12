@@ -14,26 +14,18 @@
 #include "PaisDestino.h"
 
 PaisDestino::PaisDestino() {
-}
+}//constructor
 
 PaisDestino::PaisDestino(string nombrePais) {
-    this->nombrePais=nombrePais;
-}
+    this->nombrePais = nombrePais;
+}//constructor
 
 //setter&&getter
 
-void PaisDestino::SetNombrePais(string nombrePais) {
+void PaisDestino::setNombrePais(string nombrePais) {
     this->nombrePais = nombrePais;
-}
+}//setNombrePais
 
-string PaisDestino::GetNombrePais() {
+string PaisDestino::getNombrePais() {
     return this->nombrePais;
-}
-
-
-//PaisDestino::PaisDestino(const PaisDestino& orig) {
-//}
-//
-//PaisDestino::~PaisDestino() {
-//}
-
+}//getNombrePais

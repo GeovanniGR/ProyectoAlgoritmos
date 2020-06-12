@@ -21,46 +21,49 @@
 #include "Cola.h"
 #include "PaisDestino.h"
 using namespace std;
+
 class Itinerario {
 public:
     Itinerario();
-    Itinerario(Aerolinea aerolinea,Pais paisorigen, PaisDestino paisDestino);
-    
-    
+    Itinerario(Aerolinea aerolinea, Pais paisorigen, PaisDestino paisDestino);
+
     string toString();
     //setter&getter
-    Aerolinea GetAerolinea();
+    Aerolinea getAerolinea();
 
-    void SetAerolinea(Aerolinea aerolinea);
+    void setAerolinea(Aerolinea aerolinea);
 
-    int GetCantEspacios();
+    int getCantEspacios();
 
-    void SetCantEspacios(int cantEspacios);
+    void setCantEspacios(int cantEspacios);
 
-    Cola GetHorariosSalida();
+    Cola getHorariosSalida();
 
-    void SetHorariosSalida(Cola horarios);
-    
-    Cola GetHorariosLlegada();
+    void setHorariosSalida(Cola horarios);
 
-    void SetHorariosLlegada(Cola horarios);
+    Cola getHorariosLlegada();
 
-    Pais GetPaisorigen();
+    void setHorariosLlegada(Cola horarios);
 
-    void SetPaisorigen(Pais paisorigen);
+    Pais getPaisorigen();
+
+    void setPaisorigen(Pais paisorigen);
     PaisDestino getPaisdestino();
 
     void setPaisdestino(PaisDestino paisdestino);
 
-//    virtual ~Itinerario();
+
 private:
     Aerolinea aerolinea;
-    Pais paisorigen;//pais origen
-    PaisDestino paisdestino;//paisDestino
+
+    Pais paisorigen; //pais origen
+
+    PaisDestino paisdestino; //paisDestino
+
     int cantEspacios;
+
     Cola horariosSalida;
     Cola horarioLLegada;
-    
 };
 
 #endif /* ITINERARIO_H */

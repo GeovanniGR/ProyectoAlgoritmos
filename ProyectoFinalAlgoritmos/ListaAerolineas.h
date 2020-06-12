@@ -31,15 +31,14 @@ public:
     void showElements();
     void anular();
     bool isEmpty();
-    //    void insertFirst(string v);
+    
     void insert(string v);
     void borrar(string v);
     bool exist(string v);
     string showNext(string v);
     string showPrevious(string v);
     string firstInlist();
-    //    ListaAerolineas(const ListaAerolineas& orig);
-    //    virtual ~ListaAerolineas();
+
 private:
     ptrLista lista;
     nodo *inicio;

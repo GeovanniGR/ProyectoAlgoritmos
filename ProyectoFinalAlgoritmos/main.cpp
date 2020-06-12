@@ -52,16 +52,4 @@ int main(int argc, char** argv) {
 //        cout<<horario.at(k)<<endl;
 //
 //    }
-
-
 }
-
-
-
-//    i.GetHorarios().mostrarCola();
-
-//    c.mostrarCola();
-
-//    return 0;
-
-

@@ -19,12 +19,13 @@
 #include "Pais.h"
 #include "PaisDestino.h"
 using namespace std;
+
 class Aerolinea {
 public:
     Aerolinea();
     Aerolinea(string nombre, vector<Pais> paisOrigen, vector<PaisDestino> paisDestino);
     string toString();
-   
+
     //setter&getter
     string getNombre();
     void setNombre(string nombre);
@@ -32,9 +33,6 @@ public:
     void setPaisDestino(vector<PaisDestino> paisDestino);
     vector<Pais> getPaisOrigen();
 
-
-//    Aerolinea(const Aerolinea& orig);
-//    virtual ~Aerolinea();
 private:
     string nombre;
     vector<Pais> paisOrigen;

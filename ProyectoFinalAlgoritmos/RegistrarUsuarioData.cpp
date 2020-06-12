@@ -15,15 +15,15 @@
 #include <iostream>
 
 RegistrarUsuarioData::RegistrarUsuarioData() {
-}
+}//constructor
 
 bool RegistrarUsuarioData::registrarUsuario(Usuario* usuario) {
     this->vectorUsuario.push_back(usuario);
     return true;
-}//true
+}//registrarUsuario
 
 bool RegistrarUsuarioData::encotrarUsuario(Usuario* usuario) {
-    cout<<usuario->getNumPasaporte()<<endl;
+    cout << usuario->getNumPasaporte() << endl;
     for (int i = 0; i < this->vectorUsuario.size(); i++) {
         if (vectorUsuario.at(i)->getNumPasaporte() == usuario->getNumPasaporte()) {
             return true;

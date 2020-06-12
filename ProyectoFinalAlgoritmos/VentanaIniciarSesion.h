@@ -15,7 +15,6 @@
 #define VENTANAINICIARSESION_H
 
 #include "gtkmm.h"
-//#include "VentanaAerolineas.h"
 #include "RegistrarUsuarioBusiness.h"
 #include "VentanaEscogerAerolinea.h"
 
@@ -30,25 +29,17 @@ public:
     void iniciarSesion();
     void cerrarVentanaAerolineas();
 
-    //    void setUsuario(vector<Usuario*> usuario);
-    //    vector<Usuario*> getUsuario();
-
     Gtk::Fixed fixed;
 
     Gtk::Button btnIniciarSesion;
     Gtk::Button btnEscogerVuelo;
 
     Gtk::Entry entryNombre;
-    Gtk::Entry entryEdad;
-    Gtk::Entry entryNacionalidad;
     Gtk::Entry entryNumeroPasaporte;
-    Gtk::Entry entryGenero;
 
-    Gtk::Label lblEdad;
+
     Gtk::Label lblNombre;
-    Gtk::Label lblNacionalidad;
     Gtk::Label lblNumeroPasaporte;
-    Gtk::Label lblGenero;
 
     vector<Usuario*> vectorUsuario;
     VentanaEscogerAerolinea* ventanaEscogerAerolineas;
