@@ -16,6 +16,8 @@
 #include "Aerolinea_1.h"
 #include "Pais.h"
 #include "PaisDestino.h"
+#include "Cola.h"
+#include "Itinerario.h"
 #include  <chrono>
 #include <ctime>
 
@@ -71,15 +73,15 @@ void VentanaEscogerAerolinea::init() {
 
 void VentanaEscogerAerolinea::loadaerolineas() {
     //paises Origen
-    Pais p("Mexico");
-    Pais p1("Colombia");
-    Pais p2("Emiratos");
-    Pais p3("Costa Rica");
+    this->p = Pais("Mexico");
+    this->p1 = Pais("Colombia");
+    this->p2 = Pais("Emiratos");
+    this->p3 = Pais("Costa Rica");
     //paisesDestino
-    PaisDestino pd1("Mexico");
-    PaisDestino pd2("Colombia");
-    PaisDestino pd3("Emiratos");
-    PaisDestino pd4("Costa Rica");
+    this->pd1 = PaisDestino("Mexico");
+    this->pd2 = PaisDestino("Colombia");
+    this->pd3 = PaisDestino("Emiratos");
+    this->pd4 = PaisDestino("Costa Rica");
     vector<Pais> paisOrigen;
     vector<PaisDestino> paisDestino;
     //a1
@@ -95,7 +97,7 @@ void VentanaEscogerAerolinea::loadaerolineas() {
     paisOrigen.push_back(p2);
     paisDestino.push_back(pd2);
     paisDestino.push_back(pd1);
-    a2 = Aerolinea("CopaAirlines",paisOrigen,paisDestino);
+    a2 = Aerolinea("CopaAirlines", paisOrigen, paisDestino);
     paisOrigen.clear();
     paisDestino.clear();
     //a3
@@ -103,7 +105,7 @@ void VentanaEscogerAerolinea::loadaerolineas() {
     paisOrigen.push_back(p2);
     paisDestino.push_back(pd2);
     paisDestino.push_back(pd4);
-    a3 = Aerolinea("Emiratos",paisOrigen,paisDestino);
+    a3 = Aerolinea("Emiratos", paisOrigen, paisDestino);
     paisOrigen.clear();
     paisDestino.clear();
     //a4
@@ -111,21 +113,22 @@ void VentanaEscogerAerolinea::loadaerolineas() {
     paisOrigen.push_back(p3);
     paisDestino.push_back(pd4);
     paisDestino.push_back(pd1);
-    a4 = Aerolinea("BlueJet",paisOrigen,paisDestino);
+    a4 = Aerolinea("BlueJet", paisOrigen, paisDestino);
     paisOrigen.clear();
     paisDestino.clear();
     //a5
     paisOrigen.push_back(p);
     paisOrigen.push_back(p1);
     paisDestino.push_back(pd2);
-    a5 = Aerolinea("Delta",paisOrigen,paisDestino);
+    paisDestino.push_back(pd3);
+    a5 = Aerolinea("Delta", paisOrigen, paisDestino);
     paisOrigen.clear();
     paisDestino.clear();
     this->aerolineas.insert(a1.getNombre());
-        this->aerolineas.insert(a2.getNombre());
-        this->aerolineas.insert(a3.getNombre());
-        this->aerolineas.insert(a4.getNombre());
-        this->aerolineas.insert(a5.getNombre());
+    this->aerolineas.insert(a2.getNombre());
+    this->aerolineas.insert(a3.getNombre());
+    this->aerolineas.insert(a4.getNombre());
+    this->aerolineas.insert(a5.getNombre());
 }
 
 void VentanaEscogerAerolinea::onButtonClickedConfirm() {
@@ -148,34 +151,149 @@ void VentanaEscogerAerolinea::cargarItinerario() {
     m_refTreeModel = Gtk::ListStore::create(m_Columns);
     m_TreeView.set_model(m_refTreeModel);
 
-    //llenar el tree model//aqui van las colas con los horarios
-    this->horas.push_back(2);
-    this->horas.push_back(3);
-    this->horas.push_back(4);
-    this->horas.push_back(7);
-    this->horas.push_back(13);
-    this->horas.push_back(16);
-    this->horas.push_back(22);
+    Cola colaSalida;
+    Cola colaLlegada;
+
+    colaSalida.encolar(7);
+    colaSalida.encolar(24);
+    colaLlegada.encolar(5);
+    colaLlegada.encolar(3);
+    Itinerario it1(a1, p, pd4);
+    it1.SetHorariosSalida(colaSalida);
+    it1.SetHorariosLlegada(colaLlegada);
+    colaLlegada.destruirCola();
+    colaSalida.destruirCola();
+
+    colaSalida.encolar(24);
+    colaSalida.encolar(5);
+    colaLlegada.encolar(15);
+    colaLlegada.encolar(19);
+    Itinerario it2(a1, p1, pd1);
+    it2.SetHorariosSalida(colaSalida);
+    it2.SetHorariosLlegada(colaLlegada);
+    colaLlegada.destruirCola();
+    colaSalida.destruirCola();
+
+    colaSalida.encolar(24);
+    colaSalida.encolar(9);
+    colaLlegada.encolar(1);
+    colaLlegada.encolar(7);
+    Itinerario it3(a2, p3, pd2);
+    it3.SetHorariosSalida(colaSalida);
+    it3.SetHorariosLlegada(colaLlegada);
+    colaLlegada.destruirCola();
+    colaSalida.destruirCola();
+
+    colaSalida.encolar(15);
+    colaSalida.encolar(24);
+    colaLlegada.encolar(1);
+    colaLlegada.encolar(7);
+    Itinerario it4(a2, p2, pd1);
+    it4.SetHorariosSalida(colaSalida);
+    it4.SetHorariosLlegada(colaLlegada);
+    colaLlegada.destruirCola();
+    colaSalida.destruirCola();
+
+    colaSalida.encolar(15);
+    colaSalida.encolar(24);
+    colaLlegada.encolar(1);
+    colaLlegada.encolar(12);
+    Itinerario it5(a3, p, pd2);
+    it5.SetHorariosSalida(colaSalida);
+    it5.SetHorariosLlegada(colaLlegada);
+    colaLlegada.destruirCola();
+    colaSalida.destruirCola();
+
+    colaSalida.encolar(15);
+    colaSalida.encolar(24);
+    colaLlegada.encolar(1);
+    colaLlegada.encolar(11);
+    Itinerario it6(a3, p2, pd4);
+    it6.SetHorariosSalida(colaSalida);
+    it6.SetHorariosLlegada(colaLlegada);
+    colaLlegada.destruirCola();
+    colaSalida.destruirCola();
+
+    colaSalida.encolar(15);
+    colaSalida.encolar(24);
+    colaLlegada.encolar(1);
+    colaLlegada.encolar(16);
+    Itinerario it7(a4, p1, pd4);
+    it7.SetHorariosSalida(colaSalida);
+    it7.SetHorariosLlegada(colaLlegada);
+    colaLlegada.destruirCola();
+    colaSalida.destruirCola();
+
+    colaSalida.encolar(15);
+    colaSalida.encolar(24);
+    colaLlegada.encolar(1);
+    colaLlegada.encolar(18);
+    Itinerario it8(a4, p3, pd1);
+    it8.SetHorariosSalida(colaSalida);
+    it8.SetHorariosLlegada(colaLlegada);
+    colaLlegada.destruirCola();
+    colaSalida.destruirCola();
+
+    colaSalida.encolar(15);
+    colaSalida.encolar(24);
+    colaLlegada.encolar(1);
+    colaLlegada.encolar(23);
+    Itinerario it10(a5, p1, pd3);
+    it10.SetHorariosSalida(colaSalida);
+    it10.SetHorariosLlegada(colaLlegada);
+    colaLlegada.destruirCola();
+    colaSalida.destruirCola();
+
+    colaSalida.encolar(15);
+    colaSalida.encolar(24);
+    colaLlegada.encolar(1);
+    colaLlegada.encolar(22);
+    Itinerario it9(a5, p, pd2);
+    it9.SetHorariosSalida(colaSalida);
+    it9.SetHorariosLlegada(colaLlegada);
+    colaLlegada.destruirCola();
+    colaSalida.destruirCola();
+
+    vector<Itinerario> horarios;
+    horarios.push_back(it1);
+    horarios.push_back(it2);
+    horarios.push_back(it3);
+    horarios.push_back(it4);
+    horarios.push_back(it5);
+    horarios.push_back(it6);
+    horarios.push_back(it7);
+    horarios.push_back(it8);
+    horarios.push_back(it9);
+    horarios.push_back(it10);
+    vector<int> sirvaPorFa;
+    vector<int> graciasPorServir;
+    vector<string> prueba;
+    stringstream s;
     time_t now = time(0);
     tm calendar_time = *std::localtime(std::addressof(now));
-    for (int i = 0; i < this->horas.size(); i++) {
-        if (horas.at(i) >= calendar_time.tm_hour) {
-            Gtk::TreeModel::Row row = *(m_refTreeModel->append());
-            row[m_Columns.m_col_salida] = this->horas.at(i);
-        }
+    for (int i = 0; i < horarios.size(); i++) {
+        if (horarios.at(i).GetAerolinea().getNombre() == this->etAerolinea.get_text().raw() &&
+                horarios.at(i).GetPaisorigen().GetPais() == this->cbPaisOrigen.get_active_text() &&
+                horarios.at(i).getPaisdestino().GetNombrePais() == this->cbPaisDestino.get_active_text()) {
+            sirvaPorFa = horarios.at(i).GetHorariosSalida().mostrarCola();
+            graciasPorServir = horarios.at(i).GetHorariosLlegada().mostrarCola();
+            for (int i = 0; i < sirvaPorFa.size(); i++) {
+                cout << "for";
+                if (sirvaPorFa.at(i) >= calendar_time.tm_hour) {
+                    cout << "if";
+                    s << sirvaPorFa.at(i) << ":00" << " ---> " << graciasPorServir.at(i) << ":00";
+                    prueba.push_back(s.str());
+                }
+            }
 
-
+            for (int i = 0; i < prueba.size(); i++) {
+                Gtk::TreeModel::Row row = *(m_refTreeModel->append());
+                row[m_Columns.m_col_salida] = prueba.at(i);
+            }
+        }//if
     }
-    m_TreeView.append_column("Salida", m_Columns.m_col_salida);
-    m_TreeView.append_column("Llegada", m_Columns.m_col_llegada);
 
-
-    //    for (guint i = 0; i < 2; i++) {
-    //        auto column = m_TreeView.get_column(i);
-    //        column->set_reorderable();
-    //    }
-
-
+    m_TreeView.append_column("HORARIOS", m_Columns.m_col_salida);
 }
 
 void VentanaEscogerAerolinea::clear() {

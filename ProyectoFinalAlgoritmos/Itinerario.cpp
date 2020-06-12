@@ -21,7 +21,8 @@ Itinerario::Itinerario(Aerolinea aerolinea, Pais paisorigen, PaisDestino paisDes
     this->paisorigen=paisorigen;
     this->paisdestino = paisDestino;
     this->cantEspacios=0;
-    this->horarios;
+    this->horariosSalida;
+    this->horarioLLegada;
 }
 
 string Itinerario::toString() {
@@ -41,7 +42,6 @@ PaisDestino Itinerario::getPaisdestino() {
     return paisdestino;
 }
 
-
 Aerolinea Itinerario::GetAerolinea(){
     return aerolinea;
 }
@@ -50,8 +50,12 @@ int Itinerario::GetCantEspacios() {
     return cantEspacios;
 }
 
-Cola Itinerario::GetHorarios() {
-    return horarios;
+Cola Itinerario::GetHorariosSalida() {
+    return horariosSalida;
+}
+
+Cola Itinerario::GetHorariosLlegada() {
+    return horarioLLegada;
 }
 
 Pais Itinerario::GetPaisorigen() {
@@ -70,8 +74,12 @@ void Itinerario::SetPaisorigen(Pais paisorigen) {
     this->paisorigen = paisorigen;
 }
 
-void Itinerario::SetHorarios(Cola horarios) {
-    this->horarios = horarios;
+void Itinerario::SetHorariosSalida(Cola horarios) {
+    this->horariosSalida = horarios;
+}
+
+void Itinerario::SetHorariosLlegada(Cola horarios) {
+    this->horarioLLegada = horarios;
 }
 
 //Itinerario::Itinerario(const Itinerario& orig) {

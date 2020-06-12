@@ -48,7 +48,7 @@ protected:
             add(m_col_salida);
             add(m_col_llegada);
         }
-        Gtk::TreeModelColumn<int> m_col_salida;
+        Gtk::TreeModelColumn<Glib::ustring> m_col_salida;
         Gtk::TreeModelColumn<int> m_col_llegada;
 
     };
@@ -88,6 +88,16 @@ private:
     Aerolinea a3;
     Aerolinea a4;
     Aerolinea a5;
+
+    Pais p;
+    Pais p1;
+    Pais p2;
+    Pais p3;
+    
+    PaisDestino pd1;
+    PaisDestino pd2;
+    PaisDestino pd3;
+    PaisDestino pd4;
 };
 
 #endif /* VENTANAESCOGERAEROLINEA_H */

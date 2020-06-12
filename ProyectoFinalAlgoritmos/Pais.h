@@ -22,7 +22,7 @@ public:
     Pais(string pais);
     
     //setter&getter
-    string GetPais() const;
+    string GetPais() ;
 
     void SetPais(string pais);
 

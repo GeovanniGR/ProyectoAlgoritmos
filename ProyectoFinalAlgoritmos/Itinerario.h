@@ -37,9 +37,13 @@ public:
 
     void SetCantEspacios(int cantEspacios);
 
-    Cola GetHorarios();
+    Cola GetHorariosSalida();
 
-    void SetHorarios(Cola horarios);
+    void SetHorariosSalida(Cola horarios);
+    
+    Cola GetHorariosLlegada();
+
+    void SetHorariosLlegada(Cola horarios);
 
     Pais GetPaisorigen();
 
@@ -54,7 +58,8 @@ private:
     Pais paisorigen;//pais origen
     PaisDestino paisdestino;//paisDestino
     int cantEspacios;
-    Cola horarios;
+    Cola horariosSalida;
+    Cola horarioLLegada;
     
 };
 
