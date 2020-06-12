@@ -16,33 +16,15 @@ using namespace std;
 
 ListaAerolineas::ListaAerolineas() {
     this->lista = this->inicio = this->fin = NULL;
-}
+}//constructor
 
 string ListaAerolineas::firstInlist() {
     return lista->nombre;
-}
-
-//void ListaAerolineas::insertFirst(string v) {
-//    nodo *nuevo;
-//    nuevo = new(struct nodo);
-//    nuevo->nombre = v;
-//
-//    if (isEmpty()) {
-//        lista = nuevo;
-//        lista->siguiente = lista;
-//        this->fin = nuevo;
-//    } else {
-//        nuevo->siguiente = lista;
-//        lista = nuevo;
-//        this->fin->siguiente = lista;
-//    }
-//}//insertFirst
-//
+}//firstInlist
 
 bool ListaAerolineas::isEmpty() {
     return this->lista == NULL;
-}
-//
+}//isEmpty
 
 void ListaAerolineas::insert(string v) {
     nodo* nuevo = new(struct nodo);
@@ -63,29 +45,7 @@ void ListaAerolineas::insert(string v) {
         inicio->anterior = fin;
         lista = nuevo;
     }//else 
-    //    nodo *nuevo;
-    //    nuevo = new(struct nodo);
-    //    nuevo->nombre = v;
-    //    nuevo->siguiente = NULL;
-    //    if (isEmpty()) {
-    //        lista = nuevo;
-    //        lista->anterior=lista;
-    //        this->fin = nuevo;
-    //        fin->siguiente = lista;
-    //       
-    //
-    //
-    //    } else {
-
-    ////        this->fin->siguiente = nuevo;
-    ////        nuevo->siguiente = lista;
-    ////        this->fin = nuevo;
-    ////        nuevo->anterior = lista;
-    ////        lista->anterior=nuevo;
-    //    
-    //    }
-
-}
+}//insert
 
 int ListaAerolineas::getSize() {
     ptrLista aux = lista;
@@ -100,8 +60,7 @@ int ListaAerolineas::getSize() {
         } while (aux != lista);
     }
     return contador;
-
-}
+}//getSize
 
 int ListaAerolineas::getPosition(string v) {
     int pos = 0;
@@ -112,10 +71,8 @@ int ListaAerolineas::getPosition(string v) {
     ptrLista aux = lista;
     do {
         if (aux->nombre == v) {
-            //            cout << "encontrado" << endl;
             banderilla = 1;
             break;
-            //            aux = aux->sgte; //cambia para salir del if
 
         } else {
             aux = aux->siguiente;
@@ -125,7 +82,7 @@ int ListaAerolineas::getPosition(string v) {
     if (banderilla == 0)
         cout << "no encontrado";
     return pos + 1;
-}
+}//getPosition
 
 void ListaAerolineas::showElements() {
 
@@ -139,12 +96,11 @@ void ListaAerolineas::showElements() {
 
         } while (aux != lista);
     }
-
-}
+}//showElements
 
 void ListaAerolineas::anular() {
     this->lista = NULL;
-}
+}//anular
 
 bool ListaAerolineas::exist(string v) {
     int banderilla = 0;
@@ -165,7 +121,7 @@ bool ListaAerolineas::exist(string v) {
     if (banderilla == 0)
         cout << "\nno encontrado" << endl;
     return false;
-}
+}//exist
 
 void ListaAerolineas::borrar(string v) {
     int n = 0;
@@ -193,7 +149,7 @@ void ListaAerolineas::borrar(string v) {
         }
     } while (aux != lista);
     lista = nuevaLista;
-}
+}//borrar
 
 string ListaAerolineas::showNext(string v) {
     if (isEmpty()) {
@@ -225,11 +181,4 @@ string ListaAerolineas::showPrevious(string v) {
         }
     } while (aux != lista);
 
-}//showNext
-
-//ListaAerolineas::ListaAerolineas(const ListaAerolineas& orig) {
-//}
-//
-//ListaAerolineas::~ListaAerolineas() {
-//}
-
+}//showPrevious

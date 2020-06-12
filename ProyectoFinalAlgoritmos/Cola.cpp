@@ -18,7 +18,7 @@ Cola::Cola() {
     c.atras = NULL;
     c.delante = NULL;
     contador = 0;
-}
+}//constructor
 
 int Cola::getElemento(int n) {
     if (isEmpty()) {
@@ -56,7 +56,7 @@ void Cola::encolar(int valor) {
     } else {
         (c.atras)->sgte = aux;
         c.atras = aux; //ultimo elemento
-    }
+    }//else
     contador++;
 }//encolar
 
@@ -75,12 +75,7 @@ std::vector<int> Cola::mostrarCola() {
     struct nodo *aux;
     aux = c.delante;
     while (aux != NULL) {
-        //if (aux->numero > 0 && aux->numero < 12) {
         horario.push_back(aux->numero);
-        //} else {
-        //  if (aux->numero >= 12 && aux->numero <= 24) {
-        //horario.push_back(aux->numero);
-        //}
         aux = aux->sgte;
     }
 
@@ -88,13 +83,6 @@ std::vector<int> Cola::mostrarCola() {
 }//mostrarCola
 
 void Cola::destruirCola() {
-//    struct nodo *aux;
-//    while (c.delante != NULL) {
-//        aux = c.delante;
-//        c.delante = aux->sgte;
-//        delete(aux);
-//
-//    }
     c.delante = NULL;
     c.atras = NULL;
     contador = 0;
@@ -109,22 +97,19 @@ bool Cola::isEmpty() {
         return false;
     else {
         return true;
-    }
+    }//else
 }//isEmpty
 
 bool Cola::exits(int n) {
-    bool existe;
     struct nodo *aux;
-    int num;
     aux = c.delante;
     while (aux != NULL) {
         if (aux->numero == n) {
             return true;
-        }
+        }//if
         aux = aux->sgte;
     }//while
     return false;
-
 }//exis
 
 int Cola::front() {
@@ -132,9 +117,3 @@ int Cola::front() {
     frente = c.delante->numero;
     return frente;
 }//front
-
-
-
-
-
-

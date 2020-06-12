@@ -14,77 +14,69 @@
 #include "Itinerario.h"
 
 Itinerario::Itinerario() {
-}
+}//constructor
 
 Itinerario::Itinerario(Aerolinea aerolinea, Pais paisorigen, PaisDestino paisDestino) {
-    this->aerolinea= aerolinea;
-    this->paisorigen=paisorigen;
+    this->aerolinea = aerolinea;
+    this->paisorigen = paisorigen;
     this->paisdestino = paisDestino;
-    this->cantEspacios=0;
+    this->cantEspacios = 0;
     this->horariosSalida;
     this->horarioLLegada;
-}
+}//constructor
 
 string Itinerario::toString() {
     stringstream s;
-    s<<this->aerolinea.getNombre()<<"\n"<<this->paisorigen.GetPais()<<"\n"<<this->paisdestino.GetNombrePais()<<"\n"<<this->cantEspacios<<"\n";
+    s << this->aerolinea.getNombre() << "\n" << this->paisorigen.getPais() << "\n" << this->paisdestino.getNombrePais() << "\n" << this->cantEspacios << "\n";
     return s.str();
-}
-
+}//toString
 
 //setter&&getter
 
 void Itinerario::setPaisdestino(PaisDestino paisdestino) {
     this->paisdestino = paisdestino;
-}
+}//setPaisdestino
 
 PaisDestino Itinerario::getPaisdestino() {
     return paisdestino;
-}
+}//getPaisdestino
 
-Aerolinea Itinerario::GetAerolinea(){
+Aerolinea Itinerario::getAerolinea() {
     return aerolinea;
-}
+}//getAerolinea
 
-int Itinerario::GetCantEspacios() {
+int Itinerario::getCantEspacios() {
     return cantEspacios;
-}
+}//getCantEspacios
 
-Cola Itinerario::GetHorariosSalida() {
+Cola Itinerario::getHorariosSalida() {
     return horariosSalida;
-}
+}//getHorariosSalida
 
-Cola Itinerario::GetHorariosLlegada() {
+Cola Itinerario::getHorariosLlegada() {
     return horarioLLegada;
-}
+}//getHorariosLlegada
 
-Pais Itinerario::GetPaisorigen() {
+Pais Itinerario::getPaisorigen() {
     return paisorigen;
-}
+}//getPaisorigen
 
-void Itinerario::SetAerolinea(Aerolinea aerolinea) {
+void Itinerario::setAerolinea(Aerolinea aerolinea) {
     this->aerolinea = aerolinea;
-}
+}//setAerolinea
 
-void Itinerario::SetCantEspacios(int cantEspacios) {
+void Itinerario::setCantEspacios(int cantEspacios) {
     this->cantEspacios = cantEspacios;
-}
+}//setCantEspacios
 
-void Itinerario::SetPaisorigen(Pais paisorigen) {
+void Itinerario::setPaisorigen(Pais paisorigen) {
     this->paisorigen = paisorigen;
-}
+}//setPaisorigen
 
-void Itinerario::SetHorariosSalida(Cola horarios) {
+void Itinerario::setHorariosSalida(Cola horarios) {
     this->horariosSalida = horarios;
-}
+}//setHorariosSalida
 
-void Itinerario::SetHorariosLlegada(Cola horarios) {
+void Itinerario::setHorariosLlegada(Cola horarios) {
     this->horarioLLegada = horarios;
-}
-
-//Itinerario::Itinerario(const Itinerario& orig) {
-//}
-//
-//Itinerario::~Itinerario() {
-//}
-
+}//setHorariosLlegada

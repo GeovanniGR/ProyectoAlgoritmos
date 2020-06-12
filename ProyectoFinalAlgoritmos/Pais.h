@@ -16,18 +16,17 @@
 #include <iostream>
 #include <string>
 using namespace std;
+
 class Pais {
 public:
     Pais();
     Pais(string pais);
-    
+
     //setter&getter
-    string GetPais() ;
+    string getPais();
 
-    void SetPais(string pais);
+    void setPais(string pais);
 
-//    Pais(const Pais& orig);
-//    virtual ~Pais();
 private:
     string pais;
 };

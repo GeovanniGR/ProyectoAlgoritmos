@@ -21,24 +21,24 @@ public:
     Usuario(string nombre, int edad, string genero, int numPasaporte, string nacionalidad);
     Usuario(string nombre);
     Usuario(string nombre, int numPasaporte);
-    
+
     void setNombre(string nombre);
     string getNombre();
-    
+
     void setEdad(int edad);
     int getEdad();
-    
+
     void setGenero(string genero);
     string getGenero();
-    
+
     void setNumPasaporte(int numPasaporte);
     int getNumPasaporte();
-    
+
     void setNacionalidad(string nacionalidad);
     string getNacionalidad();
 
     string toString();
-    
+
 private:
 
     string nombre;

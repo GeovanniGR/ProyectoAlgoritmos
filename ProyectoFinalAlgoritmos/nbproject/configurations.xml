@@ -57,10 +57,12 @@
         <itemPath>VentanaPrincipal.cpp</itemPath>
         <itemPath>VentanaRegistrar.cpp</itemPath>
       </logicalFolder>
+      <logicalFolder name="f3" displayName="Main" projectFiles="true">
+        <itemPath>main.cpp</itemPath>
+      </logicalFolder>
       <logicalFolder name="f5" displayName="Utility" projectFiles="true">
         <itemPath>Validar.cpp</itemPath>
       </logicalFolder>
-      <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"

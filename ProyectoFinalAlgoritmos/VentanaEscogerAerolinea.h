@@ -48,6 +48,7 @@ protected:
             add(m_col_salida);
             add(m_col_llegada);
         }
+
         Gtk::TreeModelColumn<Glib::ustring> m_col_salida;
         Gtk::TreeModelColumn<int> m_col_llegada;
 
@@ -64,13 +65,12 @@ private:
 
     Gtk::Label lblPaisOrigen;
     Gtk::Label lblPaisDestino;
-    Gtk::Label lblHorario;
 
     Gtk::Button btnCargarItinerario;
 
     Gtk::ComboBoxText cbPaisOrigen;
     Gtk::ComboBoxText cbPaisDestino;
-    Gtk::ComboBoxText cbHorario;
+
     //tabla
     ModelColumns m_Columns;
     //Child widgets de la tabla:
@@ -81,7 +81,9 @@ private:
     Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
     Gtk::ButtonBox m_ButtonBox;
     Gtk::Button m_Button_Quit;
+
     vector<int> horas;
+
     //aerolineas
     Aerolinea a1;
     Aerolinea a2;
@@ -93,7 +95,7 @@ private:
     Pais p1;
     Pais p2;
     Pais p3;
-    
+
     PaisDestino pd1;
     PaisDestino pd2;
     PaisDestino pd3;
