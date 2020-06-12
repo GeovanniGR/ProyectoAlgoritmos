@@ -25,7 +25,7 @@ void Pais::SetPais(string pais) {
     this->pais = pais;
 }
 
-string Pais::GetPais() const {
+string Pais::GetPais() {
     return pais;
 }
 

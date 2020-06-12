@@ -17,7 +17,33 @@
 Cola::Cola() {
     c.atras = NULL;
     c.delante = NULL;
+    contador = 0;
 }
+
+int Cola::getElemento(int n) {
+    if (isEmpty()) {
+        cout << "vacida" << endl;
+    } else {
+
+        //NodoListas aux = inicio; //lista
+        struct nodo *aux = new(struct nodo);
+        int posicion = 1; //contador
+
+        while (aux != this->atras) {
+            if (posicion == n) { //encuentra
+                return aux->numero;
+            }
+            aux = aux->sgte;
+            posicion++;
+        }// while
+
+        if (aux == atras) {
+            return 0;
+        }// if
+    }//else
+
+    return 0; // si no lo encuentra
+}//getElemento
 
 void Cola::encolar(int valor) {
 
@@ -62,21 +88,21 @@ std::vector<int> Cola::mostrarCola() {
 }//mostrarCola
 
 void Cola::destruirCola() {
-    struct nodo *aux;
-    while (c.delante != NULL) {
-        aux = c.delante;
-        c.delante = aux->sgte;
-        delete(aux);
-
-    }
+//    struct nodo *aux;
+//    while (c.delante != NULL) {
+//        aux = c.delante;
+//        c.delante = aux->sgte;
+//        delete(aux);
+//
+//    }
     c.delante = NULL;
     c.atras = NULL;
     contador = 0;
 }//destruirCola
 
-//string Cola::getSize() {
-//    return contador + 1;
-//}//getSize
+int Cola::getSize() {
+    return contador;
+}//getSize
 
 bool Cola::isEmpty() {
     if (contador <= 0)

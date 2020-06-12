@@ -16,19 +16,20 @@
 #include <string>
 #include <vector>
 using namespace std;
+
 Aerolinea::Aerolinea() {
 }
 
-Aerolinea::Aerolinea(string nombre,vector<Pais> paisOrigen, vector<PaisDestino> paisDestino) {
+Aerolinea::Aerolinea(string nombre, vector<Pais> paisOrigen, vector<PaisDestino> paisDestino) {
     this->nombre = nombre;
-    this->paisOrigen=paisOrigen;
-    this->paisDestino=paisDestino;
+    this->paisOrigen = paisOrigen;
+    this->paisDestino = paisDestino;
 }//constructor sobrecargado
 
 string Aerolinea::toString() {
-//    stringstream s;
-//    s << "Nombre: " << this->nombre;
-//    return s.str();
+    //    stringstream s;
+    //    s << "Nombre: " << this->nombre;
+    //    return s.str();
 }
 
 void Aerolinea::setPaisDestino(vector<PaisDestino> paisDestino) {
@@ -39,19 +40,18 @@ void Aerolinea::setNombre(string nombre) {
     this->nombre = nombre;
 }
 
+string Aerolinea::getNombre() {
+    return this->nombre;
+}
+
 vector<Pais> Aerolinea::getPaisOrigen() {
     return paisOrigen;
 }
 
-
-
-vector<PaisDestino> Aerolinea::getPaisDestino(){
+vector<PaisDestino> Aerolinea::getPaisDestino() {
     return paisDestino;
 }
 
-string Aerolinea::getNombre() {
-    return nombre;
-}
 
 
 

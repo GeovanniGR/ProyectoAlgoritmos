@@ -43,6 +43,8 @@ public:
     bool exits(int n);//verifica si existe un elemento
     int front();//me duelve el valor del frente de la cola
     Cola();
+    int getElemento(int n);
+    
 //    Cola(const Cola& orig);
 //    virtual ~Cola();
 private:
