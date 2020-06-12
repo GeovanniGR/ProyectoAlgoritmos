@@ -183,7 +183,6 @@ void VentanaEscogerAerolinea::clear() {
 }
 
 void VentanaEscogerAerolinea::llenarComboPaisOrigen() {
-    this->cbPaisOrigen.clear();
     if (this->etAerolinea.get_text().raw() == a1.getNombre()) {
         for (int i = 0; i < a1.getPaisOrigen().size(); i++) {
             this->cbPaisOrigen.append(a1.getPaisOrigen().at(i).GetPais());
@@ -213,31 +212,26 @@ void VentanaEscogerAerolinea::llenarComboPaisOrigen() {
 
 void VentanaEscogerAerolinea::llenarComboPaisDestino() {
     if (this->etAerolinea.get_text().raw() == a1.getNombre()) {
-        this->cbPaisDestino.clear();
         for (int i = 0; i < a1.getPaisDestino().size(); i++) {
             this->cbPaisDestino.append(a1.getPaisDestino().at(i).GetNombrePais());
         }
     }
     if (this->etAerolinea.get_text().raw() == a2.getNombre()) {
-        this->cbPaisDestino.clear();
         for (int i = 0; i < a2.getPaisDestino().size(); i++) {
             this->cbPaisDestino.append(a2.getPaisDestino().at(i).GetNombrePais());
         }
     }
     if (this->etAerolinea.get_text().raw() == a3.getNombre()) {
-        this->cbPaisDestino.clear();
         for (int i = 0; i < a3.getPaisDestino().size(); i++) {
             this->cbPaisDestino.append(a3.getPaisDestino().at(i).GetNombrePais());
         }
     }
     if (this->etAerolinea.get_text().raw() == a4.getNombre()) {
-        this->cbPaisDestino.clear();
         for (int i = 0; i < a4.getPaisDestino().size(); i++) {
             this->cbPaisDestino.append(a4.getPaisDestino().at(i).GetNombrePais());
         }
     }
     if (this->etAerolinea.get_text().raw() == a5.getNombre()) {
-        this->cbPaisDestino.clear();
         for (int i = 0; i < a5.getPaisDestino().size(); i++) {
             this->cbPaisDestino.append(a5.getPaisDestino().at(i).GetNombrePais());
         }
