@@ -14,14 +14,15 @@
 #include "VentanaEscogerAerolinea.h"
 #include "ListaAerolineas.h"
 #include "Aerolinea_1.h"
+#include "Pais.h"
+#include "PaisDestino.h"
 #include  <chrono>
 #include <ctime>
+
 VentanaEscogerAerolinea::VentanaEscogerAerolinea() {
     this->set_size_request(800, 600);
     this->set_title("Aerolineas Disponibles");
     loadaerolineas();
-    llenarComboPaisDestino();
-    llenarComboPaisOrigen();
     init();
 }//Constructor
 
@@ -59,34 +60,77 @@ void VentanaEscogerAerolinea::init() {
     this->btnConfirmarAerolinea.signal_clicked().connect(sigc::mem_fun(*this, &VentanaEscogerAerolinea::onButtonClickedConfirm));
     this->fixed.put(this->btnConfirmarAerolinea, /*33*/20, 350);
 
-    this->m_TreeView.set_size_request(200,200);
-//    this->cargarItinerario();
-    this->fixed.put(this->m_TreeView,300,200);
-    
+    this->m_TreeView.set_size_request(200, 200);
+    //    this->cargarItinerario();
+    this->fixed.put(this->m_TreeView, 300, 200);
+
     this->add(this->fixed);
     this->show_all_children();
 
 }//init
 
 void VentanaEscogerAerolinea::loadaerolineas() {
-    Aerolinea a1 = Aerolinea("Avianca");
-    Aerolinea a2 = Aerolinea("CopaAirlines");
-    Aerolinea a3 = Aerolinea("Emiratos");
-    Aerolinea a4 = Aerolinea("BlueJet");
-    Aerolinea a5 = Aerolinea("Delta");
-
+    //paises Origen
+    Pais p("Mexico");
+    Pais p1("Colombia");
+    Pais p2("Emiratos");
+    Pais p3("Costa Rica");
+    //paisesDestino
+    PaisDestino pd1("Mexico");
+    PaisDestino pd2("Colombia");
+    PaisDestino pd3("Emiratos");
+    PaisDestino pd4("Costa Rica");
+    vector<Pais> paisOrigen;
+    vector<PaisDestino> paisDestino;
+    //a1
+    paisOrigen.push_back(p);
+    paisOrigen.push_back(p1);
+    paisDestino.push_back(pd4);
+    paisDestino.push_back(pd1);
+    a1 = Aerolinea("Avianca", paisOrigen, paisDestino);
+    paisOrigen.clear();
+    paisDestino.clear();
+    //a2
+    paisOrigen.push_back(p3);
+    paisOrigen.push_back(p2);
+    paisDestino.push_back(pd2);
+    paisDestino.push_back(pd1);
+    a2 = Aerolinea("CopaAirlines",paisOrigen,paisDestino);
+    paisOrigen.clear();
+    paisDestino.clear();
+    //a3
+    paisOrigen.push_back(p);
+    paisOrigen.push_back(p2);
+    paisDestino.push_back(pd2);
+    paisDestino.push_back(pd4);
+    a3 = Aerolinea("Emiratos",paisOrigen,paisDestino);
+    paisOrigen.clear();
+    paisDestino.clear();
+    //a4
+    paisOrigen.push_back(p1);
+    paisOrigen.push_back(p3);
+    paisDestino.push_back(pd4);
+    paisDestino.push_back(pd1);
+    a4 = Aerolinea("BlueJet",paisOrigen,paisDestino);
+    paisOrigen.clear();
+    paisDestino.clear();
+    //a5
+    paisOrigen.push_back(p);
+    paisOrigen.push_back(p1);
+    paisDestino.push_back(pd2);
+    a5 = Aerolinea("Delta",paisOrigen,paisDestino);
+    paisOrigen.clear();
+    paisDestino.clear();
     this->aerolineas.insert(a1.getNombre());
-    this->aerolineas.insert(a2.getNombre());
-    this->aerolineas.insert(a3.getNombre());
-    this->aerolineas.insert(a4.getNombre());
-    this->aerolineas.insert(a5.getNombre());
-    //    this->aerolineas.insert("Avianca");
-    //    this->aerolineas.insert("CopaAirlines");
-    //    this->aerolineas.insert("Emiratos");
-    //    this->aerolineas.insert("BlueJet");
+        this->aerolineas.insert(a2.getNombre());
+        this->aerolineas.insert(a3.getNombre());
+        this->aerolineas.insert(a4.getNombre());
+        this->aerolineas.insert(a5.getNombre());
 }
 
 void VentanaEscogerAerolinea::onButtonClickedConfirm() {
+    llenarComboPaisDestino();
+    llenarComboPaisOrigen();
 
 }
 
@@ -99,12 +143,12 @@ void VentanaEscogerAerolinea::onButtonClickedUp() {
 
 }//onButtonClickedDown
 
-void VentanaEscogerAerolinea::cargarItinerario() { 
+void VentanaEscogerAerolinea::cargarItinerario() {
     //crear el tree model
     m_refTreeModel = Gtk::ListStore::create(m_Columns);
     m_TreeView.set_model(m_refTreeModel);
 
-    //llenar el tree model
+    //llenar el tree model//aqui van las colas con los horarios
     this->horas.push_back(2);
     this->horas.push_back(3);
     this->horas.push_back(4);
@@ -126,36 +170,76 @@ void VentanaEscogerAerolinea::cargarItinerario() {
     m_TreeView.append_column("Llegada", m_Columns.m_col_llegada);
 
 
-//    for (guint i = 0; i < 2; i++) {
-//        auto column = m_TreeView.get_column(i);
-//        column->set_reorderable();
-//    }
-    
-    
+    //    for (guint i = 0; i < 2; i++) {
+    //        auto column = m_TreeView.get_column(i);
+    //        column->set_reorderable();
+    //    }
+
+
 }
 
 void VentanaEscogerAerolinea::clear() {
-     this->m_refTreeModel.clear();
+    this->m_refTreeModel.clear();
 }
 
 void VentanaEscogerAerolinea::llenarComboPaisOrigen() {
-    vector<string> vectorPaisOrigen;
-    vectorPaisOrigen.push_back("Costa Rica");
-    vectorPaisOrigen.push_back("Mexico");
-    vectorPaisOrigen.push_back("Egipto");
-    vectorPaisOrigen.push_back("Chinaaa");
-    for (int i = 0; i < vectorPaisOrigen.size(); i++) {
-        this->cbPaisOrigen.append(vectorPaisOrigen.at(i));
+    this->cbPaisOrigen.clear();
+    if (this->etAerolinea.get_text().raw() == a1.getNombre()) {
+        for (int i = 0; i < a1.getPaisOrigen().size(); i++) {
+            this->cbPaisOrigen.append(a1.getPaisOrigen().at(i).GetPais());
+        }
+    }
+    if (this->etAerolinea.get_text().raw() == a2.getNombre()) {
+        for (int i = 0; i < a2.getPaisOrigen().size(); i++) {
+            this->cbPaisOrigen.append(a2.getPaisOrigen().at(i).GetPais());
+        }
+    }
+    if (this->etAerolinea.get_text().raw() == a3.getNombre()) {
+        for (int i = 0; i < a3.getPaisOrigen().size(); i++) {
+            this->cbPaisOrigen.append(a3.getPaisOrigen().at(i).GetPais());
+        }
+    }
+    if (this->etAerolinea.get_text().raw() == a4.getNombre()) {
+        for (int i = 0; i < a4.getPaisOrigen().size(); i++) {
+            this->cbPaisOrigen.append(a4.getPaisOrigen().at(i).GetPais());
+        }
+    }
+    if (this->etAerolinea.get_text().raw() == a5.getNombre()) {
+        for (int i = 0; i < a5.getPaisOrigen().size(); i++) {
+            this->cbPaisOrigen.append(a5.getPaisOrigen().at(i).GetPais());
+        }
     }
 }
 
 void VentanaEscogerAerolinea::llenarComboPaisDestino() {
-    vector<string> vectorPaisDestino;
-    vectorPaisDestino.push_back("Costa Rica");
-    vectorPaisDestino.push_back("Mexico");
-    vectorPaisDestino.push_back("EEUU");
-    vectorPaisDestino.push_back("Japon");
-    for (int i = 0; i < vectorPaisDestino.size(); i++) {
-        this->cbPaisDestino.append(vectorPaisDestino.at(i));
+    if (this->etAerolinea.get_text().raw() == a1.getNombre()) {
+        this->cbPaisDestino.clear();
+        for (int i = 0; i < a1.getPaisDestino().size(); i++) {
+            this->cbPaisDestino.append(a1.getPaisDestino().at(i).GetNombrePais());
+        }
+    }
+    if (this->etAerolinea.get_text().raw() == a2.getNombre()) {
+        this->cbPaisDestino.clear();
+        for (int i = 0; i < a2.getPaisDestino().size(); i++) {
+            this->cbPaisDestino.append(a2.getPaisDestino().at(i).GetNombrePais());
+        }
+    }
+    if (this->etAerolinea.get_text().raw() == a3.getNombre()) {
+        this->cbPaisDestino.clear();
+        for (int i = 0; i < a3.getPaisDestino().size(); i++) {
+            this->cbPaisDestino.append(a3.getPaisDestino().at(i).GetNombrePais());
+        }
+    }
+    if (this->etAerolinea.get_text().raw() == a4.getNombre()) {
+        this->cbPaisDestino.clear();
+        for (int i = 0; i < a4.getPaisDestino().size(); i++) {
+            this->cbPaisDestino.append(a4.getPaisDestino().at(i).GetNombrePais());
+        }
+    }
+    if (this->etAerolinea.get_text().raw() == a5.getNombre()) {
+        this->cbPaisDestino.clear();
+        for (int i = 0; i < a5.getPaisDestino().size(); i++) {
+            this->cbPaisDestino.append(a5.getPaisDestino().at(i).GetNombrePais());
+        }
     }
 }

@@ -23,9 +23,7 @@ public:
     string toString();
    
     //setter&getter
-    string getNombre() const {
-        return nombre;
-    }
+    string getNombre() const;
 
     void setNombre(string nombre) {
         this->nombre = nombre;
