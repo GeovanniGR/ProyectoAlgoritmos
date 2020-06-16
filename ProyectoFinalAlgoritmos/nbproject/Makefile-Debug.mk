@@ -21,7 +21,7 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux
+CND_PLATFORM=G++-Linux
 CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Aerolinea_1.o \
 	${OBJECTDIR}/Cola.o \
+	${OBJECTDIR}/Grafo.o \
 	${OBJECTDIR}/Itinerario.o \
 	${OBJECTDIR}/ListaAerolineas.o \
 	${OBJECTDIR}/Pais.o \
@@ -85,6 +86,11 @@ ${OBJECTDIR}/Cola.o: Cola.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Cola.o Cola.cpp
+
+${OBJECTDIR}/Grafo.o: Grafo.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Grafo.o Grafo.cpp
 
 ${OBJECTDIR}/Itinerario.o: Itinerario.cpp
 	${MKDIR} -p ${OBJECTDIR}
