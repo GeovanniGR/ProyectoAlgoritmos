@@ -13,6 +13,8 @@
       <logicalFolder name="f2" displayName="Domain" projectFiles="true">
         <itemPath>Aerolinea_1.h</itemPath>
         <itemPath>Cola.h</itemPath>
+        <itemPath>Grafo.cpp</itemPath>
+        <itemPath>Grafo.h</itemPath>
         <itemPath>Itinerario.h</itemPath>
         <itemPath>ListaAerolineas.h</itemPath>
         <itemPath>Pais.h</itemPath>
@@ -100,6 +102,10 @@
       </item>
       <item path="Cola.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Grafo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Grafo.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Itinerario.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Itinerario.h" ex="false" tool="3" flavor2="0">
@@ -178,6 +184,10 @@
       <item path="Cola.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Cola.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Grafo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Grafo.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Itinerario.cpp" ex="false" tool="1" flavor2="0">
       </item>
