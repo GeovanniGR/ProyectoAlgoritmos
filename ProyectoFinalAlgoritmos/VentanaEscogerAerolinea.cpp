@@ -36,6 +36,10 @@ void VentanaEscogerAerolinea::init() {
     this->btnCargarItinerario.signal_clicked().connect(sigc::mem_fun(*this, &VentanaEscogerAerolinea::cargarItinerario));
     this->fixed.put(this->btnCargarItinerario, 300, 450);
 
+    this->btnConfirmarVuelo.set_label("Confirmar Vuelo");
+    this->btnConfirmarVuelo.signal_clicked().connect(sigc::mem_fun(*this, &VentanaEscogerAerolinea::onButtonClickedConfirmarVuelo));
+    this->fixed.put(this->btnConfirmarVuelo, 450, 450);
+    
     this->etAerolinea.set_text(this->aerolineas.firstInlist());
     this->fixed.put(this->etAerolinea, 20, 150);
 
@@ -58,6 +62,10 @@ void VentanaEscogerAerolinea::init() {
     this->btnConfirmarAerolinea.signal_clicked().connect(sigc::mem_fun(*this, &VentanaEscogerAerolinea::onButtonClickedConfirm));
     this->fixed.put(this->btnConfirmarAerolinea, 20, 350);
 
+    this->btnReestablecer.set_label("Reestablecer");
+    this->btnReestablecer.signal_clicked().connect(sigc::mem_fun(*this, &VentanaEscogerAerolinea::onButtonClickedReestablecer));
+    this->fixed.put(this->btnReestablecer, 20, 400);
+    
     this->m_TreeView.set_size_request(200, 200);
 
     this->fixed.put(this->m_TreeView, 300, 200);
@@ -296,6 +304,7 @@ void VentanaEscogerAerolinea::cargarItinerario() {
                 if (vectorHorarioDeSalida.at(i) >= calendar_time.tm_hour) {
                     s << vectorHorarioDeSalida.at(i) << ":00" << " ---> " << vectHorarioDeLlegada.at(i) << ":00";
                     prueba.push_back(s.str());
+                    s.str("");
                 }//if
             }//for
 
@@ -376,3 +385,20 @@ void VentanaEscogerAerolinea::llenarComboPaisDestino() {
         }//for
     }//if
 }//llenarComboBoxDestino
+
+void VentanaEscogerAerolinea::onButtonClickedConfirmarVuelo() {
+    //como obtener los datos para el grafo
+//    cout << this->cbPaisOrigen.get_active_text() << endl;
+//    cout << this->cbPaisDestino.get_active_text() << endl;
+    Glib::RefPtr<Gtk::TreeSelection> selection = this->m_TreeView.get_selection();
+    Gtk::TreeModel::iterator selectedRow = selection->get_selected();
+    Gtk::TreeModel::Row row = *selectedRow;
+    Glib::ustring port = row.get_value(m_Columns.m_col_salida);
+//    cout<<port.data();
+}
+
+void VentanaEscogerAerolinea::onButtonClickedReestablecer() {
+    this->cbPaisDestino.remove_all();
+    this->cbPaisOrigen.remove_all();
+    this->m_TreeView.remove_all_columns();
+}//onButtonClickedReestablecer

@@ -36,9 +36,26 @@ void VentanaPrincipal::init() {
     this->menuInicarSesion.signal_activate().connect(sigc::mem_fun(*this, &VentanaPrincipal::abrirVentanaIniciarSesion));
     this->subMenuArchivo.append(this->menuInicarSesion);
 
+    this->menuTransito.set_label("Transito");
+    this->ventanaTransito = 0;
+    this->menuTransito.signal_activate().connect(sigc::mem_fun(*this, &VentanaPrincipal::abrirVentanaTransito));
+    this->subMenuTransito.append(this->menuTransito);
+    
+    this->menuGestionTransito.set_label("Transito Aereo");
+    this->menuBar.append(this->menuGestionTransito);
+    this->menuGestionTransito.set_submenu(this->subMenuTransito);
+    
     this->add(this->fixed);
     this->show_all_children();
 }//init
+
+void VentanaPrincipal::abrirVentanaTransito() {
+ if (this->ventanaTransito != 0)
+        return;
+    this->ventanaTransito = new VentanaTransito();
+    this->ventanaTransito->signal_hide().connect(sigc::mem_fun(*this, &VentanaPrincipal::aboutWinClose));
+    this->ventanaTransito->show();
+}
 
 void VentanaPrincipal::abrirVentanaIniciarSesion() {
     if (this->ventanaIniciarSesion != 0)
@@ -59,4 +76,5 @@ void VentanaPrincipal::abrirVentanaRegistrar() {
 void VentanaPrincipal::aboutWinClose() {
     this->ventanaIniciarSesion = 0;
     this->ventanaRegistrar = 0;
+    this->ventanaTransito = 0;
 }//aboutWinClose

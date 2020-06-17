@@ -33,7 +33,8 @@ public:
     void onButtonClickedDown();
     void onButtonClickedConfirm();
     void loadaerolineas();
-
+    void onButtonClickedReestablecer();
+    void onButtonClickedConfirmarVuelo();
     void llenarComboPaisOrigen();
     void llenarComboPaisDestino();
     void clear();
@@ -67,6 +68,8 @@ private:
     Gtk::Label lblPaisDestino;
 
     Gtk::Button btnCargarItinerario;
+    Gtk::Button btnReestablecer;
+    Gtk::Button btnConfirmarVuelo;
 
     Gtk::ComboBoxText cbPaisOrigen;
     Gtk::ComboBoxText cbPaisDestino;
