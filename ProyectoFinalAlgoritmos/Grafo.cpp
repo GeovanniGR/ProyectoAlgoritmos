@@ -42,7 +42,7 @@ void Grafo::agregarArista(Tnodo& aux, Tnodo& aux2, Tarista& nuevo) {
     Tarista q;
     if (aux->ady == NULL) {
         aux->ady = nuevo;
-        nuevo->destino = aux;
+        nuevo->destino = aux2;
     } else {
         q = aux->ady;
         while (q->sgte != NULL)
@@ -87,3 +87,119 @@ void Grafo::vaciarAristas(Tnodo& aux) {
     }//while
 }//vaciarAristas
 
+void Grafo::eliminarNodo(string eliminar) {
+    string var;
+    Tnodo aux, ant;
+    aux = p;
+    cout << "ELIMINAR UN NODO\n";
+    if (p == NULL) {
+        cout << "GRAFO VACIO...!!!!";
+        return;
+    }
+    var = eliminar;
+
+    while (aux != NULL) {
+        if (aux->nombre == var) {
+            if (aux->ady != NULL)
+                vaciarAristas(aux);
+
+            if (aux == p) {
+                p = p->sgte;
+                delete(aux);
+                cout << "NODO ELIMINADO...!!!!";
+                return;
+            } else {
+                ant->sgte = aux->sgte;
+                delete(aux);
+                cout << "NODO ELIMINADO...!!!!";
+                return;
+            }
+        } else {
+            ant = aux;
+            aux = aux->sgte;
+        }
+    }
+}
+
+void Grafo::eliminarArista(string ini, string fin) {
+    Tnodo aux, aux2;
+    Tarista q, r;
+    cout << "\n ELIMINAR ARISTA\n";
+    aux = p;
+    aux2 = p;
+    while (aux2 != NULL) {
+        if (aux2->nombre == fin) {
+            break;
+        } else
+            aux2 = aux2->sgte;
+    }
+    while (aux != NULL) {
+        if (aux->nombre == ini) {
+            q = aux->ady;
+            while (q != NULL) {
+                if (q->destino == aux2) {
+                    if (q == aux->ady)
+                        aux->ady = aux->ady->sgte;
+                    else
+                        r->sgte = q->sgte;
+                    delete(q);
+                    cout << "ARISTA  " << aux->nombre << "----->" << aux2->nombre << " ELIMINADA.....!!!!";
+                    return;
+                }
+            }
+            r = q;
+            q = q->sgte;
+        }
+        aux = aux->sgte;
+    }
+}
+
+void Grafo::mostrarGrafo() {
+    Tnodo ptr;
+    Tarista ar;
+    ptr = p;
+    cout << "NODO|LISTA DE ADYACENCIA\n";
+
+    while (ptr != NULL) {
+        cout << "   " << ptr->nombre << "|";
+        if (ptr->ady != NULL) {
+            ar = ptr->ady;
+            while (ar != NULL) {
+                cout << " " << ar->destino->nombre;
+                ar = ar->sgte;
+            }
+
+        }
+        ptr = ptr->sgte;
+        cout << endl;
+    }
+}
+
+void Grafo::mostrarAristas(string nodo) {
+    Tnodo aux;
+    Tarista ar;
+    //char var;
+    cout << "MOSTRAR ARISTAS DE NODO\n";
+    //cin>>var;
+    aux = p;
+    while (aux != NULL) {
+        if (aux->nombre == nodo) {
+            if (aux->ady == NULL) {
+                cout << "EL NODO NO TIENE ARISTAS...!!!!";
+                return;
+            } else {
+                cout << "NODO|LISTA DE ADYACENCIA\n";
+                cout << "   " << aux->nombre << "|";
+                ar = aux->ady;
+
+                while (ar != NULL) {
+                    cout << ar->destino->nombre << " ";
+                    ar = ar->sgte;
+                }
+                cout << endl;
+                return;
+            }
+        } else
+            aux = aux->sgte;
+    }
+}
