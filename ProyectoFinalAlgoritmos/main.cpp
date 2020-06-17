@@ -28,36 +28,40 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-            Glib::RefPtr<Gtk::Application> app =
-                Gtk::Application::create(argc, argv, "titulo");
-        VentanaPrincipal window;
-        return app->run(window);
-//    Grafo g;
-//    g.agregarNodo("Hola1");
-//    g.agregarNodo("Hola2");
-//    g.agregarNodo("Hola3");
-//    g.agregarNodo("Hola4");
-//    g.agregarNodo("Hola5");
-//    g.mostrarGrafo();
-//    cout << endl;
-//
-//    g.insertarArista("Hola1", "Hola2");
-//    g.insertarArista("Hola3", "Hola1");
-//    g.insertarArista("Hola3", "Hola2");
-//    cout << endl;
-//
-//    g.eliminarNodo("Hola5");
-//    g.eliminarArista("Hola3", "Hola1");
-//    g.mostrarGrafo();
-//    cout << endl;
-//
-//    g.mostrarAristas("Hola1");
-//    g.mostrarAristas("Hola3");
-//
-//    cout << endl;
-//    g.mostrarGrafo();
-//
+    Glib::RefPtr<Gtk::Application> app =
+            Gtk::Application::create(argc, argv, "titulo");
+    VentanaPrincipal window;
+    return app->run(window);
+//    Grafo* g = Grafo::getInstance();
+//    g->agregarNodo("Hola1");
+//    g->agregarNodo("Hola2");
+//    g->agregarNodo("Hola3");
+//    g->agregarNodo("Hola4");
+//    g->agregarNodo("Hola5");
+
+    //    g.mostrarGrafo();
+    //    cout << endl;
+    //
+    //    g->insertarArista("Hola1", "Hola2");
+    //    cout<<g->existe("Hola1")<<endl;
+    //    g->mostrarAristas("Hola1");
 //    return 0;
+    //    g.insertarArista("Hola3", "Hola1");
+    //    g.insertarArista("Hola3", "Hola2");
+    //    cout << endl;
+    //
+    //    g.eliminarNodo("Hola5");
+    //    g.eliminarArista("Hola3", "Hola1");
+    //    g.mostrarGrafo();
+    //    cout << endl;
+    //
+    //    g.mostrarAristas("Hola1");
+    //    g.mostrarAristas("Hola3");
+    //
+    //    cout << endl;
+    //    g.mostrarGrafo();
+    //
+    //    return 0;
 
     //    Aerolinea a = Aerolinea("Delta");
     //    Pais p = Pais("Mexico");

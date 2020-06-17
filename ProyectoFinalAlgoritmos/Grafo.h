@@ -45,6 +45,7 @@ public:
     void eliminarArista(string ini, string fin);
     void mostrarGrafo();
     void mostrarAristas(string nodo);
+    bool existe(string nodo);
     
     vector<Pais> getNombresNodos();
 

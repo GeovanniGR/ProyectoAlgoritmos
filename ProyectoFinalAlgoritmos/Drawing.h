@@ -28,6 +28,7 @@ protected:
      bool on_draw(const Cairo::RefPtr<Cairo::Context>& cr);
 private:
     Glib::RefPtr<Gdk::Pixbuf> image;
+    Glib::RefPtr<Gdk::Pixbuf> image1;
     Grafo* grafo=Grafo::getInstance();
 };
 
