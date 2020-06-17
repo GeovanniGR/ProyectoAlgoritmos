@@ -20,6 +20,7 @@
 #include "VentanaPrincipal.h"
 #include "Itinerario.h"
 #include "Cola.h"
+#include "Grafo.h"
 
 using namespace std;
 
@@ -27,10 +28,13 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-        Glib::RefPtr<Gtk::Application> app =
-            Gtk::Application::create(argc, argv, "titulo");
-    VentanaPrincipal window;
-    return app->run(window);
+//        Glib::RefPtr<Gtk::Application> app =
+//            Gtk::Application::create(argc, argv, "titulo");
+//    VentanaPrincipal window;
+//    return app->run(window);
+    Grafo g;
+    g.agregarNodo("Hola");
+    return 0;
     
 //    Aerolinea a = Aerolinea("Delta");
 //    Pais p = Pais("Mexico");
