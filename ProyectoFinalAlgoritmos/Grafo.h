@@ -13,8 +13,9 @@
 
 #ifndef GRAFO_H
 #define GRAFO_H
-
+#include "Pais.h"
 #include <iostream>
+#include <vector>
 using namespace std;
 
 struct nodo {
@@ -34,21 +35,28 @@ class Grafo {
 
 
 public:
-    Grafo();
-
+   static Grafo* getInstance();
     void agregarNodo(string elemento);
     void agregarArista(Tnodo &aux, Tnodo &aux2, Tarista &nuevo);
     void vaciarAristas(Tnodo &aux);
     void insertarArista(string ini, string fin);
-
+    bool isEmpty();
     void eliminarNodo(string eliminar);
     void eliminarArista(string ini, string fin);
     void mostrarGrafo();
     void mostrarAristas(string nodo);
+    
+    vector<Pais> getNombresNodos();
+
+    void setNombresNodos(vector<Pais> nombresNodos);
+
 
 private:
+    vector<Pais> nombresNodos;
+    Grafo();
     Tnodo p; //puntero cabeza
     Tarista p2;
+    static Grafo* instance;
 };
 
 #endif /* GRAFO_H */

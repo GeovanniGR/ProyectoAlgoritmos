@@ -87,7 +87,7 @@ private:
     Gtk::Button m_Button_Quit;
 
     vector<int> horas;
-
+    vector<Pais> nombrePais;
     //aerolineas
     Aerolinea a1;
     Aerolinea a2;
@@ -105,7 +105,7 @@ private:
     PaisDestino pd3;
     PaisDestino pd4;
     
-    Grafo grafo;
+    Grafo* grafo=Grafo::getInstance();
 };
 
 #endif /* VENTANAESCOGERAEROLINEA_H */

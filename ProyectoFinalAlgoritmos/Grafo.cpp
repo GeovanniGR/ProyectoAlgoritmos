@@ -19,6 +19,17 @@ Grafo::Grafo() {
 
 }
 
+bool Grafo::isEmpty() {
+    return p==NULL;
+}
+
+Grafo* Grafo::getInstance() {
+    if (instance == 0) {
+        instance = new Grafo();
+    }
+    return instance;
+}
+
 void Grafo::agregarNodo(string elemento) {
     Tnodo t, nuevo = new struct nodo;
     nuevo->nombre = elemento;
@@ -203,3 +214,14 @@ void Grafo::mostrarAristas(string nodo) {
             aux = aux->sgte;
     }
 }
+
+void Grafo::setNombresNodos(vector<Pais> nombresNodos) {
+    this->nombresNodos = nombresNodos;
+}
+
+vector<Pais> Grafo::getNombresNodos(){
+    return nombresNodos;
+}
+
+
+Grafo* Grafo::instance = 0;
