@@ -15,36 +15,35 @@
 #define GRAFO_H
 
 #include <iostream>
-#include <string>
-
 using namespace std;
+
+struct nodo {
+    string nombre; //nombre del vertice o nodo
+    struct nodo *sgte;
+    struct arista *ady; //puntero hacia la primera arista del nodo
+};
+
+struct arista {
+    struct nodo *destino; //puntero al nodo de llegada
+    struct arista *sgte;
+};
+
 class Grafo {
-public:
-    Grafo();
-    Grafo(const Grafo& orig);
-    virtual ~Grafo();
-
-    struct nodo {
-        string nombre; //nombre del vertice o nodo
-        struct nodo *sgte;
-        struct arista *ady; //puntero hacia la primera arista del nodo
-    };
-
-    struct arista {
-        struct nodo *destino; //puntero al nodo de llegada
-        struct arista *sgte;
-    };
-    
     typedef struct nodo *Tnodo; //  Tipo Nodo
     typedef struct arista *Tarista; //Tipo Arista
-    
-    
-    
-    
-    Tnodo p;//puntero cabeza
-    
-private:
 
+
+public:
+    Grafo();
+
+    void agregarNodo(string elemento);
+    void agregarArista(Tnodo &aux, Tnodo &aux2, Tarista &nuevo);
+    void vaciarAristas(Tnodo &aux);
+    void insertarArista(string ini, string fin);
+
+private:
+    Tnodo p; //puntero cabeza
+    Tarista p2;
 };
 
 #endif /* GRAFO_H */
