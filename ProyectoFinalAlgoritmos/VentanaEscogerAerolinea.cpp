@@ -90,11 +90,15 @@ void VentanaEscogerAerolinea::loadaerolineas() {
     vector<PaisDestino> paisDestino;
 
     //cargarGrafo
-    this->grafo.agregarNodo("Mexico");
-    this->grafo.agregarNodo("Colombia");
-    this->grafo.agregarNodo("Emiratos");
-    this->grafo.agregarNodo("Costa Rica");
- 
+    this->grafo->agregarNodo("Mexico");
+    this->grafo->agregarNodo("Colombia");
+    this->grafo->agregarNodo("Emiratos");
+    this->grafo->agregarNodo("Costa Rica");
+    this->nombrePais.push_back(p);
+    this->nombrePais.push_back(p1);
+    this->nombrePais.push_back(p2);
+    this->nombrePais.push_back(p3);
+    this->grafo->setNombresNodos(this->nombrePais);
     //a1 "Avianca"
     paisOrigen.push_back(p);
     paisOrigen.push_back(p1);
@@ -394,12 +398,13 @@ void VentanaEscogerAerolinea::llenarComboPaisDestino() {
 
 void VentanaEscogerAerolinea::onButtonClickedConfirmarVuelo() {
     //como obtener los datos para el grafo
-    this->grafo.insertarArista(this->cbPaisOrigen.get_active_text(),this->cbPaisDestino.get_active_text());
+    this->grafo->insertarArista(this->cbPaisOrigen.get_active_text(),this->cbPaisDestino.get_active_text());
     Glib::RefPtr<Gtk::TreeSelection> selection = this->m_TreeView.get_selection();
     Gtk::TreeModel::iterator selectedRow = selection->get_selected();
     Gtk::TreeModel::Row row = *selectedRow;
     Glib::ustring port = row.get_value(m_Columns.m_col_salida);
-    this->grafo.mostrarGrafo();
+    
+    this->grafo->mostrarGrafo();
 }
 
 void VentanaEscogerAerolinea::onButtonClickedReestablecer() {
