@@ -20,6 +20,7 @@
 Drawing::Drawing() {
     this->set_size_request(800, 600);
     this->image = Gdk::Pixbuf::create_from_file("assets/airport.png");
+    this->image1 = Gdk::Pixbuf::create_from_file("assets/avionAbajo.png");
 }
 
 Drawing::Drawing(const Drawing& orig) {
@@ -29,13 +30,29 @@ Drawing::~Drawing() {
 }
 
 bool Drawing::on_draw(const Cairo::RefPtr<Cairo::Context>& cr) {
+    int posXnodo = 0;
+    int posYnodo = 0;
+    int posXavion = 0;
+    int posYavion = 0;
     if (!this->grafo->getNombresNodos().empty()) {
         for (int i = 0; i < this->grafo->getNombresNodos().size(); i++) {
-            Gdk::Cairo::set_source_pixbuf(cr, this->image, i * 80, i * 80);
-            cr->rectangle(i * 80, i * 80, 40, 40);
+            posXnodo = rand() % 700;
+            posYnodo = rand() % 500;
+//            posXnodo = i * 80;
+//            posYnodo = j * 80;
+            Gdk::Cairo::set_source_pixbuf(cr, this->image, posXnodo, posYnodo);
+            cr->rectangle(posXnodo, posYnodo, 40, 40);
             cr->fill();
             cr->set_source_rgb(0, 0, 0);
             this->draw_text(cr, i * 80, i * 80, this->grafo->getNombresNodos().at(i).getPais());
+            if (this->grafo->existe(this->grafo->getNombresNodos().at(i).getPais())) {
+//                posXavion = i * 40;
+//                posYavion = j * 40;
+                Gdk::Cairo::set_source_pixbuf(cr, this->image1, posXavion, posYavion);
+                cr->rectangle(posXavion, posYavion, 40, 40);
+                cr->fill();
+                cr->set_source_rgb(0, 0, 0);
+            }
         }
     }
 }

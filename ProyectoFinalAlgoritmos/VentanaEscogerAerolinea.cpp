@@ -184,8 +184,8 @@ void VentanaEscogerAerolinea::cargarItinerario() {
     colaSalida.destruirCola();
 
     // Itinerario Avianca
-    colaSalida.encolar(0);
-    colaSalida.encolar(5);
+    colaSalida.encolar(17);
+    colaSalida.encolar(22);
     colaLlegada.encolar(15);
     colaLlegada.encolar(19);
     Itinerario it2(a1, p1, pd1);
@@ -217,7 +217,7 @@ void VentanaEscogerAerolinea::cargarItinerario() {
     colaSalida.destruirCola();
 
     //Itinerario "Emiratos"
-    colaSalida.encolar(13);
+    colaSalida.encolar(18);
     colaSalida.encolar(0);
     colaLlegada.encolar(1);
     colaLlegada.encolar(12);

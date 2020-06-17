@@ -20,7 +20,7 @@ Grafo::Grafo() {
 }
 
 bool Grafo::isEmpty() {
-    return p==NULL;
+    return p == NULL;
 }
 
 Grafo* Grafo::getInstance() {
@@ -219,9 +219,28 @@ void Grafo::setNombresNodos(vector<Pais> nombresNodos) {
     this->nombresNodos = nombresNodos;
 }
 
-vector<Pais> Grafo::getNombresNodos(){
+vector<Pais> Grafo::getNombresNodos() {
     return nombresNodos;
 }
 
+bool Grafo::existe(string nodo) {
+    Tnodo aux;
+    Tarista ar;
+    aux = p;
+    while (aux != NULL) {
+        if (aux->nombre == nodo) {
+            if (aux->ady == NULL) {
+                return false;
+            } else {
+                ar = aux->ady;
+                while (ar != NULL) {
+                    ar = ar->sgte;
+                }
+                return true;
+            }
+        } else
+            aux = aux->sgte;
+    }
+}
 
 Grafo* Grafo::instance = 0;
