@@ -22,12 +22,13 @@
 #include <gtkmm-3.0/gtkmm/imagemenuitem.h>
 
 #include "VentanaRegistrar.h"
+#include "VentanaTransito.h"
 
 class VentanaPrincipal : public Gtk::Window {
 public:
     VentanaPrincipal();
     void init();
-
+    void abrirVentanaTransito();
     void abrirVentanaRegistrar();
     void abrirVentanaIniciarSesion();
     void aboutWinClose();
@@ -35,18 +36,21 @@ private:
     Gtk::MenuBar menuBar;
 
     Gtk::MenuItem menuGestionarVuelos;
+    Gtk::MenuItem menuGestionTransito;
 
     Gtk::Menu subMenuArchivo;
+    Gtk::Menu subMenuTransito;
 
     Gtk::ImageMenuItem menuAerolinea;
     Gtk::ImageMenuItem menuRegistrar;
     Gtk::ImageMenuItem menuInicarSesion;
+    Gtk::ImageMenuItem menuTransito;
 
     Gtk::Fixed fixed; // contenedor
 
     VentanaRegistrar* ventanaRegistrar;
     VentanaIniciarSesion* ventanaIniciarSesion;
-
+    VentanaTransito* ventanaTransito;
     RegistrarUsuarioBusiness* registrarBusiness;
 };
 
