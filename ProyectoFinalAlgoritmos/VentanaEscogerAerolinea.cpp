@@ -24,6 +24,7 @@
 VentanaEscogerAerolinea::VentanaEscogerAerolinea() {
     this->set_size_request(800, 600);
     this->set_title("Aerolineas Disponibles");
+//    this->grafo=NULL;
     loadaerolineas();
     init();
 }//Constructor
@@ -89,6 +90,12 @@ void VentanaEscogerAerolinea::loadaerolineas() {
     vector<Pais> paisOrigen;
     vector<PaisDestino> paisDestino;
 
+    //cargarGrafo
+    this->grafo.agregarNodo("Mexico");
+    this->grafo.agregarNodo("Colombia");
+    this->grafo.agregarNodo("Emiratos");
+    this->grafo.agregarNodo("Costa Rica");
+ 
     //a1 "Avianca"
     paisOrigen.push_back(p);
     paisOrigen.push_back(p1);
@@ -388,13 +395,12 @@ void VentanaEscogerAerolinea::llenarComboPaisDestino() {
 
 void VentanaEscogerAerolinea::onButtonClickedConfirmarVuelo() {
     //como obtener los datos para el grafo
-//    cout << this->cbPaisOrigen.get_active_text() << endl;
-//    cout << this->cbPaisDestino.get_active_text() << endl;
+    this->grafo.insertarArista(this->cbPaisOrigen.get_active_text(),this->cbPaisDestino.get_active_text());
     Glib::RefPtr<Gtk::TreeSelection> selection = this->m_TreeView.get_selection();
     Gtk::TreeModel::iterator selectedRow = selection->get_selected();
     Gtk::TreeModel::Row row = *selectedRow;
     Glib::ustring port = row.get_value(m_Columns.m_col_salida);
-//    cout<<port.data();
+    this->grafo.mostrarGrafo();
 }
 
 void VentanaEscogerAerolinea::onButtonClickedReestablecer() {

@@ -24,6 +24,7 @@
 #include <gtkmm-3.0/gtkmm/liststore.h>
 #include "ListaAerolineas.h"
 #include "Aerolinea_1.h"
+#include "Grafo.h"
 
 class VentanaEscogerAerolinea : public Gtk::Window {
 public:
@@ -103,6 +104,8 @@ private:
     PaisDestino pd2;
     PaisDestino pd3;
     PaisDestino pd4;
+    
+    Grafo grafo;
 };
 
 #endif /* VENTANAESCOGERAEROLINEA_H */
