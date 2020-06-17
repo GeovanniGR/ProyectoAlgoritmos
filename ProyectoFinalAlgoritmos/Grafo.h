@@ -41,6 +41,11 @@ public:
     void vaciarAristas(Tnodo &aux);
     void insertarArista(string ini, string fin);
 
+    void eliminarNodo(string eliminar);
+    void eliminarArista(string ini, string fin);
+    void mostrarGrafo();
+    void mostrarAristas(string nodo);
+
 private:
     Tnodo p; //puntero cabeza
     Tarista p2;
