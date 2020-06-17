@@ -24,7 +24,6 @@
 VentanaEscogerAerolinea::VentanaEscogerAerolinea() {
     this->set_size_request(800, 600);
     this->set_title("Aerolineas Disponibles");
-//    this->grafo=NULL;
     loadaerolineas();
     init();
 }//Constructor
