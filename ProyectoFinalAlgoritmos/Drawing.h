@@ -17,7 +17,8 @@
 #include "iostream"
 #include "Grafo.h"
 using namespace std;
-class Drawing : public Gtk::DrawingArea{
+
+class Drawing : public Gtk::DrawingArea {
 public:
     Drawing();
     Drawing(const Drawing& orig);
@@ -25,11 +26,11 @@ public:
     void updateDrawingArea();
 protected:
     void draw_text(const Cairo::RefPtr<Cairo::Context>& cr, int posX, int posY, string text);
-     bool on_draw(const Cairo::RefPtr<Cairo::Context>& cr);
+    bool on_draw(const Cairo::RefPtr<Cairo::Context>& cr);
 private:
     Glib::RefPtr<Gdk::Pixbuf> image;
     Glib::RefPtr<Gdk::Pixbuf> image1;
-    Grafo* grafo=Grafo::getInstance();
+    Grafo* grafo = Grafo::getInstance();
 };
 
 #endif /* DRAWING_H */
