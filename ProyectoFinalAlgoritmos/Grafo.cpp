@@ -242,5 +242,41 @@ bool Grafo::existe(string nodo) {
             aux = aux->sgte;
     }
 }
+vector<string> Grafo::arista(string nodo) {
+    Tnodo aux;
+    Tarista ar;
+    vector<string> aristas;
+    //char var;
+    //cin>>var;
+    aux = p;
+    while (aux != NULL) {
+        if (aux->nombre == nodo) {
+            if (aux->ady == NULL) {
+                
+            } else {
+//                cout << "NODO|LISTA DE ADYACENCIA\n";
+//                cout << "   " << aux->nombre << "|";
+                ar = aux->ady;
+
+                while (ar != NULL) {
+                    aristas.push_back(ar->destino->nombre);
+                    ar = ar->sgte;
+                }
+                return aristas;
+            }
+        } else
+            aux = aux->sgte;
+    }
+}
+
+void Grafo::setPaisDes(vector<PaisDestino> paisDes) {
+    this->paisDes = paisDes;
+}
+
+vector<PaisDestino> Grafo::getPaisDes() {
+    return paisDes;
+}
+
+
 
 Grafo* Grafo::instance = 0;

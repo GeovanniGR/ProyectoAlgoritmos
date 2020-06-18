@@ -88,6 +88,7 @@ private:
 
     vector<int> horas;
     vector<Pais> nombrePais;
+    vector<PaisDestino> PaisesDes;
     //aerolineas
     Aerolinea a1;
     Aerolinea a2;

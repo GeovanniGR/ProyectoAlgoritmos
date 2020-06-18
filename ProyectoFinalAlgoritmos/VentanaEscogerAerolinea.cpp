@@ -39,7 +39,7 @@ void VentanaEscogerAerolinea::init() {
     this->btnConfirmarVuelo.set_label("Confirmar Vuelo");
     this->btnConfirmarVuelo.signal_clicked().connect(sigc::mem_fun(*this, &VentanaEscogerAerolinea::onButtonClickedConfirmarVuelo));
     this->fixed.put(this->btnConfirmarVuelo, 450, 450);
-    
+
     this->etAerolinea.set_text(this->aerolineas.firstInlist());
     this->fixed.put(this->etAerolinea, 20, 150);
 
@@ -65,7 +65,7 @@ void VentanaEscogerAerolinea::init() {
     this->btnReestablecer.set_label("Reestablecer");
     this->btnReestablecer.signal_clicked().connect(sigc::mem_fun(*this, &VentanaEscogerAerolinea::onButtonClickedReestablecer));
     this->fixed.put(this->btnReestablecer, 20, 400);
-    
+
     this->m_TreeView.set_size_request(200, 200);
 
     this->fixed.put(this->m_TreeView, 300, 200);
@@ -86,10 +86,31 @@ void VentanaEscogerAerolinea::loadaerolineas() {
     this->pd2 = PaisDestino("Colombia");
     this->pd3 = PaisDestino("Emiratos");
     this->pd4 = PaisDestino("Costa Rica");
+    pd1.setPosX(4);
+    pd1.setPosY(50);
+    pd2.setPosX(40);
+    pd2.setPosY(250);
+    pd3.setPosX(75);
+    pd3.setPosY(450);
+    pd4.setPosX(400);
+    pd4.setPosY(100);
+    this->PaisesDes.push_back(pd1);
+    this->PaisesDes.push_back(pd2);
+    this->PaisesDes.push_back(pd3);
+    this->PaisesDes.push_back(pd4);
     vector<Pais> paisOrigen;
     vector<PaisDestino> paisDestino;
 
     //cargarGrafo
+    //cargarGrafo
+    p.setPosX(4);
+    p.setPosY(50);
+    p1.setPosX(40);
+    p1.setPosY(250);
+    p2.setPosX(75);
+    p2.setPosY(450);
+    p3.setPosX(400);
+    p3.setPosY(100);
     this->grafo->agregarNodo("Mexico");
     this->grafo->agregarNodo("Colombia");
     this->grafo->agregarNodo("Emiratos");
@@ -99,6 +120,7 @@ void VentanaEscogerAerolinea::loadaerolineas() {
     this->nombrePais.push_back(p2);
     this->nombrePais.push_back(p3);
     this->grafo->setNombresNodos(this->nombrePais);
+    this->grafo->setPaisDes(this->PaisesDes);
     //a1 "Avianca"
     paisOrigen.push_back(p);
     paisOrigen.push_back(p1);
@@ -398,12 +420,12 @@ void VentanaEscogerAerolinea::llenarComboPaisDestino() {
 
 void VentanaEscogerAerolinea::onButtonClickedConfirmarVuelo() {
     //como obtener los datos para el grafo
-    this->grafo->insertarArista(this->cbPaisOrigen.get_active_text(),this->cbPaisDestino.get_active_text());
+    this->grafo->insertarArista(this->cbPaisOrigen.get_active_text(), this->cbPaisDestino.get_active_text());
     Glib::RefPtr<Gtk::TreeSelection> selection = this->m_TreeView.get_selection();
     Gtk::TreeModel::iterator selectedRow = selection->get_selected();
     Gtk::TreeModel::Row row = *selectedRow;
     Glib::ustring port = row.get_value(m_Columns.m_col_salida);
-    
+
     this->grafo->mostrarGrafo();
 }
 
