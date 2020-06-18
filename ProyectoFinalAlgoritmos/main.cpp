@@ -32,18 +32,28 @@ int main(int argc, char** argv) {
                 Gtk::Application::create(argc, argv, "titulo");
         VentanaPrincipal window;
         return app->run(window);
-//    Grafo g;
-//    g.agregarNodo("Hola1");
-//    g.agregarNodo("Hola2");
-//    g.agregarNodo("Hola3");
-//    g.agregarNodo("Hola4");
-//    g.agregarNodo("Hola5");
-//    g.mostrarGrafo();
+//    Grafo* g=Grafo::getInstance();
+//    g->agregarNodo("Hola1");
+//    g->agregarNodo("Hola2");
+//    g->agregarNodo("Hola3");
+//    g->agregarNodo("Hola4");
+//    g->agregarNodo("Hola5");
+//    g->mostrarGrafo();
 //    cout << endl;
+////
+//    g->insertarArista("Hola1", "Hola2");
+//    g->insertarArista("Hola3", "Hola1");
+//    g->insertarArista("Hola3", "Hola2");
+//    
+//    vector<string> aristas=g->arista("Hola3");
+//    for (int i = 0; i < aristas.size(); i++) {
+//        cout<<aristas.at(i)<<endl;
 //
-//    g.insertarArista("Hola1", "Hola2");
-//    g.insertarArista("Hola3", "Hola1");
-//    g.insertarArista("Hola3", "Hola2");
+//    }
+
+//    if(g->existe("Hola1")){
+//        cout<<g->arista("Hola3")<<endl;
+//    }
 //    cout << endl;
 //
 //    g.eliminarNodo("Hola5");
@@ -51,7 +61,7 @@ int main(int argc, char** argv) {
 //    g.mostrarGrafo();
 //    cout << endl;
 //
-//    g.mostrarAristas("Hola1");
+//    g->mostrarAristas("Hola1");
 //    g.mostrarAristas("Hola3");
 //
 //    cout << endl;

@@ -14,9 +14,10 @@
 #ifndef GRAFO_H
 #define GRAFO_H
 #include "Pais.h"
+#include "PaisDestino.h"
 #include <iostream>
 #include <vector>
-using namespace std;
+using namespace std;  
 
 struct nodo {
     string nombre; //nombre del vertice o nodo
@@ -45,14 +46,20 @@ public:
     void eliminarArista(string ini, string fin);
     void mostrarGrafo();
     void mostrarAristas(string nodo);
-    
+    bool existe(string nodo);
+    vector<string> arista(string nodo);
     vector<Pais> getNombresNodos();
 
     void setNombresNodos(vector<Pais> nombresNodos);
 
+    vector<PaisDestino> getPaisDes();
+
+    void setPaisDes(vector<PaisDestino> paisDes);
+
 
 private:
     vector<Pais> nombresNodos;
+    vector<PaisDestino> paisDes;
     Grafo();
     Tnodo p; //puntero cabeza
     Tarista p2;

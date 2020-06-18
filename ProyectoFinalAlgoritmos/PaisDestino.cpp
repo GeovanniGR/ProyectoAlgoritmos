@@ -18,9 +18,33 @@ PaisDestino::PaisDestino() {
 
 PaisDestino::PaisDestino(string nombrePais) {
     this->nombrePais = nombrePais;
+    this->image = Gdk::Pixbuf::create_from_file("assets/airport.png");
+    this->posX = 0;
+    this->posY = 0;
 }//constructor
 
+void PaisDestino::draw(const Cairo::RefPtr<Cairo::Context>& cr) {
+    Gdk::Cairo::set_source_pixbuf(cr, this->image, this->posX, this->posY);
+    cr->rectangle(this->posX, this->posY, 40, 40);
+    cr->fill();
+}
 //setter&&getter
+
+void PaisDestino::setPosX(int posX) {
+    this->posX = posX;
+}
+
+int PaisDestino::getPosY() {
+    return posY;
+}
+
+int PaisDestino::getPosX() {
+    return posX;
+}
+
+void PaisDestino::setPosY(int posY) {
+    this->posY = posY;
+}
 
 void PaisDestino::setNombrePais(string nombrePais) {
     this->nombrePais = nombrePais;

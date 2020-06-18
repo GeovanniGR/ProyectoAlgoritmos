@@ -20,6 +20,7 @@
 Drawing::Drawing() {
     this->set_size_request(800, 600);
     this->image = Gdk::Pixbuf::create_from_file("assets/airport.png");
+    this->image1 = Gdk::Pixbuf::create_from_file("assets/airplane.png");
 }
 
 Drawing::Drawing(const Drawing& orig) {
@@ -30,12 +31,33 @@ Drawing::~Drawing() {
 
 bool Drawing::on_draw(const Cairo::RefPtr<Cairo::Context>& cr) {
     if (!this->grafo->getNombresNodos().empty()) {
+        //        cout<<"no esta vacio"<<endl;
         for (int i = 0; i < this->grafo->getNombresNodos().size(); i++) {
-            Gdk::Cairo::set_source_pixbuf(cr, this->image, i * 80, i * 80);
-            cr->rectangle(i * 80, i * 80, 40, 40);
-            cr->fill();
+            //                        cout<<this->grafo->getNombresNodos().at(i).getPosX();
+            //                        cout<<this->grafo->getNombresNodos().at(i).getPosY();
+            this->grafo->getNombresNodos().at(i).draw(cr);
             cr->set_source_rgb(0, 0, 0);
-            this->draw_text(cr, i * 80, i * 80, this->grafo->getNombresNodos().at(i).getPais());
+            this->draw_text(cr, this->grafo->getNombresNodos().at(i).getPosX(), this->grafo->getNombresNodos().at(i).getPosY(), this->grafo->getNombresNodos().at(i).getPais());
+            if (this->grafo->existe(this->grafo->getNombresNodos().at(i).getPais())) {
+                vector<string> nombres = this->grafo->arista(this->grafo->getNombresNodos().at(i).getPais());
+                for (int j = 0; j < nombres.size(); j++) {
+                    for (int k = 0; k < this->grafo->getPaisDes().size(); k++) {
+                        if (nombres.at(j).compare(this->grafo->getPaisDes().at(k).getNombrePais()) == 0) {
+                            Gdk::Cairo::set_source_pixbuf(cr, this->image, this->grafo->getNombresNodos().at(i).getPosX() + 150, this->grafo->getNombresNodos().at(i).getPosY());
+                            cr->rectangle(this->grafo->getNombresNodos().at(i).getPosX() + 150, this->grafo->getNombresNodos().at(i).getPosY(), 40, 40);
+                            cr->fill();
+                            cr->set_source_rgb(0, 0, 0);
+                            this->draw_text(cr, this->grafo->getNombresNodos().at(i).getPosX() + 150, this->grafo->getNombresNodos().at(i).getPosY(), this->grafo->getPaisDes().at(k).getNombrePais());
+                        }
+                        //                        this->grafo->getPaisDes().at(k).draw(cr);
+                    }
+                }
+
+                Gdk::Cairo::set_source_pixbuf(cr, this->image1, this->grafo->getNombresNodos().at(i).getPosX() + 65, this->grafo->getNombresNodos().at(i).getPosY());
+                cr->rectangle(this->grafo->getNombresNodos().at(i).getPosX() + 65, this->grafo->getNombresNodos().at(i).getPosY(), 40, 40);
+                cr->fill();
+            }
+
         }
     }
 }

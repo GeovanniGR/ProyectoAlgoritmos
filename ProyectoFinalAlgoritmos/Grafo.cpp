@@ -20,7 +20,7 @@ Grafo::Grafo() {
 }
 
 bool Grafo::isEmpty() {
-    return p==NULL;
+    return p == NULL;
 }
 
 Grafo* Grafo::getInstance() {
@@ -186,6 +186,33 @@ void Grafo::mostrarGrafo() {
     }
 }
 
+vector<string> Grafo::arista(string nodo) {
+    Tnodo aux;
+    Tarista ar;
+    vector<string> aristas;
+    //char var;
+    //cin>>var;
+    aux = p;
+    while (aux != NULL) {
+        if (aux->nombre == nodo) {
+            if (aux->ady == NULL) {
+                
+            } else {
+//                cout << "NODO|LISTA DE ADYACENCIA\n";
+//                cout << "   " << aux->nombre << "|";
+                ar = aux->ady;
+
+                while (ar != NULL) {
+                    aristas.push_back(ar->destino->nombre);
+                    ar = ar->sgte;
+                }
+                return aristas;
+            }
+        } else
+            aux = aux->sgte;
+    }
+}
+
 void Grafo::mostrarAristas(string nodo) {
     Tnodo aux;
     Tarista ar;
@@ -219,9 +246,38 @@ void Grafo::setNombresNodos(vector<Pais> nombresNodos) {
     this->nombresNodos = nombresNodos;
 }
 
-vector<Pais> Grafo::getNombresNodos(){
+vector<Pais> Grafo::getNombresNodos() {
     return nombresNodos;
 }
+
+bool Grafo::existe(string nodo) {
+    Tnodo aux;
+    Tarista ar;
+    aux = p;
+    while (aux != NULL) {
+        if (aux->nombre == nodo) {
+            if (aux->ady == NULL) {
+                return false;
+            } else {
+                ar = aux->ady;
+                while (ar != NULL) {
+                    ar = ar->sgte;
+                }
+                return true;
+            }
+        } else
+            aux = aux->sgte;
+    }
+}
+
+void Grafo::setPaisDes(vector<PaisDestino> paisDes) {
+    this->paisDes = paisDes;
+}
+
+vector<PaisDestino> Grafo::getPaisDes() {
+    return paisDes;
+}
+
 
 
 Grafo* Grafo::instance = 0;

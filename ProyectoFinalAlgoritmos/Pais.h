@@ -13,6 +13,7 @@
 
 #ifndef PAIS_H
 #define PAIS_H
+#include <gtkmm.h>
 #include <iostream>
 #include <string>
 using namespace std;
@@ -21,13 +22,22 @@ class Pais {
 public:
     Pais();
     Pais(string pais);
-
+    void draw(const Cairo::RefPtr<Cairo::Context>& cr);
     //setter&getter
     string getPais();
 
-    void setPais(string pais);
+    int getPosX();
 
+    void setPosX(int posX);
+
+    int getPosY();
+
+    void setPosY(int posY);
+    void setPais(string pais);
 private:
+    Glib::RefPtr<Gdk::Pixbuf> image;
+    int posX;
+    int posY;
     string pais;
 };
 
