@@ -39,8 +39,10 @@ public:
     void llenarComboPaisOrigen();
     void llenarComboPaisDestino();
     void clear();
+    void compararHoras();
     void cargarItinerario();
-
+    void llenarColasItinerario();
+    void cargarHorarios();
 protected:
 
     class ModelColumns : public Gtk::TreeModel::ColumnRecord {

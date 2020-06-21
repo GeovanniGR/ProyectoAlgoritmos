@@ -52,14 +52,15 @@ bool Drawing::on_draw(const Cairo::RefPtr<Cairo::Context>& cr) {
                         //                        this->grafo->getPaisDes().at(k).draw(cr);
                     }
                 }
-
+                cout << "Foe";
                 time_t now = time(0);
                 tm calendar_time = *std::localtime(std::addressof(now));
                 for (int m = 0; m < this->grafo->getHorarioSalida().size(); m++) {
                     for (int n = 0; n < this->grafo->getHorarioLlegada().size(); n++) {
-                        //                        if (this->grafo->getHorarioSalida().at(m) >= calendar_time.tm_hour) {
-                        if (this->grafo->getHorarioLlegada().at(n) <= calendar_time.tm_hour || this->grafo->getHorarioSalida().at(m) >= calendar_time.tm_hour) {
-
+                        cout<<calendar_time.tm_hour;
+                        if (this->grafo->getHorarioSalida().at(m) >= calendar_time.tm_hour) {
+                            //if (this->grafo->getHorarioLlegada().at(n) <= calendar_time.tm_hour && this->grafo->getHorarioSalida().at(m) >= calendar_time.tm_hour) {
+                            cout << "Hola" << endl;
                             Gdk::Cairo::set_source_pixbuf(cr, this->image1, this->grafo->getNombresNodos().at(i).getPosX() + 65, this->grafo->getNombresNodos().at(i).getPosY());
                             cr->rectangle(this->grafo->getNombresNodos().at(i).getPosX() + 65, this->grafo->getNombresNodos().at(i).getPosY(), 40, 40);
                             cr->fill();
@@ -100,5 +101,8 @@ void Drawing::draw_text(const Cairo::RefPtr<Cairo::Context>& cr, int posX, int p
 void Drawing::updateDrawingArea() {
     this->queue_draw();
 }
+
+
+
 
 
