@@ -36,7 +36,7 @@ class Grafo {
 
 
 public:
-   static Grafo* getInstance();
+    static Grafo* getInstance();
     void agregarNodo(string elemento);
     void agregarArista(Tnodo &aux, Tnodo &aux2, Tarista &nuevo);
     void vaciarAristas(Tnodo &aux);
@@ -47,20 +47,30 @@ public:
     void mostrarGrafo();
     void mostrarAristas(string nodo);
     bool existe(string nodo);
-    
+
     vector<string> arista(string nodo);
-    vector<Pais> getNombresNodos();
 
     void setNombresNodos(vector<Pais> nombresNodos);
-
-    vector<PaisDestino> getPaisDes();
+    vector<Pais> getNombresNodos();
 
     void setPaisDes(vector<PaisDestino> paisDes);
+    vector<PaisDestino> getPaisDes();
 
+    void setHorarioSalida(vector<int> horarioSalida);
+    vector<int> getHorarioSalida();
+
+    void setHorarioLlegada(vector<int> horarioLlegada);
+    vector<int> getHorarioLlegada();
+
+    void horarios(vector<int> horarioSalida, vector<int> horarioLlegada);
 
 private:
     vector<Pais> nombresNodos;
     vector<PaisDestino> paisDes;
+
+    vector<int> horarioSalida;
+    vector<int> horarioLlegada;
+
     Grafo();
     Tnodo p; //puntero cabeza
     Tarista p2;

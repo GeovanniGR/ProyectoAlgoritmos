@@ -89,6 +89,10 @@ private:
     vector<int> horas;
     vector<Pais> nombrePais;
     vector<PaisDestino> PaisesDes;
+
+    vector<int> vectorHorarioDeSalida;
+    vector<int> vectHorarioDeLlegada;
+
     //aerolineas
     Aerolinea a1;
     Aerolinea a2;
@@ -105,8 +109,8 @@ private:
     PaisDestino pd2;
     PaisDestino pd3;
     PaisDestino pd4;
-    
-    Grafo* grafo=Grafo::getInstance();
+
+    Grafo* grafo = Grafo::getInstance();
 };
 
 #endif /* VENTANAESCOGERAEROLINEA_H */

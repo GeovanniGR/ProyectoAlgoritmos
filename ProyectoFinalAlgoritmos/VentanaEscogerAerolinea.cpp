@@ -102,7 +102,6 @@ void VentanaEscogerAerolinea::loadaerolineas() {
     vector<PaisDestino> paisDestino;
 
     //cargarGrafo
-    //cargarGrafo
     p.setPosX(4);
     p.setPosY(50);
     p1.setPosX(40);
@@ -318,8 +317,6 @@ void VentanaEscogerAerolinea::cargarItinerario() {
     horarios.push_back(it10);
 
     //vector de horas (salida --> llegada)
-    vector<int> vectorHorarioDeSalida;
-    vector<int> vectHorarioDeLlegada;
 
     vector<string> prueba;
     stringstream s;
@@ -332,6 +329,7 @@ void VentanaEscogerAerolinea::cargarItinerario() {
                 horarios.at(i).getPaisdestino().getNombrePais() == this->cbPaisDestino.get_active_text()) {
             vectorHorarioDeSalida = horarios.at(i).getHorariosSalida().mostrarCola();
             vectHorarioDeLlegada = horarios.at(i).getHorariosLlegada().mostrarCola();
+            this->grafo->horarios(vectorHorarioDeSalida, vectHorarioDeLlegada);
             for (int i = 0; i < vectorHorarioDeSalida.size(); i++) {
                 if (vectorHorarioDeSalida.at(i) >= calendar_time.tm_hour) {
                     s << vectorHorarioDeSalida.at(i) << ":00" << " ---> " << vectHorarioDeLlegada.at(i) << ":00";

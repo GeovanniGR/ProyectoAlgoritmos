@@ -16,7 +16,6 @@
 Grafo::Grafo() {
     p = NULL;
     p2 = NULL;
-
 }
 
 bool Grafo::isEmpty() {
@@ -242,6 +241,7 @@ bool Grafo::existe(string nodo) {
             aux = aux->sgte;
     }
 }
+
 vector<string> Grafo::arista(string nodo) {
     Tnodo aux;
     Tarista ar;
@@ -252,10 +252,10 @@ vector<string> Grafo::arista(string nodo) {
     while (aux != NULL) {
         if (aux->nombre == nodo) {
             if (aux->ady == NULL) {
-                
+
             } else {
-//                cout << "NODO|LISTA DE ADYACENCIA\n";
-//                cout << "   " << aux->nombre << "|";
+                //                cout << "NODO|LISTA DE ADYACENCIA\n";
+                //                cout << "   " << aux->nombre << "|";
                 ar = aux->ady;
 
                 while (ar != NULL) {
@@ -277,6 +277,24 @@ vector<PaisDestino> Grafo::getPaisDes() {
     return paisDes;
 }
 
+void Grafo::horarios(vector<int> horarioSalida, vector<int> horarioLlegada) {
+    this->horarioSalida = horarioSalida;
+    this->horarioLlegada = horarioLlegada;
+}
 
+void Grafo::setHorarioLlegada(vector<int> horarioLlegada) {
+    this->horarioLlegada = horarioLlegada;
+}
 
+void Grafo::setHorarioSalida(vector<int> horarioSalida) {
+    this->horarioSalida = horarioSalida;
+}
+
+vector<int> Grafo::getHorarioLlegada() {
+    return horarioLlegada;
+}
+
+vector<int> Grafo::getHorarioSalida() {
+    return horarioSalida;
+}
 Grafo* Grafo::instance = 0;

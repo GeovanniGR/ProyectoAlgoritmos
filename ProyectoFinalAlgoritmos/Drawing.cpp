@@ -53,11 +53,21 @@ bool Drawing::on_draw(const Cairo::RefPtr<Cairo::Context>& cr) {
                     }
                 }
 
-                Gdk::Cairo::set_source_pixbuf(cr, this->image1, this->grafo->getNombresNodos().at(i).getPosX() + 65, this->grafo->getNombresNodos().at(i).getPosY());
-                cr->rectangle(this->grafo->getNombresNodos().at(i).getPosX() + 65, this->grafo->getNombresNodos().at(i).getPosY(), 40, 40);
-                cr->fill();
-            }
+                time_t now = time(0);
+                tm calendar_time = *std::localtime(std::addressof(now));
+                for (int m = 0; m < this->grafo->getHorarioSalida().size(); m++) {
+                    for (int n = 0; n < this->grafo->getHorarioLlegada().size(); n++) {
+                        //                        if (this->grafo->getHorarioSalida().at(m) >= calendar_time.tm_hour) {
+                        if (this->grafo->getHorarioLlegada().at(n) <= calendar_time.tm_hour || this->grafo->getHorarioSalida().at(m) >= calendar_time.tm_hour) {
 
+                            Gdk::Cairo::set_source_pixbuf(cr, this->image1, this->grafo->getNombresNodos().at(i).getPosX() + 65, this->grafo->getNombresNodos().at(i).getPosY());
+                            cr->rectangle(this->grafo->getNombresNodos().at(i).getPosX() + 65, this->grafo->getNombresNodos().at(i).getPosY(), 40, 40);
+                            cr->fill();
+                        }
+                        //                        }
+                    }
+                }
+            }
         }
     }
 }
