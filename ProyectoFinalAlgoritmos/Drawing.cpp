@@ -12,66 +12,65 @@
  */
 
 #include "Drawing.h"
-#include <gtkmm.h>
-#include <glibmm-2.4/glibmm/refptr.h>
-#include <pangomm-1.4/pangomm/layout.h>
-#include "iostream"
 
 Drawing::Drawing() {
     this->set_size_request(800, 600);
     this->image = Gdk::Pixbuf::create_from_file("assets/airport.png");
     this->image1 = Gdk::Pixbuf::create_from_file("assets/airplane.png");
-}
-
-Drawing::Drawing(const Drawing& orig) {
-}
-
-Drawing::~Drawing() {
-}
+}//constructor
 
 bool Drawing::on_draw(const Cairo::RefPtr<Cairo::Context>& cr) {
     if (!this->grafo->getNombresNodos().empty()) {
-        //        cout<<"no esta vacio"<<endl;
+        dibujarNodoOrigen(cr);
         for (int i = 0; i < this->grafo->getNombresNodos().size(); i++) {
-            //                        cout<<this->grafo->getNombresNodos().at(i).getPosX();
-            //                        cout<<this->grafo->getNombresNodos().at(i).getPosY();
-            this->grafo->getNombresNodos().at(i).draw(cr);
-            cr->set_source_rgb(0, 0, 0);
-            this->draw_text(cr, this->grafo->getNombresNodos().at(i).getPosX(), this->grafo->getNombresNodos().at(i).getPosY(), this->grafo->getNombresNodos().at(i).getPais());
             if (this->grafo->existe(this->grafo->getNombresNodos().at(i).getPais())) {
-                vector<string> nombres = this->grafo->arista(this->grafo->getNombresNodos().at(i).getPais());
-                for (int j = 0; j < nombres.size(); j++) {
-                    for (int k = 0; k < this->grafo->getPaisDes().size(); k++) {
-                        if (nombres.at(j).compare(this->grafo->getPaisDes().at(k).getNombrePais()) == 0) {
-                            Gdk::Cairo::set_source_pixbuf(cr, this->image, this->grafo->getNombresNodos().at(i).getPosX() + 150, this->grafo->getNombresNodos().at(i).getPosY());
-                            cr->rectangle(this->grafo->getNombresNodos().at(i).getPosX() + 150, this->grafo->getNombresNodos().at(i).getPosY(), 40, 40);
-                            cr->fill();
-                            cr->set_source_rgb(0, 0, 0);
-                            this->draw_text(cr, this->grafo->getNombresNodos().at(i).getPosX() + 150, this->grafo->getNombresNodos().at(i).getPosY(), this->grafo->getPaisDes().at(k).getNombrePais());
-                        }
-                        //                        this->grafo->getPaisDes().at(k).draw(cr);
-                    }
-                }
-                cout << "Foe";
-                time_t now = time(0);
-                tm calendar_time = *std::localtime(std::addressof(now));
-                for (int m = 0; m < this->grafo->getHorarioSalida().size(); m++) {
-                    for (int n = 0; n < this->grafo->getHorarioLlegada().size(); n++) {
-                        cout<<calendar_time.tm_hour;
-                        if (this->grafo->getHorarioSalida().at(m) >= calendar_time.tm_hour) {
-                            //if (this->grafo->getHorarioLlegada().at(n) <= calendar_time.tm_hour && this->grafo->getHorarioSalida().at(m) >= calendar_time.tm_hour) {
-                            cout << "Hola" << endl;
-                            Gdk::Cairo::set_source_pixbuf(cr, this->image1, this->grafo->getNombresNodos().at(i).getPosX() + 65, this->grafo->getNombresNodos().at(i).getPosY());
-                            cr->rectangle(this->grafo->getNombresNodos().at(i).getPosX() + 65, this->grafo->getNombresNodos().at(i).getPosY(), 40, 40);
-                            cr->fill();
-                        }
-                        //                        }
-                    }
-                }
-            }
-        }
-    }
-}
+                dibujarNodoDestino(cr);
+            }//if
+        }//for
+    }//if
+    dibujarAvion(cr);
+}// on_draw
+
+void Drawing::dibujarNodoOrigen(const Cairo::RefPtr<Cairo::Context>& cr) {
+    for (int i = 0; i < this->grafo->getNombresNodos().size(); i++) {
+        this->grafo->getNombresNodos().at(i).draw(cr);
+        cr->set_source_rgb(0, 0, 0);
+        this->draw_text(cr, this->grafo->getNombresNodos().at(i).getPosX(), this->grafo->getNombresNodos().at(i).getPosY(), this->grafo->getNombresNodos().at(i).getPais());
+    }//for
+}//dibujar nodo
+
+void Drawing::dibujarAvion(const Cairo::RefPtr<Cairo::Context>& cr) {
+    for (int i = 0; i < this->grafo->getNombresNodos().size(); i++) {
+        time_t now = time(0);
+        tm calendar_time = *std::localtime(std::addressof(now));
+        for (int m = 0; m < this->grafo->getHorarioSalida().size(); m++) {
+            for (int n = 0; n < this->grafo->getHorarioLlegada().size(); n++) {
+                if (this->grafo->getHorarioSalida().at(m) >= calendar_time.tm_hour) {
+                    Gdk::Cairo::set_source_pixbuf(cr, this->image1, this->grafo->getNombresNodos().at(i).getPosX() + 65, this->grafo->getNombresNodos().at(i).getPosY());
+                    cr->rectangle(this->grafo->getNombresNodos().at(i).getPosX() + 65, this->grafo->getNombresNodos().at(i).getPosY(), 40, 40);
+                    cr->fill();
+                }//if
+            }//for
+        }//for
+    }//for
+}//dibujarAvion
+
+void Drawing::dibujarNodoDestino(const Cairo::RefPtr<Cairo::Context>& cr) {
+    for (int i = 0; i < this->grafo->getNombresNodos().size(); i++) {
+        vector<string> nombres = this->grafo->arista(this->grafo->getNombresNodos().at(i).getPais());
+        for (int j = 0; j < nombres.size(); j++) {
+            for (int k = 0; k < this->grafo->getPaisDes().size(); k++) {
+                if (nombres.at(j).compare(this->grafo->getPaisDes().at(k).getNombrePais()) == 0) {
+                    Gdk::Cairo::set_source_pixbuf(cr, this->image, this->grafo->getNombresNodos().at(i).getPosX() + 150, this->grafo->getNombresNodos().at(i).getPosY());
+                    cr->rectangle(this->grafo->getNombresNodos().at(i).getPosX() + 150, this->grafo->getNombresNodos().at(i).getPosY(), 40, 40);
+                    cr->fill();
+                    cr->set_source_rgb(0, 0, 0);
+                    this->draw_text(cr, this->grafo->getNombresNodos().at(i).getPosX() + 150, this->grafo->getNombresNodos().at(i).getPosY(), this->grafo->getPaisDes().at(k).getNombrePais());
+                }// if
+            }//for 
+        }//for
+    }//for
+}//dibujarNodos
 
 void Drawing::draw_text(const Cairo::RefPtr<Cairo::Context>& cr, int posX, int posY, string text) {
     Pango::FontDescription font;
@@ -100,7 +99,7 @@ void Drawing::draw_text(const Cairo::RefPtr<Cairo::Context>& cr, int posX, int p
 
 void Drawing::updateDrawingArea() {
     this->queue_draw();
-}
+}//updateDrawingArea
 
 
 
