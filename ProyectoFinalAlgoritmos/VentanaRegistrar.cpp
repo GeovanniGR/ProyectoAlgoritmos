@@ -41,7 +41,7 @@ void VentanaRegistrar::init() {
     this->fixed.put(this->lblGenero, 20, 300);
     this->fixed.put(this->entryGenero, 160, 295);
 
-    this->lblNacionalidad.set_label("Nacionalidad: ");
+    this->lblNacionalidad.set_label("Pais Origen: ");
     this->fixed.put(this->lblNacionalidad, 20, 400);
     this->fixed.put(this->entryNacionalidad, 160, 395);
 

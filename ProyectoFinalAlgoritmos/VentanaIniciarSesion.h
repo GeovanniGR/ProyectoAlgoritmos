@@ -17,7 +17,7 @@
 #include "gtkmm.h"
 #include "RegistrarUsuarioBusiness.h"
 #include "VentanaEscogerAerolinea.h"
-
+#include "Usuario.h"
 using namespace std;
 
 class VentanaIniciarSesion : public Gtk::Window {
@@ -45,6 +45,7 @@ public:
     VentanaEscogerAerolinea* ventanaEscogerAerolineas;
 
 private:
+    Usuario* usuario;
     RegistrarUsuarioBusiness* registrarUsuarioBusiness;
 
 };

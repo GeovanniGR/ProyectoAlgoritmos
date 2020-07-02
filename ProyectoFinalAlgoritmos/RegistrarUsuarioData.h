@@ -21,6 +21,7 @@ public:
     RegistrarUsuarioData();
     bool encotrarUsuario(Usuario* usuario);
     bool registrarUsuario(Usuario* usuario);
+    Usuario* devolverUsuario(Usuario* usuario);
     
 private:
     vector<Usuario*> vectorUsuario;

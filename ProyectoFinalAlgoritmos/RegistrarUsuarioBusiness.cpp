@@ -34,4 +34,9 @@ bool RegistrarUsuarioBusiness::registrarUsuario(Usuario* usuario) {
 bool RegistrarUsuarioBusiness::encotrarUsuario(Usuario* usuario) {
     return this->registrarUsuarioData.encotrarUsuario(usuario);
 }//encotrarUsuario
+
+Usuario* RegistrarUsuarioBusiness::devolverUsuario(Usuario* usuario) {
+    return this->registrarUsuarioData.devolverUsuario(usuario);
+}//encotrarUsuario
+
 RegistrarUsuarioBusiness* RegistrarUsuarioBusiness::instance = 0;

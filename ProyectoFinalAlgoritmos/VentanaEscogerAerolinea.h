@@ -25,10 +25,10 @@
 #include "ListaAerolineas.h"
 #include "Aerolinea_1.h"
 #include "Grafo.h"
-
+#include "Usuario.h"
 class VentanaEscogerAerolinea : public Gtk::Window {
 public:
-    VentanaEscogerAerolinea();
+    VentanaEscogerAerolinea(Usuario* usuario);
     void init();
     void onButtonClickedUp();
     void onButtonClickedDown();
@@ -111,6 +111,9 @@ private:
     PaisDestino pd2;
     PaisDestino pd3;
     PaisDestino pd4;
+
+    Usuario* usuario;
+    string nacionalidad;
 
     Grafo* grafo = Grafo::getInstance();
 };

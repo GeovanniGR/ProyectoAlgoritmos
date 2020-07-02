@@ -16,8 +16,9 @@
 PaisDestino::PaisDestino() {
 }//constructor
 
-PaisDestino::PaisDestino(string nombrePais) {
+PaisDestino::PaisDestino(string nombrePais,string nacionalidadMigracion) {
     this->nombrePais = nombrePais;
+    this->nacionalidadMigracion=nacionalidadMigracion;
     this->image = Gdk::Pixbuf::create_from_file("assets/airport.png");
     this->posX = 0;
     this->posY = 0;
@@ -53,3 +54,11 @@ void PaisDestino::setNombrePais(string nombrePais) {
 string PaisDestino::getNombrePais() {
     return this->nombrePais;
 }//getNombrePais
+
+string PaisDestino::getNacionalidadMigracion() const {
+    return nacionalidadMigracion;
+}//getNacionalidadMigracion
+
+void PaisDestino::setNacionalidadMigracion(string nacionalidadMigracion) {
+    this->nacionalidadMigracion = nacionalidadMigracion;
+}//setNacionalidadMigracion
