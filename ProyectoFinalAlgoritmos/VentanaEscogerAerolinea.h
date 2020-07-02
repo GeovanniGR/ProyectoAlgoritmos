@@ -39,8 +39,10 @@ public:
     void llenarComboPaisOrigen();
     void llenarComboPaisDestino();
     void clear();
+    void compararHoras();
     void cargarItinerario();
-
+    void llenarColasItinerario();
+    void cargarHorarios();
 protected:
 
     class ModelColumns : public Gtk::TreeModel::ColumnRecord {
@@ -89,6 +91,10 @@ private:
     vector<int> horas;
     vector<Pais> nombrePais;
     vector<PaisDestino> PaisesDes;
+
+    vector<int> vectorHorarioDeSalida;
+    vector<int> vectHorarioDeLlegada;
+
     //aerolineas
     Aerolinea a1;
     Aerolinea a2;
@@ -105,7 +111,7 @@ private:
     PaisDestino pd2;
     PaisDestino pd3;
     PaisDestino pd4;
-    Usuario* usuario;
+  Usuario* usuario;
     string nacionalidad;
     Grafo* grafo=Grafo::getInstance();
 };

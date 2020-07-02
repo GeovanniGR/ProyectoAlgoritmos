@@ -20,7 +20,7 @@ using namespace std;
 
 class PaisDestino {
 public:
-   PaisDestino();
+    PaisDestino();
 
     PaisDestino(string nombrePais, string nacionalidadMigracion);
     void draw(const Cairo::RefPtr<Cairo::Context>& cr);
@@ -38,6 +38,10 @@ public:
 
     void setNacionalidadMigracion(string nacionalidadMigracion);
 
+
+    string getNacionalidadMigracion() const;
+
+    void setNacionalidadMigracion(string nacionalidadMigracion);
 
 private:
     string nombrePais;

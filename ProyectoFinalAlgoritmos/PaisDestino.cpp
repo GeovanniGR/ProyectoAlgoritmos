@@ -61,5 +61,4 @@ string PaisDestino::getNacionalidadMigracion() const {
 
 void PaisDestino::setNacionalidadMigracion(string nacionalidadMigracion) {
     this->nacionalidadMigracion = nacionalidadMigracion;
-}//setNacionalidadMigracion
-
+}

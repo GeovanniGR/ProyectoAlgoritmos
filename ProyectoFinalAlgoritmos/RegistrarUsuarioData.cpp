@@ -39,4 +39,3 @@ Usuario* RegistrarUsuarioData::devolverUsuario(Usuario* usuario) {
     }//for
 //    return false;
 }
-
