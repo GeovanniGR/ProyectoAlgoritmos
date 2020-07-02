@@ -26,6 +26,7 @@
 #include "Aerolinea_1.h"
 #include "Grafo.h"
 #include "Usuario.h"
+
 class VentanaEscogerAerolinea : public Gtk::Window {
 public:
     VentanaEscogerAerolinea(Usuario* usuario);
@@ -40,9 +41,9 @@ public:
     void llenarComboPaisDestino();
     void clear();
     void compararHoras();
-    void cargarItinerario();
     void llenarColasItinerario();
     void cargarHorarios();
+    void cargarItinerario();
 protected:
 
     class ModelColumns : public Gtk::TreeModel::ColumnRecord {
@@ -111,9 +112,9 @@ private:
     PaisDestino pd2;
     PaisDestino pd3;
     PaisDestino pd4;
-  Usuario* usuario;
+    Usuario* usuario;
     string nacionalidad;
-    Grafo* grafo=Grafo::getInstance();
+    Grafo* grafo = Grafo::getInstance();
 };
 
 #endif /* VENTANAESCOGERAEROLINEA_H */

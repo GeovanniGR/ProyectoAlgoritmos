@@ -61,7 +61,7 @@ void VentanaIniciarSesion::iniciarSesion() {
                 string nombre = this->entryNombre.get_text().raw();
                 int numPasaporte = stoi(this->entryNumeroPasaporte.get_text().raw());
 
-<Usuario* usuario = new Usuario(nombre, numPasaporte);
+                Usuario* usuario = new Usuario(nombre, numPasaporte);
                 this->usuario = new Usuario(nombre, numPasaporte);
                 if (this->registrarUsuarioBusiness->encotrarUsuario(usuario)) {
                     accionIniciarSesion(this->registrarUsuarioBusiness->devolverUsuario(usuario));

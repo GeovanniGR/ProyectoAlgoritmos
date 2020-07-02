@@ -16,6 +16,7 @@
 #include <iostream>
 #include <string>
 #include <gtkmm.h>
+#include "string.h"
 using namespace std;
 
 class PaisDestino {
@@ -28,18 +29,13 @@ public:
     string getNombrePais();
     void setNombrePais(string nombrePais);
     int getPosX();
- 
+
     void setPosX(int posX);
 
     int getPosY();
 
     void setPosY(int posY);
-    string getNacionalidadMigracion() const;
-
-    void setNacionalidadMigracion(string nacionalidadMigracion);
-
-
-    string getNacionalidadMigracion() const;
+    string getNacionalidadMigracion();
 
     void setNacionalidadMigracion(string nacionalidadMigracion);
 
