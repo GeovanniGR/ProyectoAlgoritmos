@@ -43,7 +43,7 @@ void VentanaIniciarSesion::accionIniciarSesion(Usuario* usuario1) {
     if (this->ventanaEscogerAerolineas != 0)
         return;
 
-    this->ventanaEscogerAerolineas = new VentanaEscogerAerolinea(/*usuario1*/);
+    this->ventanaEscogerAerolineas = new VentanaEscogerAerolinea(usuario1);
     this->ventanaEscogerAerolineas->signal_hide().connect(sigc::mem_fun(*this, &VentanaIniciarSesion::cerrarVentanaAerolineas));
     this->ventanaEscogerAerolineas->show();
 }//accionIniciarSesion
@@ -62,10 +62,10 @@ void VentanaIniciarSesion::iniciarSesion() {
                 int numPasaporte = stoi(this->entryNumeroPasaporte.get_text().raw());
 
                 Usuario* usuario = new Usuario(nombre, numPasaporte);
-
+                this->usuario = new Usuario(nombre, numPasaporte);
                 if (this->registrarUsuarioBusiness->encotrarUsuario(usuario)) {
 
-                    accionIniciarSesion(usuario);
+                    accionIniciarSesion(this->registrarUsuarioBusiness->devolverUsuario(usuario));
                     this->entryNombre.set_text("");
                     this->entryNumeroPasaporte.set_text("");
                 }//if 

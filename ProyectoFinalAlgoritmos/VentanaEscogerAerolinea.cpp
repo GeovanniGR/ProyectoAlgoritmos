@@ -21,9 +21,10 @@
 #include  <chrono>
 #include <ctime>
 
-VentanaEscogerAerolinea::VentanaEscogerAerolinea() {
+VentanaEscogerAerolinea::VentanaEscogerAerolinea(Usuario* usuario) {
     this->set_size_request(800, 600);
     this->set_title("Aerolineas Disponibles");
+    this->usuario = usuario;
     loadaerolineas();
     init();
 }//Constructor
@@ -81,11 +82,11 @@ void VentanaEscogerAerolinea::loadaerolineas() {
     this->p2 = Pais("Emiratos");
     this->p3 = Pais("Costa Rica");
 
-    //paisesDestino
-    this->pd1 = PaisDestino("Mexico");
-    this->pd2 = PaisDestino("Colombia");
-    this->pd3 = PaisDestino("Emiratos");
-    this->pd4 = PaisDestino("Costa Rica");
+     //paisesDestino
+    this->pd1 = PaisDestino("Mexico","Guatemala");
+    this->pd2 = PaisDestino("Colombia","Venezuela");
+    this->pd3 = PaisDestino("Emiratos","Inglaterra");
+    this->pd4 = PaisDestino("Costa Rica","Colombia");
     pd1.setPosX(4);
     pd1.setPosY(50);
     pd2.setPosX(40);
@@ -202,7 +203,7 @@ void VentanaEscogerAerolinea::compararHoras() {
     time_t now = time(0);
     tm calendar_time = *std::localtime(std::addressof(now));
     vector<string> prueba;
-    
+
     for (int i = 0; i < vectorHorarioDeSalida.size(); i++) {
         if (vectorHorarioDeSalida.at(i) >= calendar_time.tm_hour) {
             s << vectorHorarioDeSalida.at(i) << ":00" << " ---> " << vectHorarioDeLlegada.at(i) << ":00";
@@ -210,7 +211,7 @@ void VentanaEscogerAerolinea::compararHoras() {
             s.str("");
         }//if
     }//for
-    
+
     for (int i = 0; i < prueba.size(); i++) {
         Gtk::TreeModel::Row row = *(m_refTreeModel->append());
         row[m_Columns.m_col_salida] = prueba.at(i);
@@ -284,11 +285,17 @@ void VentanaEscogerAerolinea::llenarComboPaisDestino() {
 
 void VentanaEscogerAerolinea::onButtonClickedConfirmarVuelo() {
     //como obtener los datos para el grafo
-    this->grafo->insertarArista(this->cbPaisOrigen.get_active_text(), this->cbPaisDestino.get_active_text());
-    Glib::RefPtr<Gtk::TreeSelection> selection = this->m_TreeView.get_selection();
-    Gtk::TreeModel::iterator selectedRow = selection->get_selected();
-    Gtk::TreeModel::Row row = *selectedRow;
-    Glib::ustring port = row.get_value(m_Columns.m_col_salida);
+    if (this->usuario->getNacionalidad() != this->nacionalidad) {
+        this->grafo->insertarArista(this->cbPaisOrigen.get_active_text(), this->cbPaisDestino.get_active_text());
+        Glib::RefPtr<Gtk::TreeSelection> selection = this->m_TreeView.get_selection();
+        Gtk::TreeModel::iterator selectedRow = selection->get_selected();
+        Gtk::TreeModel::Row row = *selectedRow;
+        Glib::ustring port = row.get_value(m_Columns.m_col_salida);
+    } else {
+        Gtk::MessageDialog dialogo(*this, "Su nacionalidad le prohibe la entrada al pais destino", false, Gtk::MESSAGE_QUESTION);
+        dialogo.set_secondary_text("");
+        dialogo.run();
+    }
 }
 
 void VentanaEscogerAerolinea::onButtonClickedReestablecer() {
@@ -430,6 +437,7 @@ void VentanaEscogerAerolinea::llenarColasItinerario() {
                 horarios.at(i).getPaisdestino().getNombrePais() == this->cbPaisDestino.get_active_text()) {
             vectorHorarioDeSalida = horarios.at(i).getHorariosSalida().mostrarCola();
             vectHorarioDeLlegada = horarios.at(i).getHorariosLlegada().mostrarCola();
+            this->nacionalidad = horarios.at(i).getPaisdestino().getNacionalidadMigracion();
             this->grafo->horarios(vectorHorarioDeSalida, vectHorarioDeLlegada);
         }
     }

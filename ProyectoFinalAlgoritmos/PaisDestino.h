@@ -20,9 +20,9 @@ using namespace std;
 
 class PaisDestino {
 public:
-   PaisDestino();
+    PaisDestino();
 
-    PaisDestino(string nombrePais);
+    PaisDestino(string nombrePais, string nacionalidadMigracion);
     void draw(const Cairo::RefPtr<Cairo::Context>& cr);
     //setter&getter
     string getNombrePais();
@@ -35,8 +35,13 @@ public:
 
     void setPosY(int posY);
 
+    string getNacionalidadMigracion() const;
+
+    void setNacionalidadMigracion(string nacionalidadMigracion);
+
 private:
     string nombrePais;
+    string nacionalidadMigracion;
     Glib::RefPtr<Gdk::Pixbuf> image;
     int posX;
     int posY;

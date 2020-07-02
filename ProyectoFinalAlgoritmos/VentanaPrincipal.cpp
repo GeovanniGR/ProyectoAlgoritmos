@@ -15,7 +15,7 @@
 
 VentanaPrincipal::VentanaPrincipal() {
     this->set_size_request(800, 600);
-    this->set_title("Hooters");
+    this->set_title("Connection Travel");
     init();
 }//Construcotr
 
