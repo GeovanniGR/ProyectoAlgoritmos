@@ -32,12 +32,36 @@ int main(int argc, char** argv) {
             Gtk::Application::create(argc, argv, "titulo");
     VentanaPrincipal window;
     return app->run(window);
-//    Grafo* g = Grafo::getInstance();
-//    g->agregarNodo("Hola1");
-//    g->agregarNodo("Hola2");
-//    g->agregarNodo("Hola3");
-//    g->agregarNodo("Hola4");
-//    g->agregarNodo("Hola5");
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //    Grafo* g = Grafo::getInstance();
+    //    g->agregarNodo("Hola1");
+    //    g->agregarNodo("Hola2");
+    //    g->agregarNodo("Hola3");
+    //    g->agregarNodo("Hola4");
+    //    g->agregarNodo("Hola5");
 
     //    g.mostrarGrafo();
     //    cout << endl;
@@ -45,7 +69,7 @@ int main(int argc, char** argv) {
     //    g->insertarArista("Hola1", "Hola2");
     //    cout<<g->existe("Hola1")<<endl;
     //    g->mostrarAristas("Hola1");
-//    return 0;
+    //    return 0;
     //    g.insertarArista("Hola3", "Hola1");
     //    g.insertarArista("Hola3", "Hola2");
     //    cout << endl;

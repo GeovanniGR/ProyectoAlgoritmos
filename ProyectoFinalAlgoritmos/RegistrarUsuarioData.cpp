@@ -30,3 +30,13 @@ bool RegistrarUsuarioData::encotrarUsuario(Usuario* usuario) {
     }//for
     return false;
 }//encotrarUsuario
+
+Usuario* RegistrarUsuarioData::devolverUsuario(Usuario* usuario) {
+    for (int i = 0; i < this->vectorUsuario.size(); i++) {
+        if (vectorUsuario.at(i)->getNumPasaporte() == usuario->getNumPasaporte()) {
+            return vectorUsuario.at(i);
+        }//if
+    }//for
+//    return false;
+}
+

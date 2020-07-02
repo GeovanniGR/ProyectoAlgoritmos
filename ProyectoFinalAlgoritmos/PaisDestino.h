@@ -22,21 +22,26 @@ class PaisDestino {
 public:
    PaisDestino();
 
-    PaisDestino(string nombrePais);
+    PaisDestino(string nombrePais, string nacionalidadMigracion);
     void draw(const Cairo::RefPtr<Cairo::Context>& cr);
     //setter&getter
     string getNombrePais();
     void setNombrePais(string nombrePais);
     int getPosX();
-
+ 
     void setPosX(int posX);
 
     int getPosY();
 
     void setPosY(int posY);
+    string getNacionalidadMigracion() const;
+
+    void setNacionalidadMigracion(string nacionalidadMigracion);
+
 
 private:
     string nombrePais;
+    string nacionalidadMigracion;
     Glib::RefPtr<Gdk::Pixbuf> image;
     int posX;
     int posY;

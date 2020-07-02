@@ -21,9 +21,11 @@
 #include  <chrono>
 #include <ctime>
 
-VentanaEscogerAerolinea::VentanaEscogerAerolinea() {
+VentanaEscogerAerolinea::VentanaEscogerAerolinea(Usuario* usuario) {
     this->set_size_request(800, 600);
     this->set_title("Aerolineas Disponibles");
+    cout<<usuario->toString();
+    this->usuario=usuario;
     loadaerolineas();
     init();
 }//Constructor
@@ -82,10 +84,10 @@ void VentanaEscogerAerolinea::loadaerolineas() {
     this->p3 = Pais("Costa Rica");
 
     //paisesDestino
-    this->pd1 = PaisDestino("Mexico");
-    this->pd2 = PaisDestino("Colombia");
-    this->pd3 = PaisDestino("Emiratos");
-    this->pd4 = PaisDestino("Costa Rica");
+    this->pd1 = PaisDestino("Mexico","Guatemala");
+    this->pd2 = PaisDestino("Colombia","Venezuela");
+    this->pd3 = PaisDestino("Emiratos","Inglaterra");
+    this->pd4 = PaisDestino("Costa Rica","Colombia");
     pd1.setPosX(4);
     pd1.setPosY(50);
     pd2.setPosX(40);
@@ -195,7 +197,7 @@ void VentanaEscogerAerolinea::cargarItinerario() {
     Cola colaLlegada;
 
     //Itinerario Avianca
-    colaSalida.encolar(7);
+    colaSalida.encolar(15);
     colaSalida.encolar(0);
     colaLlegada.encolar(5);
     colaLlegada.encolar(3);
@@ -218,7 +220,7 @@ void VentanaEscogerAerolinea::cargarItinerario() {
 
     //Itinerario "CopaAirlines"
     colaSalida.encolar(0);
-    colaSalida.encolar(9);
+    colaSalida.encolar(16);
     colaLlegada.encolar(1);
     colaLlegada.encolar(7);
     Itinerario it3(a2, p3, pd2);
@@ -228,10 +230,10 @@ void VentanaEscogerAerolinea::cargarItinerario() {
     colaSalida.destruirCola();
 
     //Itinerario "CopaAirlines"
-    colaSalida.encolar(0);
+    colaSalida.encolar(2);
     colaSalida.encolar(16);
     colaLlegada.encolar(1);
-    colaLlegada.encolar(7);
+    colaLlegada.encolar(9);
     Itinerario it4(a2, p2, pd1);
     it4.setHorariosSalida(colaSalida);
     it4.setHorariosLlegada(colaLlegada);
@@ -330,10 +332,12 @@ void VentanaEscogerAerolinea::cargarItinerario() {
         if (horarios.at(i).getAerolinea().getNombre() == this->etAerolinea.get_text().raw() &&
                 horarios.at(i).getPaisorigen().getPais() == this->cbPaisOrigen.get_active_text() &&
                 horarios.at(i).getPaisdestino().getNombrePais() == this->cbPaisDestino.get_active_text()) {
+            this->nacionalidad=horarios.at(i).getPaisdestino().getNacionalidadMigracion();
+            cout<<this->nacionalidad;
             vectorHorarioDeSalida = horarios.at(i).getHorariosSalida().mostrarCola();
             vectHorarioDeLlegada = horarios.at(i).getHorariosLlegada().mostrarCola();
             for (int i = 0; i < vectorHorarioDeSalida.size(); i++) {
-                if (vectorHorarioDeSalida.at(i) >= calendar_time.tm_hour) {
+                if (vectorHorarioDeSalida.at(i) >= calendar_time.tm_hour || vectorHorarioDeSalida.at(i) == 0) {
                     s << vectorHorarioDeSalida.at(i) << ":00" << " ---> " << vectHorarioDeLlegada.at(i) << ":00";
                     prueba.push_back(s.str());
                     s.str("");
@@ -419,14 +423,21 @@ void VentanaEscogerAerolinea::llenarComboPaisDestino() {
 }//llenarComboBoxDestino
 
 void VentanaEscogerAerolinea::onButtonClickedConfirmarVuelo() {
-    //como obtener los datos para el grafo
+    cout<<this->nacionalidad;
+    cout<<this->usuario->toString();
+    if(this->usuario->getNacionalidad()!= this->nacionalidad){
+        //como obtener los datos para el grafo
     this->grafo->insertarArista(this->cbPaisOrigen.get_active_text(), this->cbPaisDestino.get_active_text());
     Glib::RefPtr<Gtk::TreeSelection> selection = this->m_TreeView.get_selection();
     Gtk::TreeModel::iterator selectedRow = selection->get_selected();
     Gtk::TreeModel::Row row = *selectedRow;
     Glib::ustring port = row.get_value(m_Columns.m_col_salida);
-
-    this->grafo->mostrarGrafo();
+//    this->grafo->mostrarGrafo();
+    }else{
+        Gtk::MessageDialog dialogo(*this, "Su nacionalidad le prohibe la entrada al pais destino", false, Gtk::MESSAGE_QUESTION);
+        dialogo.set_secondary_text("");
+        dialogo.run();
+    }   
 }
 
 void VentanaEscogerAerolinea::onButtonClickedReestablecer() {
