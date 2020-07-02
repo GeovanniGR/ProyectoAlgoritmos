@@ -111,11 +111,9 @@ private:
     PaisDestino pd2;
     PaisDestino pd3;
     PaisDestino pd4;
-
-    Usuario* usuario;
+  Usuario* usuario;
     string nacionalidad;
-
-    Grafo* grafo = Grafo::getInstance();
+    Grafo* grafo=Grafo::getInstance();
 };
 
 #endif /* VENTANAESCOGERAEROLINEA_H */

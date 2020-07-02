@@ -24,7 +24,7 @@
 VentanaEscogerAerolinea::VentanaEscogerAerolinea(Usuario* usuario) {
     this->set_size_request(800, 600);
     this->set_title("Aerolineas Disponibles");
-    this->usuario = usuario;
+    this->usuario=usuario;
     loadaerolineas();
     init();
 }//Constructor
@@ -82,7 +82,6 @@ void VentanaEscogerAerolinea::loadaerolineas() {
     this->p2 = Pais("Emiratos");
     this->p3 = Pais("Costa Rica");
 
-     //paisesDestino
     this->pd1 = PaisDestino("Mexico","Guatemala");
     this->pd2 = PaisDestino("Colombia","Venezuela");
     this->pd3 = PaisDestino("Emiratos","Inglaterra");
@@ -309,7 +308,7 @@ void VentanaEscogerAerolinea::llenarColasItinerario() {
     Cola colaLlegada;
 
     //Itinerario Avianca
-    colaSalida.encolar(7);
+    colaSalida.encolar(15);
     colaSalida.encolar(0);
     colaLlegada.encolar(5);
     colaLlegada.encolar(3);
@@ -332,7 +331,7 @@ void VentanaEscogerAerolinea::llenarColasItinerario() {
 
     //Itinerario "CopaAirlines"
     colaSalida.encolar(0);
-    colaSalida.encolar(9);
+    colaSalida.encolar(16);
     colaLlegada.encolar(1);
     colaLlegada.encolar(7);
     Itinerario it3(a2, p3, pd2);
@@ -342,10 +341,10 @@ void VentanaEscogerAerolinea::llenarColasItinerario() {
     colaSalida.destruirCola();
 
     //Itinerario "CopaAirlines"
-    colaSalida.encolar(0);
+    colaSalida.encolar(2);
     colaSalida.encolar(16);
     colaLlegada.encolar(1);
-    colaLlegada.encolar(7);
+    colaLlegada.encolar(9);
     Itinerario it4(a2, p2, pd1);
     it4.setHorariosSalida(colaSalida);
     it4.setHorariosLlegada(colaLlegada);
@@ -435,8 +434,119 @@ void VentanaEscogerAerolinea::llenarColasItinerario() {
         if (horarios.at(i).getAerolinea().getNombre() == this->etAerolinea.get_text().raw() &&
                 horarios.at(i).getPaisorigen().getPais() == this->cbPaisOrigen.get_active_text() &&
                 horarios.at(i).getPaisdestino().getNombrePais() == this->cbPaisDestino.get_active_text()) {
+            this->nacionalidad=horarios.at(i).getPaisdestino().getNacionalidadMigracion();
+            cout<<this->nacionalidad;
             vectorHorarioDeSalida = horarios.at(i).getHorariosSalida().mostrarCola();
             vectHorarioDeLlegada = horarios.at(i).getHorariosLlegada().mostrarCola();
+ for (int i = 0; i < vectorHorarioDeSalida.size(); i++) {
+                if (vectorHorarioDeSalida.at(i) >= calendar_time.tm_hour || vectorHorarioDeSalida.at(i) == 0) {
+                    s << vectorHorarioDeSalida.at(i) << ":00" << " ---> " << vectHorarioDeLlegada.at(i) << ":00";
+                    prueba.push_back(s.str());
+                    s.str("");
+                }//if
+            }//for
+
+            for (int i = 0; i < prueba.size(); i++) {
+                Gtk::TreeModel::Row row = *(m_refTreeModel->append());
+                row[m_Columns.m_col_salida] = prueba.at(i);
+            }//for
+        }//if
+    }//for
+
+    m_TreeView.append_column("HORARIOS", m_Columns.m_col_salida);
+}//cargarItinerario
+
+void VentanaEscogerAerolinea::clear() {
+    this->m_refTreeModel.clear();
+}//clear
+
+void VentanaEscogerAerolinea::llenarComboPaisOrigen() {
+    if (this->etAerolinea.get_text().raw() == a1.getNombre()) {
+        for (int i = 0; i < a1.getPaisOrigen().size(); i++) {
+            this->cbPaisOrigen.append(a1.getPaisOrigen().at(i).getPais());
+        }//for
+    }//if
+
+    if (this->etAerolinea.get_text().raw() == a2.getNombre()) {
+        for (int i = 0; i < a2.getPaisOrigen().size(); i++) {
+            this->cbPaisOrigen.append(a2.getPaisOrigen().at(i).getPais());
+        }//for
+    }//if
+
+    if (this->etAerolinea.get_text().raw() == a3.getNombre()) {
+        for (int i = 0; i < a3.getPaisOrigen().size(); i++) {
+            this->cbPaisOrigen.append(a3.getPaisOrigen().at(i).getPais());
+        }//for
+    }//if
+
+    if (this->etAerolinea.get_text().raw() == a4.getNombre()) {
+        for (int i = 0; i < a4.getPaisOrigen().size(); i++) {
+            this->cbPaisOrigen.append(a4.getPaisOrigen().at(i).getPais());
+        }//for
+    }//if
+
+    if (this->etAerolinea.get_text().raw() == a5.getNombre()) {
+        for (int i = 0; i < a5.getPaisOrigen().size(); i++) {
+            this->cbPaisOrigen.append(a5.getPaisOrigen().at(i).getPais());
+        }//for
+    }//if
+}//llenarComBoxOrigen
+
+void VentanaEscogerAerolinea::llenarComboPaisDestino() {
+    if (this->etAerolinea.get_text().raw() == a1.getNombre()) {
+        for (int i = 0; i < a1.getPaisDestino().size(); i++) {
+            this->cbPaisDestino.append(a1.getPaisDestino().at(i).getNombrePais());
+        }//for
+    }//if
+
+    if (this->etAerolinea.get_text().raw() == a2.getNombre()) {
+        for (int i = 0; i < a2.getPaisDestino().size(); i++) {
+            this->cbPaisDestino.append(a2.getPaisDestino().at(i).getNombrePais());
+        }//for
+    }//if
+
+    if (this->etAerolinea.get_text().raw() == a3.getNombre()) {
+        for (int i = 0; i < a3.getPaisDestino().size(); i++) {
+            this->cbPaisDestino.append(a3.getPaisDestino().at(i).getNombrePais());
+        }//for
+    }//if
+
+    if (this->etAerolinea.get_text().raw() == a4.getNombre()) {
+        for (int i = 0; i < a4.getPaisDestino().size(); i++) {
+            this->cbPaisDestino.append(a4.getPaisDestino().at(i).getNombrePais());
+        }//for
+    }//if
+
+    if (this->etAerolinea.get_text().raw() == a5.getNombre()) {
+        for (int i = 0; i < a5.getPaisDestino().size(); i++) {
+            this->cbPaisDestino.append(a5.getPaisDestino().at(i).getNombrePais());
+        }//for
+    }//if
+}//llenarComboBoxDestino
+
+void VentanaEscogerAerolinea::onButtonClickedConfirmarVuelo() {
+    cout<<this->nacionalidad;
+    cout<<this->usuario->toString();
+    if(this->usuario->getNacionalidad()!= this->nacionalidad){
+        //como obtener los datos para el grafo
+    this->grafo->insertarArista(this->cbPaisOrigen.get_active_text(), this->cbPaisDestino.get_active_text());
+    Glib::RefPtr<Gtk::TreeSelection> selection = this->m_TreeView.get_selection();
+    Gtk::TreeModel::iterator selectedRow = selection->get_selected();
+    Gtk::TreeModel::Row row = *selectedRow;
+    Glib::ustring port = row.get_value(m_Columns.m_col_salida);
+//    this->grafo->mostrarGrafo();
+    }else{
+        Gtk::MessageDialog dialogo(*this, "Su nacionalidad le prohibe la entrada al pais destino", false, Gtk::MESSAGE_QUESTION);
+        dialogo.set_secondary_text("");
+        dialogo.run();
+    }   
+}
+
+void VentanaEscogerAerolinea::onButtonClickedReestablecer() {
+    this->cbPaisDestino.remove_all();
+    this->cbPaisOrigen.remove_all();
+    this->m_TreeView.remove_all_columns();
+
             this->nacionalidad = horarios.at(i).getPaisdestino().getNacionalidadMigracion();
             this->grafo->horarios(vectorHorarioDeSalida, vectHorarioDeLlegada);
         }
