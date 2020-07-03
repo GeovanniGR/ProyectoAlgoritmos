@@ -45,9 +45,27 @@ void VentanaPrincipal::init() {
     this->menuBar.append(this->menuGestionTransito);
     this->menuGestionTransito.set_submenu(this->subMenuTransito);
     
+    this->menuAdministrador.set_label("Administracion");
+    this->ventanaAdministrador = 0;
+    this->menuAdministrador.signal_activate().connect(sigc::mem_fun(*this, &VentanaPrincipal::abrirVentanaAdministrador));
+    this->subMenuAdministrador.append(this->menuAdministrador);
+
+    this->menuGestionAdministrador.set_label("Administrador");
+    this->menuBar.append(this->menuGestionAdministrador);
+    this->menuGestionAdministrador.set_submenu(this->subMenuAdministrador);
+    
     this->add(this->fixed);
     this->show_all_children();
 }//init
+
+
+void VentanaPrincipal::abrirVentanaAdministrador() {
+   if (this->ventanaAdministrador != 0)
+        return;
+    this->ventanaAdministrador = new VentanaLogAdmin();
+    this->ventanaAdministrador->signal_hide().connect(sigc::mem_fun(*this, &VentanaPrincipal::aboutWinClose));
+    this->ventanaAdministrador->show();
+}
 
 void VentanaPrincipal::abrirVentanaTransito() {
  if (this->ventanaTransito != 0)
@@ -77,4 +95,5 @@ void VentanaPrincipal::aboutWinClose() {
     this->ventanaIniciarSesion = 0;
     this->ventanaRegistrar = 0;
     this->ventanaTransito = 0;
+    this->ventanaAdministrador=0;
 }//aboutWinClose

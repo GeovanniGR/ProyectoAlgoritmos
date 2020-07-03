@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Administrador.o \
 	${OBJECTDIR}/Aerolinea_1.o \
 	${OBJECTDIR}/Cola.o \
 	${OBJECTDIR}/Drawing.o \
@@ -47,8 +48,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/RegistrarUsuarioData.o \
 	${OBJECTDIR}/Usuario.o \
 	${OBJECTDIR}/Validar.o \
+	${OBJECTDIR}/VentanaAdministracion.o \
 	${OBJECTDIR}/VentanaEscogerAerolinea.o \
 	${OBJECTDIR}/VentanaIniciarSesion.o \
+	${OBJECTDIR}/VentanaLogAdmin.o \
 	${OBJECTDIR}/VentanaPrincipal.o \
 	${OBJECTDIR}/VentanaRegistrar.o \
 	${OBJECTDIR}/VentanaTransito.o \
@@ -78,6 +81,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/proyectofinalalgoritmos: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/proyectofinalalgoritmos ${OBJECTFILES} ${LDLIBSOPTIONS} `pkg-config gtkmm-3.0 --libs`
+
+${OBJECTDIR}/Administrador.o: Administrador.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Administrador.o Administrador.cpp
 
 ${OBJECTDIR}/Aerolinea_1.o: Aerolinea_1.cpp
 	${MKDIR} -p ${OBJECTDIR}
@@ -139,6 +147,11 @@ ${OBJECTDIR}/Validar.o: Validar.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Validar.o Validar.cpp
 
+${OBJECTDIR}/VentanaAdministracion.o: VentanaAdministracion.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaAdministracion.o VentanaAdministracion.cpp
+
 ${OBJECTDIR}/VentanaEscogerAerolinea.o: VentanaEscogerAerolinea.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -148,6 +161,11 @@ ${OBJECTDIR}/VentanaIniciarSesion.o: VentanaIniciarSesion.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaIniciarSesion.o VentanaIniciarSesion.cpp
+
+${OBJECTDIR}/VentanaLogAdmin.o: VentanaLogAdmin.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaLogAdmin.o VentanaLogAdmin.cpp
 
 ${OBJECTDIR}/VentanaPrincipal.o: VentanaPrincipal.cpp
 	${MKDIR} -p ${OBJECTDIR}
