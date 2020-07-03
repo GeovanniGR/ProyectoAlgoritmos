@@ -109,6 +109,78 @@ void ListaAerolineas::anular() {
     this->lista = NULL;
 }//anular
 
+string ListaAerolineas::resultado(string v) {
+    int banderilla = 0;
+    if (isEmpty()) {
+       
+    }
+    ptrLista aux = lista;
+    ptrLista aux1 = lista;
+    do {
+        if (aux->nombre.getNombre().find(v) != string::npos) {
+            banderilla = 1;
+            aux1->nombre = aux->nombre;
+            aux = aux->siguiente; //cambia para salir del if
+            return aux1->nombre.getNombre();
+        } else {
+            aux = aux->siguiente;
+            //            pos++;
+        }
+    } while (aux != lista);
+    if (banderilla == 0)
+//        cout << "\nno encontrado" << endl;
+    return "";
+}
+
+vector<PaisDestino> ListaAerolineas::paisesD(string v) {
+        int banderilla = 0;
+    if (isEmpty()) {
+       
+    }
+    ptrLista aux = lista;
+    ptrLista aux1 = lista;
+    do {
+        if (aux->nombre.getNombre().find(v) != string::npos) {
+            banderilla = 1;
+            aux1->nombre = aux->nombre;
+            aux = aux->siguiente; //cambia para salir del if
+            return aux1->nombre.getPaisDestino();
+        } else {
+            aux = aux->siguiente;
+            //            pos++;
+        }
+    } while (aux != lista);
+//    if (banderilla == 0)
+//        cout << "\nno encontrado" << endl;
+//    return "";
+
+}
+
+vector<Pais> ListaAerolineas::paisesO(string v) {
+        int banderilla = 0;
+    if (isEmpty()) {
+       
+    }
+    ptrLista aux = lista;
+    ptrLista aux1 = lista;
+    do {
+        if (aux->nombre.getNombre().find(v) != string::npos) {
+            banderilla = 1;
+            aux1->nombre = aux->nombre;
+            aux = aux->siguiente; //cambia para salir del if
+            return aux1->nombre.getPaisOrigen();
+        } else {
+            aux = aux->siguiente;
+            //            pos++;
+        }
+    } while (aux != lista);
+//    if (banderilla == 0)
+//        cout << "\nno encontrado" << endl;
+//    return "";
+
+
+}
+
 //bool ListaAerolineas::exist(string v) {
 //    int banderilla = 0;
 //    if (isEmpty()) {
