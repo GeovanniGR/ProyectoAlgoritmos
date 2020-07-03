@@ -73,7 +73,6 @@ void VentanaRegistrar::seleccionarGuardar() {
                 int numPasaporte = std::stoi(entryNumeroPasaporte.get_text().raw());
                 string nacionalidad = this->entryNacionalidad.get_text().raw();
 
-
                 Usuario* usuario1 = new Usuario(nombre, edad, genero, numPasaporte, nacionalidad);
 
                 if (this->registrarUsuarioBusiness->registrarUsuario(usuario1)) {

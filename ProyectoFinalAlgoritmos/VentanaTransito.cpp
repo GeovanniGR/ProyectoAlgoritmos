@@ -14,39 +14,30 @@
 #include "VentanaTransito.h"
 
 VentanaTransito::VentanaTransito() {
-        this->set_title("Transito Aereo");
-        this->d.show_all();
-        this->add(this->d);
-        this->add_events(Gdk::KEY_PRESS_MASK);
-        this->start();
-}
+    this->set_title("Transito Aereo");
+    this->d.show_all();
+    this->add(this->d);
+    this->add_events(Gdk::KEY_PRESS_MASK);
+    this->start();
+}//constructor
 
 void* VentanaTransito::run(void* arg) {
-     VentanaTransito* mv=reinterpret_cast<VentanaTransito*>(arg);
-        mv->updateWindows();
-        return 0;
-}
+    VentanaTransito* mv = reinterpret_cast<VentanaTransito*> (arg);
+    mv->updateWindows();
+    return 0;
+}//run
 
 void VentanaTransito::start() {
     pthread_create(&thread, 0, run, this);
-
-}
+}//start
 
 void VentanaTransito::updateWindows() {
-    while(true){
-            this->d.updateDrawingArea();
-            usleep(100000);
-        } // while
-}
+    while (true) {
+        this->d.updateDrawingArea();
+        usleep(100000);
+    } // while
+}//updateWindows
 
 void VentanaTransito::wait() {
-     (void)pthread_join(thread, NULL);
-
-}
-
-//VentanaTransito::VentanaTransito(const VentanaTransito& orig) {
-//}
-//
-//VentanaTransito::~VentanaTransito() {
-//}
-
+    (void) pthread_join(thread, NULL);
+}//wait

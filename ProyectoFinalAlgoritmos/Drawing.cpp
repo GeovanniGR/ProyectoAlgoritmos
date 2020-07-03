@@ -17,7 +17,7 @@ Drawing::Drawing() {
     this->set_size_request(800, 600);
     this->image = Gdk::Pixbuf::create_from_file("assets/airport.png");
     this->image1 = Gdk::Pixbuf::create_from_file("assets/airplane.png");
-}
+}//constructor
 
 bool Drawing::on_draw(const Cairo::RefPtr<Cairo::Context>& cr) {
     if (!this->grafo->getNombresNodos().empty()) {
@@ -39,13 +39,27 @@ bool Drawing::on_draw(const Cairo::RefPtr<Cairo::Context>& cr) {
                     }
                 }
 
-                Gdk::Cairo::set_source_pixbuf(cr, this->image1, this->grafo->getNombresNodos().at(i).getPosX() + 65, this->grafo->getNombresNodos().at(i).getPosY());
-                cr->rectangle(this->grafo->getNombresNodos().at(i).getPosX() + 65, this->grafo->getNombresNodos().at(i).getPosY(), 40, 40);
-                cr->fill();
-            }
-        }
-    }
-}
+                time_t now = time(0);
+                tm calendar_time = *std::localtime(std::addressof(now));
+                for (int m = 0; m < this->grafo->getHorarioSalida().size(); m++) {
+                    for (int n = 0; n < this->grafo->getHorarioLlegada().size(); n++) {
+                        int hora1 = stoi(this->grafo->getHoraDibujar().c_str());
+                        int hora2 = stoi(this->grafo->getHoraDibujarLlegada().c_str());
+
+                        if (hora1 >= calendar_time.tm_hour && hora2 < calendar_time.tm_hour) {
+                            //                            if (hora2 < calendar_time.tm_hour) {
+                            Gdk::Cairo::set_source_pixbuf(cr, this->image1, this->grafo->getNombresNodos().at(i).getPosX() + 65, this->grafo->getNombresNodos().at(i).getPosY());
+                            cr->rectangle(this->grafo->getNombresNodos().at(i).getPosX() + 65, this->grafo->getNombresNodos().at(i).getPosY(), 40, 40);
+                            cr->fill();
+                            // 2    >=  hora1  ---  hora2     <   3
+                            //                            }//if
+                        }//for
+                    }//for
+                }//for
+            }//if
+        }//for
+    }//if
+}//on_draw
 
 void Drawing::draw_text(const Cairo::RefPtr<Cairo::Context>& cr, int posX, int posY, string text) {
     Pango::FontDescription font;
@@ -75,10 +89,3 @@ void Drawing::draw_text(const Cairo::RefPtr<Cairo::Context>& cr, int posX, int p
 void Drawing::updateDrawingArea() {
     this->queue_draw();
 }
-
-
-
-
-
-
-

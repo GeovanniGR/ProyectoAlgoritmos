@@ -37,5 +37,4 @@ Usuario* RegistrarUsuarioData::devolverUsuario(Usuario* usuario) {
             return vectorUsuario.at(i);
         }//if
     }//for
-//    return false;
-}
+}//devolverUsuario

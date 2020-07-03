@@ -82,110 +82,110 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/proyectofinalalgoritmos: ${OBJECTFILE
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/proyectofinalalgoritmos ${OBJECTFILES} ${LDLIBSOPTIONS} `pkg-config gtkmm-3.0 --libs`
 
-${OBJECTDIR}/Administrador.o: Administrador.cpp
+${OBJECTDIR}/Administrador.o: Administrador.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Administrador.o Administrador.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Administrador.o Administrador.cpp
 
-${OBJECTDIR}/Aerolinea_1.o: Aerolinea_1.cpp
+${OBJECTDIR}/Aerolinea_1.o: Aerolinea_1.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Aerolinea_1.o Aerolinea_1.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Aerolinea_1.o Aerolinea_1.cpp
 
-${OBJECTDIR}/Cola.o: Cola.cpp
+${OBJECTDIR}/Cola.o: Cola.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Cola.o Cola.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Cola.o Cola.cpp
 
-${OBJECTDIR}/Drawing.o: Drawing.cpp
+${OBJECTDIR}/Drawing.o: Drawing.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Drawing.o Drawing.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Drawing.o Drawing.cpp
 
-${OBJECTDIR}/Grafo.o: Grafo.cpp
+${OBJECTDIR}/Grafo.o: Grafo.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Grafo.o Grafo.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Grafo.o Grafo.cpp
 
-${OBJECTDIR}/Itinerario.o: Itinerario.cpp
+${OBJECTDIR}/Itinerario.o: Itinerario.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Itinerario.o Itinerario.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Itinerario.o Itinerario.cpp
 
-${OBJECTDIR}/ListaAerolineas.o: ListaAerolineas.cpp
+${OBJECTDIR}/ListaAerolineas.o: ListaAerolineas.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ListaAerolineas.o ListaAerolineas.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ListaAerolineas.o ListaAerolineas.cpp
 
-${OBJECTDIR}/Pais.o: Pais.cpp
+${OBJECTDIR}/Pais.o: Pais.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Pais.o Pais.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Pais.o Pais.cpp
 
-${OBJECTDIR}/PaisDestino.o: PaisDestino.cpp
+${OBJECTDIR}/PaisDestino.o: PaisDestino.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PaisDestino.o PaisDestino.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PaisDestino.o PaisDestino.cpp
 
-${OBJECTDIR}/RegistrarUsuarioBusiness.o: RegistrarUsuarioBusiness.cpp
+${OBJECTDIR}/RegistrarUsuarioBusiness.o: RegistrarUsuarioBusiness.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/RegistrarUsuarioBusiness.o RegistrarUsuarioBusiness.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/RegistrarUsuarioBusiness.o RegistrarUsuarioBusiness.cpp
 
-${OBJECTDIR}/RegistrarUsuarioData.o: RegistrarUsuarioData.cpp
+${OBJECTDIR}/RegistrarUsuarioData.o: RegistrarUsuarioData.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/RegistrarUsuarioData.o RegistrarUsuarioData.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/RegistrarUsuarioData.o RegistrarUsuarioData.cpp
 
-${OBJECTDIR}/Usuario.o: Usuario.cpp
+${OBJECTDIR}/Usuario.o: Usuario.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Usuario.o Usuario.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Usuario.o Usuario.cpp
 
-${OBJECTDIR}/Validar.o: Validar.cpp
+${OBJECTDIR}/Validar.o: Validar.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Validar.o Validar.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Validar.o Validar.cpp
 
-${OBJECTDIR}/VentanaAdministracion.o: VentanaAdministracion.cpp
+${OBJECTDIR}/VentanaAdministracion.o: VentanaAdministracion.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaAdministracion.o VentanaAdministracion.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaAdministracion.o VentanaAdministracion.cpp
 
-${OBJECTDIR}/VentanaEscogerAerolinea.o: VentanaEscogerAerolinea.cpp
+${OBJECTDIR}/VentanaEscogerAerolinea.o: VentanaEscogerAerolinea.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaEscogerAerolinea.o VentanaEscogerAerolinea.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaEscogerAerolinea.o VentanaEscogerAerolinea.cpp
 
-${OBJECTDIR}/VentanaIniciarSesion.o: VentanaIniciarSesion.cpp
+${OBJECTDIR}/VentanaIniciarSesion.o: VentanaIniciarSesion.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaIniciarSesion.o VentanaIniciarSesion.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaIniciarSesion.o VentanaIniciarSesion.cpp
 
-${OBJECTDIR}/VentanaLogAdmin.o: VentanaLogAdmin.cpp
+${OBJECTDIR}/VentanaLogAdmin.o: VentanaLogAdmin.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaLogAdmin.o VentanaLogAdmin.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaLogAdmin.o VentanaLogAdmin.cpp
 
-${OBJECTDIR}/VentanaPrincipal.o: VentanaPrincipal.cpp
+${OBJECTDIR}/VentanaPrincipal.o: VentanaPrincipal.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaPrincipal.o VentanaPrincipal.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaPrincipal.o VentanaPrincipal.cpp
 
-${OBJECTDIR}/VentanaRegistrar.o: VentanaRegistrar.cpp
+${OBJECTDIR}/VentanaRegistrar.o: VentanaRegistrar.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaRegistrar.o VentanaRegistrar.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaRegistrar.o VentanaRegistrar.cpp
 
-${OBJECTDIR}/VentanaTransito.o: VentanaTransito.cpp
+${OBJECTDIR}/VentanaTransito.o: VentanaTransito.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaTransito.o VentanaTransito.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/VentanaTransito.o VentanaTransito.cpp
 
-${OBJECTDIR}/main.o: main.cpp
+${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:
@@ -193,6 +193,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/proyectofinalalgoritmos
 
 # Subprojects
 .clean-subprojects:
