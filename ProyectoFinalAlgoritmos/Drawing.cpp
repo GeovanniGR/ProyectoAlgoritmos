@@ -21,10 +21,7 @@ Drawing::Drawing() {
 
 bool Drawing::on_draw(const Cairo::RefPtr<Cairo::Context>& cr) {
     if (!this->grafo->getNombresNodos().empty()) {
-        //        cout<<"no esta vacio"<<endl;
         for (int i = 0; i < this->grafo->getNombresNodos().size(); i++) {
-            //                        cout<<this->grafo->getNombresNodos().at(i).getPosX();
-            //                        cout<<this->grafo->getNombresNodos().at(i).getPosY();
             this->grafo->getNombresNodos().at(i).draw(cr);
             cr->set_source_rgb(0, 0, 0);
             this->draw_text(cr, this->grafo->getNombresNodos().at(i).getPosX(), this->grafo->getNombresNodos().at(i).getPosY(), this->grafo->getNombresNodos().at(i).getPais());
@@ -39,7 +36,6 @@ bool Drawing::on_draw(const Cairo::RefPtr<Cairo::Context>& cr) {
                             cr->set_source_rgb(0, 0, 0);
                             this->draw_text(cr, this->grafo->getNombresNodos().at(i).getPosX() + 150, this->grafo->getNombresNodos().at(i).getPosY(), this->grafo->getPaisDes().at(k).getNombrePais());
                         }
-                        //                        this->grafo->getPaisDes().at(k).draw(cr);
                     }
                 }
 
@@ -47,7 +43,6 @@ bool Drawing::on_draw(const Cairo::RefPtr<Cairo::Context>& cr) {
                 cr->rectangle(this->grafo->getNombresNodos().at(i).getPosX() + 65, this->grafo->getNombresNodos().at(i).getPosY(), 40, 40);
                 cr->fill();
             }
-
         }
     }
 }

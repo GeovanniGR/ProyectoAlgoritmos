@@ -59,7 +59,7 @@ protected:
 
     };
 private:
-    ListaAerolineas aerolineas;
+    ListaAerolineas* aerolineas=ListaAerolineas::getInstance();
     Gtk::Fixed fixed;
 
     Gtk::Button btnArriba;
