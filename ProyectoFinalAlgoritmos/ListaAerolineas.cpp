@@ -25,7 +25,7 @@ ListaAerolineas::ListaAerolineas() {
     this->lista = this->inicio = this->fin = NULL;
 }//constructor
 
-string ListaAerolineas::firstInlist() {
+Aerolinea ListaAerolineas::firstInlist() {
     return lista->nombre;
 }//firstInlist
 
@@ -33,7 +33,7 @@ bool ListaAerolineas::isEmpty() {
     return this->lista == NULL;
 }//isEmpty
 
-void ListaAerolineas::insert(string v) {
+void ListaAerolineas::insert(Aerolinea v) {
     nodo* nuevo = new(struct nodo);
     nuevo->nombre = v;
 
@@ -69,27 +69,27 @@ int ListaAerolineas::getSize() {
     return contador;
 }//getSize
 
-int ListaAerolineas::getPosition(string v) {
-    int pos = 0;
-    int banderilla = 0;
-    if (isEmpty()) {
-        cout << "esta vacia" << endl;
-    }
-    ptrLista aux = lista;
-    do {
-        if (aux->nombre == v) {
-            banderilla = 1;
-            break;
-
-        } else {
-            aux = aux->siguiente;
-            pos++;
-        }
-    } while (aux != lista);
-    if (banderilla == 0)
-        cout << "no encontrado";
-    return pos + 1;
-}//getPosition
+//int ListaAerolineas::getPosition(string v) {
+//    int pos = 0;
+//    int banderilla = 0;
+//    if (isEmpty()) {
+//        cout << "esta vacia" << endl;
+//    }
+//    ptrLista aux = lista;
+//    do {
+//        if (aux->nombre == v) {
+//            banderilla = 1;
+//            break;
+//
+//        } else {
+//            aux = aux->siguiente;
+//            pos++;
+//        }
+//    } while (aux != lista);
+//    if (banderilla == 0)
+//        cout << "no encontrado";
+//    return pos + 1;
+//}//getPosition
 
 void ListaAerolineas::showElements() {
 
@@ -98,7 +98,7 @@ void ListaAerolineas::showElements() {
         cout << "esta vacia" << endl;
     } else {
         do {
-            cout << "Elemento de la lista: " << aux->nombre << endl;
+            //cout << "Elemento de la lista: " << aux->nombre << endl;
             aux = aux->siguiente;
 
         } while (aux != lista);
@@ -109,64 +109,64 @@ void ListaAerolineas::anular() {
     this->lista = NULL;
 }//anular
 
-bool ListaAerolineas::exist(string v) {
-    int banderilla = 0;
-    if (isEmpty()) {
-        cout << "esta vacia" << endl;
-    }
-    ptrLista aux = lista;
-    do {
-        if (aux->nombre.find(v) != string::npos) {
-            banderilla = 1;
-            aux = aux->siguiente; //cambia para salir del if
-            return true;
-        } else {
-            aux = aux->siguiente;
-            //            pos++;
-        }
-    } while (aux != lista);
-    if (banderilla == 0)
-        cout << "\nno encontrado" << endl;
-    return false;
-}//exist
+//bool ListaAerolineas::exist(string v) {
+//    int banderilla = 0;
+//    if (isEmpty()) {
+//        cout << "esta vacia" << endl;
+//    }
+//    ptrLista aux = lista;
+//    do {
+//        if (aux->nombre.find(v) != string::npos) {
+//            banderilla = 1;
+//            aux = aux->siguiente; //cambia para salir del if
+//            return true;
+//        } else {
+//            aux = aux->siguiente;
+//            //            pos++;
+//        }
+//    } while (aux != lista);
+//    if (banderilla == 0)
+//        cout << "\nno encontrado" << endl;
+//    return false;
+//}//exist
 
-void ListaAerolineas::borrar(string v) {
-    int n = 0;
-    ptrLista nuevaLista, nodoSinBorrar;
-    nuevaLista = new (struct nodo);
-    nuevaLista = NULL;
-
-    ptrLista aux = lista;
-    ptrLista anterior = new (struct nodo);
-    anterior = NULL;
-    int banderilla = 0;
-    if (isEmpty()) {
-        cout << "esta vacia" << endl;
-    }
-    do {
-        if (aux->nombre != v) {
-            nodoSinBorrar = new (struct nodo);
-            nodoSinBorrar->nombre = aux->nombre;
-            nodoSinBorrar->siguiente = nuevaLista;
-            nuevaLista = nodoSinBorrar;
-            aux = aux->siguiente;
-            banderilla = 1;
-        } else {
-            aux = aux->siguiente;
-        }
-    } while (aux != lista);
-    lista = nuevaLista;
-}//borrar
+//void ListaAerolineas::borrar(string v) {
+//    int n = 0;
+//    ptrLista nuevaLista, nodoSinBorrar;
+//    nuevaLista = new (struct nodo);
+//    nuevaLista = NULL;
+//
+//    ptrLista aux = lista;
+//    ptrLista anterior = new (struct nodo);
+//    anterior = NULL;
+//    int banderilla = 0;
+//    if (isEmpty()) {
+//        cout << "esta vacia" << endl;
+//    }
+//    do {
+//        if (aux->nombre != v) {
+//            nodoSinBorrar = new (struct nodo);
+//            nodoSinBorrar->nombre = aux->nombre;
+//            nodoSinBorrar->siguiente = nuevaLista;
+//            nuevaLista = nodoSinBorrar;
+//            aux = aux->siguiente;
+//            banderilla = 1;
+//        } else {
+//            aux = aux->siguiente;
+//        }
+//    } while (aux != lista);
+//    lista = nuevaLista;
+//}//borrar
 
 string ListaAerolineas::showNext(string v) {
     if (isEmpty()) {
-        return "esta vacia";
+        return "vacida";
     }
     ptrLista aux = lista;
     do {
-        if (aux->nombre.find(v) != string::npos) {
+        if (aux->nombre.getNombre().find(v)!=string::npos) {
             aux = aux->siguiente; //cambia para salir del if
-            return aux->nombre;
+            return aux->nombre.getNombre();
         } else {
             aux = aux->siguiente;
         }
@@ -176,13 +176,13 @@ string ListaAerolineas::showNext(string v) {
 
 string ListaAerolineas::showPrevious(string v) {
     if (isEmpty()) {
-        return "esta vacia";
+        return "vacida";
     }
     ptrLista aux = lista;
     do {
-        if (aux->nombre.find(v) != string::npos) {
+        if (aux->nombre.getNombre().find(v)!=string::npos) {
             aux = aux->anterior; //cambia para salir del if
-            return aux->nombre;
+            return aux->nombre.getNombre();
         } else {
             aux = aux->siguiente;
         }

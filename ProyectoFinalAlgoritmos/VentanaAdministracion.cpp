@@ -70,7 +70,7 @@ void VentanaAdministracion::onButtonaddPaises() {
 
 void VentanaAdministracion::onButtonGuardar() {
     this->aerolinea = Aerolinea(this->etNombre.get_text(),this->paisesOrigen,this->paisesDestino);
-    this->aerolineas->insert(this->aerolinea.getNombre());
+    this->aerolineas->insert(this->aerolinea);
     this->etNombre.set_text("");
 }//
 
