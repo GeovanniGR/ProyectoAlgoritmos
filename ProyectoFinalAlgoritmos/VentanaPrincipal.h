@@ -23,11 +23,13 @@
 
 #include "VentanaRegistrar.h"
 #include "VentanaTransito.h"
+#include "VentanaLogAdmin.h"
 
 class VentanaPrincipal : public Gtk::Window {
 public:
     VentanaPrincipal();
     void init();
+    void abrirVentanaAdministrador();
     void abrirVentanaTransito();
     void abrirVentanaRegistrar();
     void abrirVentanaIniciarSesion();
@@ -37,17 +39,21 @@ private:
 
     Gtk::MenuItem menuGestionarVuelos;
     Gtk::MenuItem menuGestionTransito;
+    Gtk::MenuItem menuGestionAdministrador;
 
     Gtk::Menu subMenuArchivo;
     Gtk::Menu subMenuTransito;
+    Gtk::Menu subMenuAdministrador;
 
     Gtk::ImageMenuItem menuAerolinea;
     Gtk::ImageMenuItem menuRegistrar;
     Gtk::ImageMenuItem menuInicarSesion;
     Gtk::ImageMenuItem menuTransito;
+    Gtk::ImageMenuItem menuAdministrador;
 
     Gtk::Fixed fixed; // contenedor
-
+    
+    VentanaLogAdmin* ventanaAdministrador;
     VentanaRegistrar* ventanaRegistrar;
     VentanaIniciarSesion* ventanaIniciarSesion;
     VentanaTransito* ventanaTransito;
