@@ -15,12 +15,14 @@
 #define LISTAAEROLINEAS_H
 
 #include <string>
+
+#include "Aerolinea_1.h"
 using namespace std;
 
 class ListaAerolineas {
 
     struct nodo {
-        string nombre;
+        Aerolinea nombre;
         struct nodo *siguiente, *anterior;
     };
     typedef nodo *ptrLista;
@@ -32,12 +34,12 @@ public:
     void anular();
     bool isEmpty();
 
-    void insert(string v);
+    void insert(Aerolinea v);
     void borrar(string v);
     bool exist(string v);
     string showNext(string v);
     string showPrevious(string v);
-    string firstInlist();
+    Aerolinea firstInlist();
 
 private:
     ListaAerolineas();
