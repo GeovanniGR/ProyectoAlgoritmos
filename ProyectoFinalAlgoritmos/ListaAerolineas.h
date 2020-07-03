@@ -17,6 +17,11 @@
 #include <string>
 
 #include "Aerolinea_1.h"
+#include "Pais.h"
+#include "PaisDestino.h"
+#include <vector>
+#include <string>
+#include <iostream>
 using namespace std;
 
 class ListaAerolineas {
@@ -37,6 +42,9 @@ public:
     void insert(Aerolinea v);
     void borrar(string v);
     bool exist(string v);
+    string resultado(string v);
+    vector<Pais> paisesO(string v);
+    vector <PaisDestino> paisesD(string v);
     string showNext(string v);
     string showPrevious(string v);
     Aerolinea firstInlist();
