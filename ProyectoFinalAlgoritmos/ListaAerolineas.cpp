@@ -14,6 +14,13 @@
 #include <iostream>
 using namespace std;
 
+ListaAerolineas* ListaAerolineas::getInstance() {
+    if (instance == 0) {
+        instance = new ListaAerolineas();
+    }
+    return instance;
+}
+
 ListaAerolineas::ListaAerolineas() {
     this->lista = this->inicio = this->fin = NULL;
 }//constructor
@@ -182,3 +189,5 @@ string ListaAerolineas::showPrevious(string v) {
     } while (aux != lista);
 
 }//showPrevious
+
+ListaAerolineas* ListaAerolineas::instance = 0;

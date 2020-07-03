@@ -41,7 +41,7 @@ void VentanaEscogerAerolinea::init() {
     this->btnConfirmarVuelo.signal_clicked().connect(sigc::mem_fun(*this, &VentanaEscogerAerolinea::onButtonClickedConfirmarVuelo));
     this->fixed.put(this->btnConfirmarVuelo, 450, 450);
 
-    this->etAerolinea.set_text(this->aerolineas.firstInlist());
+    this->etAerolinea.set_text(this->aerolineas->firstInlist());
     this->fixed.put(this->etAerolinea, 20, 150);
 
     this->lblPaisOrigen.set_text("Despegue");
@@ -165,11 +165,11 @@ void VentanaEscogerAerolinea::loadaerolineas() {
     paisOrigen.clear();
     paisDestino.clear();
 
-    this->aerolineas.insert(a1.getNombre());
-    this->aerolineas.insert(a2.getNombre());
-    this->aerolineas.insert(a3.getNombre());
-    this->aerolineas.insert(a4.getNombre());
-    this->aerolineas.insert(a5.getNombre());
+    this->aerolineas->insert(a1.getNombre());
+    this->aerolineas->insert(a2.getNombre());
+    this->aerolineas->insert(a3.getNombre());
+    this->aerolineas->insert(a4.getNombre());
+    this->aerolineas->insert(a5.getNombre());
 }//loadaerolineas
 
 void VentanaEscogerAerolinea::onButtonClickedConfirm() {
@@ -178,11 +178,11 @@ void VentanaEscogerAerolinea::onButtonClickedConfirm() {
 }//onButtonClickedConfirm
 
 void VentanaEscogerAerolinea::onButtonClickedDown() {
-    this->etAerolinea.set_text(this->aerolineas.showNext(this->etAerolinea.get_text().raw()));
+    this->etAerolinea.set_text(this->aerolineas->showNext(this->etAerolinea.get_text().raw()));
 }//onButtonClickedDown
 
 void VentanaEscogerAerolinea::onButtonClickedUp() {
-    this->etAerolinea.set_text(this->aerolineas.showPrevious(this->etAerolinea.get_text().raw()));
+    this->etAerolinea.set_text(this->aerolineas->showPrevious(this->etAerolinea.get_text().raw()));
 }//onButtonClickedDown
 
 //void VentanaEscogerAerolinea::cargarItinerario() {

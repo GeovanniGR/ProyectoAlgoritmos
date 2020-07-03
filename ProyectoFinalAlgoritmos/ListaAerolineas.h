@@ -25,13 +25,13 @@ class ListaAerolineas {
     };
     typedef nodo *ptrLista;
 public:
-    ListaAerolineas();
+    static ListaAerolineas* getInstance();
     int getSize();
     int getPosition(string v);
     void showElements();
     void anular();
     bool isEmpty();
-    
+
     void insert(string v);
     void borrar(string v);
     bool exist(string v);
@@ -40,6 +40,8 @@ public:
     string firstInlist();
 
 private:
+    ListaAerolineas();
+    static ListaAerolineas* instance;
     ptrLista lista;
     nodo *inicio;
     nodo *fin;
