@@ -20,14 +20,14 @@ Grafo::Grafo() {
 
 bool Grafo::isEmpty() {
     return p == NULL;
-}
+}//isEmpty
 
 Grafo* Grafo::getInstance() {
     if (instance == 0) {
         instance = new Grafo();
     }
     return instance;
-}
+}//getInstance
 
 void Grafo::agregarNodo(string elemento) {
     Tnodo t, nuevo = new struct nodo;
@@ -45,7 +45,7 @@ void Grafo::agregarNodo(string elemento) {
         }
         t->sgte = nuevo;
     }
-    cout << "Nodo ingresado: " << elemento << endl;
+//    cout << "Nodo ingresado: " << elemento << endl;
 }//agregarNodo
 
 void Grafo::agregarArista(Tnodo& aux, Tnodo& aux2, Tarista& nuevo) {
@@ -129,7 +129,7 @@ void Grafo::eliminarNodo(string eliminar) {
             aux = aux->sgte;
         }
     }
-}
+}//eliminarNodo
 
 void Grafo::eliminarArista(string ini, string fin) {
     Tnodo aux, aux2;
@@ -162,7 +162,7 @@ void Grafo::eliminarArista(string ini, string fin) {
         }
         aux = aux->sgte;
     }
-}
+}//eliminarArista
 
 void Grafo::mostrarGrafo() {
     Tnodo ptr;
@@ -183,7 +183,7 @@ void Grafo::mostrarGrafo() {
         ptr = ptr->sgte;
         cout << endl;
     }
-}
+}//mostrarGrafo
 
 void Grafo::mostrarAristas(string nodo) {
     Tnodo aux;
@@ -212,15 +212,15 @@ void Grafo::mostrarAristas(string nodo) {
         } else
             aux = aux->sgte;
     }
-}
+}//mostrarAristas
 
 void Grafo::setNombresNodos(vector<Pais> nombresNodos) {
     this->nombresNodos = nombresNodos;
-}
+}//setNombresNodos
 
 vector<Pais> Grafo::getNombresNodos() {
     return nombresNodos;
-}
+}//getNombresNodos
 
 bool Grafo::existe(string nodo) {
     Tnodo aux;
@@ -240,7 +240,7 @@ bool Grafo::existe(string nodo) {
         } else
             aux = aux->sgte;
     }
-}
+}//existe
 
 vector<string> Grafo::arista(string nodo) {
     Tnodo aux;
@@ -267,34 +267,51 @@ vector<string> Grafo::arista(string nodo) {
         } else
             aux = aux->sgte;
     }
-}
+}//arista
 
 void Grafo::setPaisDes(vector<PaisDestino> paisDes) {
     this->paisDes = paisDes;
-}
+}//setPaisDes
 
 vector<PaisDestino> Grafo::getPaisDes() {
     return paisDes;
-}
+}//getPaisDes
 
 void Grafo::horarios(vector<int> horarioSalida, vector<int> horarioLlegada) {
     this->horarioSalida = horarioSalida;
     this->horarioLlegada = horarioLlegada;
-}
+}//horarios
 
 void Grafo::setHorarioLlegada(vector<int> horarioLlegada) {
     this->horarioLlegada = horarioLlegada;
-}
+}//setHorarioLlegada
 
 void Grafo::setHorarioSalida(vector<int> horarioSalida) {
     this->horarioSalida = horarioSalida;
-}
+}//setHorarioSalida
 
 vector<int> Grafo::getHorarioLlegada() {
     return horarioLlegada;
-}
+}//getHorarioLlegada
 
 vector<int> Grafo::getHorarioSalida() {
     return horarioSalida;
-}
+}//getHorarioSalida
+
+void Grafo::setHoraDibujar(string hora) {
+    this->hora = hora;
+}//setHoraDibujar
+
+string Grafo::getHoraDibujar() {
+    return this->hora;
+}//getHoraDibujar
+
+void Grafo::setHoraDibujarLlegada(string horaLlegada) {
+    this->horaLlegada = horaLlegada;
+}//setHoraDibujarLlegada
+
+string Grafo::getHoraDibujarLlegada() {
+    return this->horaLlegada;
+}//getHoraDibujarLlegada
+
 Grafo* Grafo::instance = 0;

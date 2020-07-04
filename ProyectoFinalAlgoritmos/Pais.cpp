@@ -22,28 +22,30 @@ Pais::Pais(string pais) {
     this->posX = 0;
     this->posY = 0;
 }//constructor
+
 void Pais::draw(const Cairo::RefPtr<Cairo::Context>& cr) {
- Gdk::Cairo::set_source_pixbuf(cr, this->image, this->posX, this->posY);
-            cr->rectangle(this->posX, this->posY, 40, 40);
-            cr->fill();
-}
+    Gdk::Cairo::set_source_pixbuf(cr, this->image, this->posX, this->posY);
+    cr->rectangle(this->posX, this->posY, 40, 40);
+    cr->fill();
+}//draw
 
 //setter&&getter
 
 void Pais::setPosX(int posX) {
     this->posX = posX;
-}
+}//setPosX
 
 int Pais::getPosY() {
     return posY;
-}
+}//getPosY
 
 int Pais::getPosX() {
     return posX;
-}
- void Pais::setPosY(int posY) {
-        this->posY = posY;
-    }
+}//getPosX
+
+void Pais::setPosY(int posY) {
+    this->posY = posY;
+}//setPosY
 
 void Pais::setPais(string pais) {
     this->pais = pais;

@@ -26,7 +26,7 @@
 #include "Aerolinea_1.h"
 #include "Grafo.h"
 #include "Usuario.h"
-
+#include <iostream>
 class VentanaEscogerAerolinea : public Gtk::Window {
 public:
     VentanaEscogerAerolinea(Usuario* usuario);

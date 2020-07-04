@@ -65,7 +65,7 @@ void VentanaPrincipal::abrirVentanaAdministrador() {
     this->ventanaAdministrador = new VentanaLogAdmin();
     this->ventanaAdministrador->signal_hide().connect(sigc::mem_fun(*this, &VentanaPrincipal::aboutWinClose));
     this->ventanaAdministrador->show();
-}
+}//abrirVentanaAdministrador
 
 void VentanaPrincipal::abrirVentanaTransito() {
  if (this->ventanaTransito != 0)
@@ -73,7 +73,7 @@ void VentanaPrincipal::abrirVentanaTransito() {
     this->ventanaTransito = new VentanaTransito();
     this->ventanaTransito->signal_hide().connect(sigc::mem_fun(*this, &VentanaPrincipal::aboutWinClose));
     this->ventanaTransito->show();
-}
+}//abrirVentanaTransito
 
 void VentanaPrincipal::abrirVentanaIniciarSesion() {
     if (this->ventanaIniciarSesion != 0)

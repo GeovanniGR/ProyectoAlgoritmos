@@ -16,30 +16,21 @@
 Administrador::Administrador() {
     this->nombre = "master";
     this->password = 147;
-}
+}//Administrador
+
 //setter&&getter
 void Administrador::SetPassword(int password){
     this->password= password;
-}
-
-//    Administrador(const Administra
+}//SetPassword
 
 void Administrador::SetNombre(string nombre) {
     this->nombre = nombre;
-}
+}//SetNombre
 
 int Administrador::GetPassword() {
     return password;
-}
+}//GetPassword
 
 string Administrador::GetNombre() {
     return nombre;
-}
-
-
-//Administrador::Administrador(const Administrador& orig) {
-//}
-//
-//Administrador::~Administrador() {
-//}
-
+}//GetNombre

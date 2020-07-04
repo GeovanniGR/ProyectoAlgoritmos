@@ -19,7 +19,8 @@ VentanaLogAdmin::VentanaLogAdmin() {
     this->set_title("Iniciar Sesion");
     this->admin = Administrador();
     init();
-}
+}//constructor
+
 void VentanaLogAdmin::init() {
 
     this->btnIniciarSesion.set_label("Iniciar Sesion");
@@ -46,8 +47,7 @@ void VentanaLogAdmin::accionIniciarSesion() {
     this->ventanaAdministracion = new VentanaAdministracion();
     this->ventanaAdministracion->signal_hide().connect(sigc::mem_fun(*this, &VentanaLogAdmin::AboutWinClose));
     this->ventanaAdministracion->show();
-
-}
+}//accionIniciarSesion
 
 void VentanaLogAdmin::iniciarSesion() {
    if (this->entryNombre.get_text() == "" || this->entryPassword.get_text().size() == 0) {
@@ -83,14 +83,7 @@ void VentanaLogAdmin::iniciarSesion() {
             error.run();
         }//else
     }//else
-}
-
-//
-//VentanaLogAdmin::VentanaLogAdmin(const VentanaLogAdmin& orig) {
-//}
-//
-//VentanaLogAdmin::~VentanaLogAdmin() {
-//}
+}//iniciarSesion
 
 void VentanaLogAdmin::AboutWinClose() {
     this->ventanaAdministracion = 0;

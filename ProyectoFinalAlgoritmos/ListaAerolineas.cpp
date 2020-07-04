@@ -19,7 +19,7 @@ ListaAerolineas* ListaAerolineas::getInstance() {
         instance = new ListaAerolineas();
     }
     return instance;
-}
+}//getInstance
 
 ListaAerolineas::ListaAerolineas() {
     this->lista = this->inicio = this->fin = NULL;
@@ -69,28 +69,6 @@ int ListaAerolineas::getSize() {
     return contador;
 }//getSize
 
-//int ListaAerolineas::getPosition(string v) {
-//    int pos = 0;
-//    int banderilla = 0;
-//    if (isEmpty()) {
-//        cout << "esta vacia" << endl;
-//    }
-//    ptrLista aux = lista;
-//    do {
-//        if (aux->nombre == v) {
-//            banderilla = 1;
-//            break;
-//
-//        } else {
-//            aux = aux->siguiente;
-//            pos++;
-//        }
-//    } while (aux != lista);
-//    if (banderilla == 0)
-//        cout << "no encontrado";
-//    return pos + 1;
-//}//getPosition
-
 void ListaAerolineas::showElements() {
 
     ptrLista aux = lista;
@@ -128,7 +106,6 @@ string ListaAerolineas::resultado(string v) {
         }
     } while (aux != lista);
     if (banderilla == 0)
-//        cout << "\nno encontrado" << endl;
     return "";
 }
 
@@ -147,14 +124,9 @@ vector<PaisDestino> ListaAerolineas::paisesD(string v) {
             return aux1->nombre.getPaisDestino();
         } else {
             aux = aux->siguiente;
-            //            pos++;
         }
     } while (aux != lista);
-//    if (banderilla == 0)
-//        cout << "\nno encontrado" << endl;
-//    return "";
-
-}
+}//paisesD
 
 vector<Pais> ListaAerolineas::paisesO(string v) {
         int banderilla = 0;
@@ -171,64 +143,9 @@ vector<Pais> ListaAerolineas::paisesO(string v) {
             return aux1->nombre.getPaisOrigen();
         } else {
             aux = aux->siguiente;
-            //            pos++;
         }
     } while (aux != lista);
-//    if (banderilla == 0)
-//        cout << "\nno encontrado" << endl;
-//    return "";
-
-
-}
-
-//bool ListaAerolineas::exist(string v) {
-//    int banderilla = 0;
-//    if (isEmpty()) {
-//        cout << "esta vacia" << endl;
-//    }
-//    ptrLista aux = lista;
-//    do {
-//        if (aux->nombre.find(v) != string::npos) {
-//            banderilla = 1;
-//            aux = aux->siguiente; //cambia para salir del if
-//            return true;
-//        } else {
-//            aux = aux->siguiente;
-//            //            pos++;
-//        }
-//    } while (aux != lista);
-//    if (banderilla == 0)
-//        cout << "\nno encontrado" << endl;
-//    return false;
-//}//exist
-
-//void ListaAerolineas::borrar(string v) {
-//    int n = 0;
-//    ptrLista nuevaLista, nodoSinBorrar;
-//    nuevaLista = new (struct nodo);
-//    nuevaLista = NULL;
-//
-//    ptrLista aux = lista;
-//    ptrLista anterior = new (struct nodo);
-//    anterior = NULL;
-//    int banderilla = 0;
-//    if (isEmpty()) {
-//        cout << "esta vacia" << endl;
-//    }
-//    do {
-//        if (aux->nombre != v) {
-//            nodoSinBorrar = new (struct nodo);
-//            nodoSinBorrar->nombre = aux->nombre;
-//            nodoSinBorrar->siguiente = nuevaLista;
-//            nuevaLista = nodoSinBorrar;
-//            aux = aux->siguiente;
-//            banderilla = 1;
-//        } else {
-//            aux = aux->siguiente;
-//        }
-//    } while (aux != lista);
-//    lista = nuevaLista;
-//}//borrar
+}//paisesO (Pais origen)
 
 string ListaAerolineas::showNext(string v) {
     if (isEmpty()) {
@@ -259,7 +176,6 @@ string ListaAerolineas::showPrevious(string v) {
             aux = aux->siguiente;
         }
     } while (aux != lista);
-
 }//showPrevious
 
 ListaAerolineas* ListaAerolineas::instance = 0;

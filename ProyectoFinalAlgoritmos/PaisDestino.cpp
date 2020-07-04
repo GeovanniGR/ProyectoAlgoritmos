@@ -28,24 +28,25 @@ void PaisDestino::draw(const Cairo::RefPtr<Cairo::Context>& cr) {
     Gdk::Cairo::set_source_pixbuf(cr, this->image, this->posX, this->posY);
     cr->rectangle(this->posX, this->posY, 40, 40);
     cr->fill();
-}
+}//draw
+
 //setter&&getter
 
 void PaisDestino::setPosX(int posX) {
     this->posX = posX;
-}
+}//setPosX
 
 int PaisDestino::getPosY() {
     return posY;
-}
+}//getPosY
 
 int PaisDestino::getPosX() {
     return posX;
-}
+}//getPosX
 
 void PaisDestino::setPosY(int posY) {
     this->posY = posY;
-}
+}//setPosY
 
 void PaisDestino::setNombrePais(string nombrePais) {
     this->nombrePais = nombrePais;
@@ -61,4 +62,4 @@ string PaisDestino::getNacionalidadMigracion() {
 
 void PaisDestino::setNacionalidadMigracion(string nacionalidadMigracion) {
     this->nacionalidadMigracion = nacionalidadMigracion;
-}
+}//setNacionalidadMigracion

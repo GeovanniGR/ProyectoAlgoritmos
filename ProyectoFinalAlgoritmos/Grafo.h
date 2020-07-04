@@ -64,12 +64,20 @@ public:
 
     void horarios(vector<int> horarioSalida, vector<int> horarioLlegada);
 
+    void setHoraDibujar(string hora);
+    string getHoraDibujar();
+
+    void setHoraDibujarLlegada(string horaLlegada);
+    string getHoraDibujarLlegada();
 private:
     vector<Pais> nombresNodos;
     vector<PaisDestino> paisDes;
 
     vector<int> horarioSalida;
     vector<int> horarioLlegada;
+
+    string hora;
+    string horaLlegada;
 
     Grafo();
     Tnodo p; //puntero cabeza
